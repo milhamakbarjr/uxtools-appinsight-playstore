@@ -1,0 +1,5126 @@
+{
+  "stats": {
+    "averageConfidence": null,
+    "sentimentDistribution": {
+      "positive": 146,
+      "negative": 30,
+      "neutral": 24
+    }
+  },
+  "results": [
+    [
+      0,
+      {
+        "score": 0.5,
+        "comparative": 0.08333333333333333,
+        "confidence": 0.4072,
+        "language": "nob",
+        "tokens": [
+          "Spotify",
+          "is",
+          "best",
+          "for",
+          "listening",
+          "musics"
+        ]
+      }
+    ],
+    [
+      1,
+      {
+        "score": -0.024390243902439025,
+        "comparative": -0.000594883997620464,
+        "confidence": 0.6479073170731706,
+        "language": "eng",
+        "tokens": [
+          "Good",
+          "music",
+          "bad",
+          "app",
+          "If",
+          "i",
+          "m",
+          "not",
+          "getting",
+          "30",
+          "second",
+          "unskippable",
+          "ads",
+          "reminding",
+          "me",
+          "what",
+          "app",
+          "i",
+          "m",
+          "using",
+          "i",
+          "m",
+          "being",
+          "forced",
+          "to",
+          "listen",
+          "to",
+          "random",
+          "music",
+          "that",
+          "spotify",
+          "thinks",
+          "I",
+          "like",
+          "How",
+          "greedy",
+          "for",
+          "money",
+          "can",
+          "you",
+          "be"
+        ]
+      }
+    ],
+    [
+      2,
+      {
+        "score": 0.75,
+        "comparative": 0.1875,
+        "confidence": 0.41329999999999995,
+        "language": "nds",
+        "tokens": [
+          "great",
+          "to",
+          "listen",
+          "to"
+        ]
+      }
+    ],
+    [
+      3,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5623999999999999,
+        "language": "und",
+        "tokens": [
+          "Good"
+        ]
+      }
+    ],
+    [
+      4,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.4184,
+        "language": "eng",
+        "tokens": [
+          "forces",
+          "you",
+          "to",
+          "get",
+          "premium",
+          "no",
+          "option",
+          "to",
+          "choose",
+          "specific",
+          "songs",
+          "and",
+          "forces",
+          "you",
+          "to",
+          "shuffle",
+          "songs",
+          "lame",
+          "app",
+          "do",
+          "better"
+        ]
+      }
+    ],
+    [
+      5,
+      {
+        "score": 1,
+        "comparative": 0.3333333333333333,
+        "confidence": 0.42719999999999997,
+        "language": "plt",
+        "tokens": [
+          "Easy",
+          "to",
+          "use"
+        ]
+      }
+    ],
+    [
+      6,
+      {
+        "score": 1,
+        "comparative": 0.3333333333333333,
+        "confidence": 0.432,
+        "language": "eng",
+        "tokens": [
+          "very",
+          "nice",
+          "experience"
+        ]
+      }
+    ],
+    [
+      7,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5653999999999999,
+        "language": "und",
+        "tokens": [
+          "excellent"
+        ]
+      }
+    ],
+    [
+      8,
+      {
+        "score": 1,
+        "comparative": 0.3333333333333333,
+        "confidence": 0.42719999999999997,
+        "language": "eng",
+        "tokens": [
+          "the",
+          "best",
+          "app"
+        ]
+      }
+    ],
+    [
+      9,
+      {
+        "score": 0.5,
+        "comparative": 0.08333333333333333,
+        "confidence": 0.4018,
+        "language": "eng",
+        "tokens": [
+          "The",
+          "best",
+          "app",
+          "ever",
+          "for",
+          "music"
+        ]
+      }
+    ],
+    [
+      10,
+      {
+        "score": 0.14,
+        "comparative": 0.0014000000000000002,
+        "confidence": 0.6574,
+        "language": "eng",
+        "tokens": [
+          "Great",
+          "app",
+          "I",
+          "always",
+          "listen",
+          "to",
+          "songs",
+          "in",
+          "the",
+          "eavning",
+          "Most",
+          "of",
+          "them",
+          "are",
+          "j",
+          "pop",
+          "and",
+          "anime",
+          "intros",
+          "and",
+          "phonk",
+          "And",
+          "today",
+          "when",
+          "i",
+          "opened",
+          "spotify",
+          "I",
+          "WAS",
+          "AMAZED",
+          "Tgey",
+          "made",
+          "a",
+          "specific",
+          "playlist",
+          "for",
+          "me",
+          "and",
+          "they",
+          "had",
+          "a",
+          "discription",
+          "saying",
+          "You",
+          "listen",
+          "to",
+          "j",
+          "pop",
+          "and",
+          "phonk",
+          "every",
+          "eavning",
+          "so",
+          "we",
+          "made",
+          "a",
+          "playlist",
+          "just",
+          "for",
+          "you",
+          "according",
+          "to",
+          "tye",
+          "vibe",
+          "and",
+          "the",
+          "songs",
+          "you",
+          "listen",
+          "to",
+          "D",
+          "This",
+          "is",
+          "a",
+          "great",
+          "playlist",
+          "that",
+          "i",
+          "played",
+          "today",
+          "Thank",
+          "you",
+          "spotify",
+          "team",
+          "fir",
+          "creating",
+          "such",
+          "a",
+          "app",
+          "i",
+          "font",
+          "even",
+          "have",
+          "to",
+          "open",
+          "the",
+          "tab",
+          "for",
+          "music",
+          "play"
+        ]
+      }
+    ],
+    [
+      11,
+      {
+        "score": -0.016129032258064516,
+        "comparative": -0.0002601456815816857,
+        "confidence": 0.5437290322580646,
+        "language": "eng",
+        "tokens": [
+          "9",
+          "months",
+          "for",
+          "Spotify",
+          "to",
+          "give",
+          "me",
+          "back",
+          "my",
+          "goddamn",
+          "lyrics",
+          "I",
+          "could",
+          "ve",
+          "gave",
+          "birth",
+          "in",
+          "that",
+          "time",
+          "frame",
+          "Customer",
+          "service",
+          "failed",
+          "me",
+          "EIGHT",
+          "TIMES",
+          "I",
+          "m",
+          "a",
+          "premium",
+          "user",
+          "of",
+          "almost",
+          "3",
+          "years",
+          "stop",
+          "raising",
+          "the",
+          "price",
+          "and",
+          "lowering",
+          "your",
+          "quality",
+          "Update",
+          "it",
+          "s",
+          "the",
+          "big",
+          "25",
+          "now",
+          "late",
+          "March",
+          "might",
+          "I",
+          "add",
+          "still",
+          "no",
+          "lyrics",
+          "STOP",
+          "HOLDING",
+          "THEM",
+          "HOSTAGE"
+        ]
+      }
+    ],
+    [
+      12,
+      {
+        "score": 0.375,
+        "comparative": 0.046875,
+        "confidence": 0.39604999999999996,
+        "language": "sco",
+        "tokens": [
+          "it",
+          "s",
+          "the",
+          "best",
+          "music",
+          "app",
+          "out",
+          "there"
+        ]
+      }
+    ],
+    [
+      13,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5623999999999999,
+        "language": "und",
+        "tokens": [
+          "good"
+        ]
+      }
+    ],
+    [
+      14,
+      {
+        "score": 2,
+        "comparative": 2,
+        "confidence": 0.4941999999999999,
+        "language": "und",
+        "tokens": [
+          "perfect"
+        ]
+      }
+    ],
+    [
+      15,
+      {
+        "score": -0.034482758620689655,
+        "comparative": -0.0011890606420927466,
+        "confidence": 0.7797862068965518,
+        "language": "eng",
+        "tokens": [
+          "the",
+          "new",
+          "queue",
+          "sucks",
+          "instead",
+          "of",
+          "clicking",
+          "twice",
+          "to",
+          "bring",
+          "a",
+          "song",
+          "to",
+          "the",
+          "top",
+          "of",
+          "the",
+          "queue",
+          "I",
+          "have",
+          "to",
+          "drag",
+          "them",
+          "each",
+          "bring",
+          "back",
+          "the",
+          "old",
+          "one"
+        ]
+      }
+    ],
+    [
+      16,
+      {
+        "score": 4,
+        "comparative": 4,
+        "confidence": 0.6342,
+        "language": "und",
+        "tokens": [
+          "awesome"
+        ]
+      }
+    ],
+    [
+      17,
+      {
+        "score": 5,
+        "comparative": 5,
+        "confidence": 0.7036,
+        "language": "und",
+        "tokens": [
+          "superb"
+        ]
+      }
+    ],
+    [
+      18,
+      {
+        "score": 0.1111111111111111,
+        "comparative": 0.004115226337448559,
+        "confidence": 0.4172222222222222,
+        "language": "war",
+        "tokens": [
+          "very",
+          "bad",
+          "app",
+          "because",
+          "jab",
+          "bhi",
+          "aap",
+          "jo",
+          "song",
+          "play",
+          "kroge",
+          "vo",
+          "play",
+          "hoga",
+          "hi",
+          "nahi",
+          "koi",
+          "or",
+          "song",
+          "ho",
+          "Play",
+          "hoga",
+          "bacvas",
+          "app",
+          "hai",
+          "1",
+          "ratii"
+        ]
+      }
+    ],
+    [
+      19,
+      {
+        "score": 1.5,
+        "comparative": 0.75,
+        "confidence": 0.46099999999999997,
+        "language": "yao",
+        "tokens": [
+          "nice",
+          "music"
+        ]
+      }
+    ],
+    [
+      20,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.3746,
+        "language": "eng",
+        "tokens": [
+          "you",
+          "can",
+          "t",
+          "remove",
+          "songs",
+          "from",
+          "the",
+          "queue",
+          "now"
+        ]
+      }
+    ],
+    [
+      21,
+      {
+        "score": 0.44,
+        "comparative": 0.0176,
+        "confidence": 0.39119999999999994,
+        "language": "eng",
+        "tokens": [
+          "it",
+          "s",
+          "nice",
+          "app",
+          "but",
+          "it",
+          "s",
+          "getting",
+          "hang",
+          "when",
+          "I",
+          "play",
+          "one",
+          "song",
+          "like",
+          "if",
+          "I",
+          "play",
+          "dandelions",
+          "it",
+          "started",
+          "to",
+          "play",
+          "another",
+          "song"
+        ]
+      }
+    ],
+    [
+      22,
+      {
+        "score": -0.3333333333333333,
+        "comparative": -0.013888888888888888,
+        "confidence": 0.4531333333333333,
+        "language": "eng",
+        "tokens": [
+          "It",
+          "is",
+          "one",
+          "of",
+          "the",
+          "worst",
+          "app",
+          "for",
+          "listening",
+          "songs",
+          "Even",
+          "with",
+          "the",
+          "premium",
+          "subscription",
+          "I",
+          "literally",
+          "hatee",
+          "this",
+          "app",
+          "Not",
+          "at",
+          "all",
+          "recommend"
+        ]
+      }
+    ],
+    [
+      23,
+      {
+        "score": 0.6,
+        "comparative": 0.12,
+        "confidence": 0.41779999999999995,
+        "language": "fra",
+        "tokens": [
+          "wao",
+          "experience",
+          "excellent",
+          "songs",
+          "collections"
+        ]
+      }
+    ],
+    [
+      24,
+      {
+        "score": -0.22727272727272727,
+        "comparative": -0.010330578512396695,
+        "confidence": 0.43250909090909084,
+        "language": "eng",
+        "tokens": [
+          "Worst",
+          "App",
+          "install",
+          "if",
+          "you",
+          "wanna",
+          "listen",
+          "to",
+          "ads",
+          "not",
+          "songs",
+          "they",
+          "will",
+          "even",
+          "play",
+          "ads",
+          "in",
+          "between",
+          "ads",
+          "but",
+          "never",
+          "songs"
+        ]
+      }
+    ],
+    [
+      25,
+      {
+        "score": 1,
+        "comparative": 0.3333333333333333,
+        "confidence": 0.432,
+        "language": "eng",
+        "tokens": [
+          "very",
+          "good",
+          "experience"
+        ]
+      }
+    ],
+    [
+      26,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.6533999999999999,
+        "language": "eng",
+        "tokens": [
+          "podcast",
+          "still",
+          "playing",
+          "after",
+          "the",
+          "end",
+          "of",
+          "the",
+          "queue",
+          "while",
+          "i",
+          "have",
+          "the",
+          "option",
+          "no",
+          "auto",
+          "play",
+          "on",
+          "its",
+          "quite",
+          "annoying",
+          "whzn",
+          "you",
+          "listen",
+          "to",
+          "news",
+          "podcast",
+          "and",
+          "all",
+          "of",
+          "a",
+          "sudden",
+          "a",
+          "podcast",
+          "from",
+          "months",
+          "ago",
+          "just",
+          "start",
+          "for",
+          "no",
+          "reason"
+        ]
+      }
+    ],
+    [
+      27,
+      {
+        "score": 0.225,
+        "comparative": 0.005625,
+        "confidence": 0.47795,
+        "language": "eng",
+        "tokens": [
+          "very",
+          "very",
+          "good",
+          "to",
+          "have",
+          "a",
+          "app",
+          "like",
+          "this",
+          "wrapped",
+          "is",
+          "the",
+          "best",
+          "one",
+          "I",
+          "am",
+          "very",
+          "curious",
+          "to",
+          "see",
+          "how",
+          "much",
+          "time",
+          "I",
+          "spent",
+          "with",
+          "Spotify",
+          "because",
+          "I",
+          "see",
+          "listen",
+          "song",
+          "for",
+          "more",
+          "that",
+          "1",
+          "and",
+          "half",
+          "per",
+          "day"
+        ]
+      }
+    ],
+    [
+      28,
+      {
+        "score": -0.2857142857142857,
+        "comparative": -0.013605442176870748,
+        "confidence": 0.4456,
+        "language": "eng",
+        "tokens": [
+          "over",
+          "ads",
+          "over",
+          "rules",
+          "maintained",
+          "very",
+          "very",
+          "worst",
+          "song",
+          "skips",
+          "also",
+          "limited",
+          "per",
+          "day",
+          "waste",
+          "music",
+          "app",
+          "do",
+          "not",
+          "instal",
+          "anyone"
+        ]
+      }
+    ],
+    [
+      29,
+      {
+        "score": 0.6666666666666666,
+        "comparative": 0.1111111111111111,
+        "confidence": 0.4158666666666666,
+        "language": "nob",
+        "tokens": [
+          "awesome",
+          "experience",
+          "so",
+          "far",
+          "for",
+          "me"
+        ]
+      }
+    ],
+    [
+      30,
+      {
+        "score": 0.06451612903225806,
+        "comparative": 0.0020811654526534857,
+        "confidence": 0.6159161290322581,
+        "language": "sco",
+        "tokens": [
+          "Been",
+          "using",
+          "it",
+          "for",
+          "years",
+          "and",
+          "solid",
+          "overall",
+          "Some",
+          "bugs",
+          "here",
+          "and",
+          "there",
+          "and",
+          "at",
+          "the",
+          "moment",
+          "I",
+          "m",
+          "unable",
+          "to",
+          "upgrade",
+          "to",
+          "premium",
+          "on",
+          "the",
+          "web",
+          "or",
+          "on",
+          "the",
+          "App"
+        ]
+      }
+    ],
+    [
+      31,
+      {
+        "score": 0.15789473684210525,
+        "comparative": 0.0041551246537396115,
+        "confidence": 0.6195473684210526,
+        "language": "sco",
+        "tokens": [
+          "It",
+          "s",
+          "a",
+          "good",
+          "app",
+          "and",
+          "I",
+          "like",
+          "that",
+          "you",
+          "can",
+          "listen",
+          "while",
+          "your",
+          "phone",
+          "is",
+          "off",
+          "but",
+          "I",
+          "watched",
+          "the",
+          "30",
+          "minutes",
+          "of",
+          "ad",
+          "free",
+          "listening",
+          "ad",
+          "but",
+          "still",
+          "gor",
+          "an",
+          "ad",
+          "immediately",
+          "after",
+          "the",
+          "next",
+          "song"
+        ]
+      }
+    ],
+    [
+      32,
+      {
+        "score": 1.5,
+        "comparative": 0.375,
+        "confidence": 0.47,
+        "language": "eng",
+        "tokens": [
+          "best",
+          "of",
+          "the",
+          "best"
+        ]
+      }
+    ],
+    [
+      33,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5623999999999999,
+        "language": "und",
+        "tokens": [
+          "good"
+        ]
+      }
+    ],
+    [
+      34,
+      {
+        "score": 0.4090909090909091,
+        "comparative": 0.01859504132231405,
+        "confidence": 0.45003636363636357,
+        "language": "eng",
+        "tokens": [
+          "A",
+          "great",
+          "app",
+          "love",
+          "the",
+          "music",
+          "library",
+          "been",
+          "with",
+          "them",
+          "for",
+          "7",
+          "years",
+          "and",
+          "they",
+          "keep",
+          "getting",
+          "better",
+          "and",
+          "improving",
+          "thx",
+          "spotify"
+        ]
+      }
+    ],
+    [
+      35,
+      {
+        "score": -0.2,
+        "comparative": -0.02,
+        "confidence": 0.3928,
+        "language": "eng",
+        "tokens": [
+          "I",
+          "was",
+          "charged",
+          "but",
+          "I",
+          "did",
+          "not",
+          "subscribe",
+          "to",
+          "premium"
+        ]
+      }
+    ],
+    [
+      36,
+      {
+        "score": 0.75,
+        "comparative": 0.1875,
+        "confidence": 0.4169,
+        "language": "deu",
+        "tokens": [
+          "it",
+          "so",
+          "very",
+          "good"
+        ]
+      }
+    ],
+    [
+      37,
+      {
+        "score": -0.05,
+        "comparative": -0.0025,
+        "confidence": 0.39869999999999994,
+        "language": "eng",
+        "tokens": [
+          "I",
+          "love",
+          "the",
+          "fact",
+          "that",
+          "I",
+          "can",
+          "get",
+          "all",
+          "my",
+          "old",
+          "record",
+          "songs",
+          "on",
+          "Spotify",
+          "that",
+          "I",
+          "lost",
+          "years",
+          "ago"
+        ]
+      }
+    ],
+    [
+      38,
+      {
+        "score": 0.6,
+        "comparative": 0.12,
+        "confidence": 0.4094,
+        "language": "dan",
+        "tokens": [
+          "best",
+          "music",
+          "player",
+          "for",
+          "Spotify"
+        ]
+      }
+    ],
+    [
+      39,
+      {
+        "score": -1.5,
+        "comparative": -0.75,
+        "confidence": 0.6378,
+        "language": "hnj",
+        "tokens": [
+          "idiot",
+          "shuffle"
+        ]
+      }
+    ],
+    [
+      40,
+      {
+        "score": 2,
+        "comparative": 2,
+        "confidence": 0.6698,
+        "language": "und",
+        "tokens": [
+          "Enjoying"
+        ]
+      }
+    ],
+    [
+      41,
+      {
+        "score": 0.16216216216216217,
+        "comparative": 0.004382761139517896,
+        "confidence": 0.4675513513513514,
+        "language": "nno",
+        "tokens": [
+          "why",
+          "I",
+          "can",
+          "t",
+          "enjoy",
+          "my",
+          "playlist",
+          "I",
+          "already",
+          "register",
+          "but",
+          "it",
+          "s",
+          "doesn",
+          "t",
+          "work",
+          "btw",
+          "I",
+          "like",
+          "the",
+          "songs",
+          "but",
+          "can",
+          "someone",
+          "tell",
+          "me",
+          "why",
+          "when",
+          "I",
+          "download",
+          "Spotify",
+          "I",
+          "can",
+          "t",
+          "enjoy",
+          "my",
+          "playlist"
+        ]
+      }
+    ],
+    [
+      42,
+      {
+        "score": 1.2,
+        "comparative": 0.12,
+        "confidence": 0.636,
+        "language": "eng",
+        "tokens": [
+          "It",
+          "s",
+          "pretty",
+          "fun",
+          "to",
+          "use",
+          "and",
+          "has",
+          "great",
+          "features"
+        ]
+      }
+    ],
+    [
+      43,
+      {
+        "score": 0.3333333333333333,
+        "comparative": 0.037037037037037035,
+        "confidence": 0.5723333333333334,
+        "language": "sco",
+        "tokens": [
+          "this",
+          "apps",
+          "good",
+          "but",
+          "it",
+          "does",
+          "glitche",
+          "a",
+          "lot"
+        ]
+      }
+    ],
+    [
+      44,
+      {
+        "score": 1.5,
+        "comparative": 0.75,
+        "confidence": 0.45859999999999995,
+        "language": "und",
+        "tokens": [
+          "v",
+          "good"
+        ]
+      }
+    ],
+    [
+      45,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5641999999999999,
+        "language": "und",
+        "tokens": [
+          "Good"
+        ]
+      }
+    ],
+    [
+      46,
+      {
+        "score": 0.2,
+        "comparative": 0.04,
+        "confidence": 0.35579999999999995,
+        "language": "eng",
+        "tokens": [
+          "super",
+          "hard",
+          "to",
+          "cancel",
+          "subscription"
+        ]
+      }
+    ],
+    [
+      47,
+      {
+        "score": 0.05,
+        "comparative": 0.0025,
+        "confidence": 0.5951,
+        "language": "eng",
+        "tokens": [
+          "works",
+          "great",
+          "except",
+          "the",
+          "DJ",
+          "running",
+          "the",
+          "latest",
+          "version",
+          "of",
+          "Spotify",
+          "and",
+          "Android",
+          "and",
+          "it",
+          "keeps",
+          "just",
+          "crashing",
+          "the",
+          "app"
+        ]
+      }
+    ],
+    [
+      48,
+      {
+        "score": 0.6666666666666666,
+        "comparative": 0.2222222222222222,
+        "confidence": 0.4038666666666666,
+        "language": "rmn",
+        "tokens": [
+          "I",
+          "love",
+          "this"
+        ]
+      }
+    ],
+    [
+      49,
+      {
+        "score": 2,
+        "comparative": 0.6666666666666666,
+        "confidence": 0.5062,
+        "language": "eng",
+        "tokens": [
+          "excellent",
+          "and",
+          "marvellous"
+        ]
+      }
+    ],
+    [
+      50,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5648,
+        "language": "und",
+        "tokens": [
+          "BEST"
+        ]
+      }
+    ],
+    [
+      51,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5648,
+        "language": "und",
+        "tokens": [
+          "Adorable"
+        ]
+      }
+    ],
+    [
+      52,
+      {
+        "score": 1.5,
+        "comparative": 0.375,
+        "confidence": 0.46819999999999995,
+        "language": "deu",
+        "tokens": [
+          "Good",
+          "sounds",
+          "great",
+          "app"
+        ]
+      }
+    ],
+    [
+      53,
+      {
+        "score": null,
+        "comparative": 0,
+        "confidence": null,
+        "language": "und",
+        "tokens": []
+      }
+    ],
+    [
+      54,
+      {
+        "score": 1.5,
+        "comparative": 0.75,
+        "confidence": 0.4598,
+        "language": "und",
+        "tokens": [
+          "the",
+          "best"
+        ]
+      }
+    ],
+    [
+      55,
+      {
+        "score": -1.5,
+        "comparative": -0.75,
+        "confidence": 0.46519999999999995,
+        "language": "pam",
+        "tokens": [
+          "Disgusting",
+          "app"
+        ]
+      }
+    ],
+    [
+      56,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.5525999999999999,
+        "language": "afr",
+        "tokens": [
+          "shuffle",
+          "keeps",
+          "getting",
+          "turned",
+          "off",
+          "by",
+          "itself"
+        ]
+      }
+    ],
+    [
+      57,
+      {
+        "score": 1,
+        "comparative": 0.5,
+        "confidence": 0.42719999999999997,
+        "language": "eng",
+        "tokens": [
+          "Just",
+          "right"
+        ]
+      }
+    ],
+    [
+      58,
+      {
+        "score": 0.5,
+        "comparative": 0.08333333333333333,
+        "confidence": 0.4054,
+        "language": "nld",
+        "tokens": [
+          "very",
+          "very",
+          "nice",
+          "listening",
+          "music",
+          "app"
+        ]
+      }
+    ],
+    [
+      59,
+      {
+        "score": 0.42857142857142855,
+        "comparative": 0.061224489795918366,
+        "confidence": 0.4034,
+        "language": "eng",
+        "tokens": [
+          "Spotify",
+          "is",
+          "the",
+          "best",
+          "for",
+          "every",
+          "occasions"
+        ]
+      }
+    ],
+    [
+      60,
+      {
+        "score": 0.6666666666666666,
+        "comparative": 0.1111111111111111,
+        "confidence": 0.4152666666666666,
+        "language": "eng",
+        "tokens": [
+          "helps",
+          "me",
+          "to",
+          "entertain",
+          "my",
+          "cousin"
+        ]
+      }
+    ],
+    [
+      61,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5653999999999999,
+        "language": "und",
+        "tokens": [
+          "excellent"
+        ]
+      }
+    ],
+    [
+      62,
+      {
+        "score": -0.02564102564102564,
+        "comparative": -0.0006574621959237343,
+        "confidence": 0.46039487179487176,
+        "language": "eng",
+        "tokens": [
+          "it",
+          "won",
+          "t",
+          "allow",
+          "me",
+          "to",
+          "see",
+          "my",
+          "playlist",
+          "i",
+          "have",
+          "with",
+          "others",
+          "my",
+          "liked",
+          "songs",
+          "or",
+          "new",
+          "releases",
+          "and",
+          "this",
+          "is",
+          "the",
+          "official",
+          "version",
+          "I",
+          "m",
+          "very",
+          "upset",
+          "and",
+          "dislike",
+          "this",
+          "app",
+          "i",
+          "lost",
+          "1150",
+          "songs",
+          "to",
+          "this"
+        ]
+      }
+    ],
+    [
+      63,
+      {
+        "score": 0.375,
+        "comparative": 0.046875,
+        "confidence": 0.41285,
+        "language": "eng",
+        "tokens": [
+          "best",
+          "app",
+          "for",
+          "listening",
+          "music",
+          "everyone",
+          "should",
+          "download"
+        ]
+      }
+    ],
+    [
+      64,
+      {
+        "score": 1.5,
+        "comparative": 0.75,
+        "confidence": 0.4604,
+        "language": "und",
+        "tokens": [
+          "Very",
+          "good"
+        ]
+      }
+    ],
+    [
+      65,
+      {
+        "score": 0.4,
+        "comparative": 0.08,
+        "confidence": 0.3966,
+        "language": "dip",
+        "tokens": [
+          "can",
+          "t",
+          "live",
+          "without",
+          "music"
+        ]
+      }
+    ],
+    [
+      66,
+      {
+        "score": -0.3157894736842105,
+        "comparative": -0.016620498614958446,
+        "confidence": 0.38069473684210525,
+        "language": "eng",
+        "tokens": [
+          "I",
+          "ve",
+          "had",
+          "spotify",
+          "for",
+          "10",
+          "years",
+          "and",
+          "I",
+          "could",
+          "never",
+          "imagine",
+          "using",
+          "another",
+          "app",
+          "it",
+          "s",
+          "top",
+          "tier"
+        ]
+      }
+    ],
+    [
+      67,
+      {
+        "score": 0.6,
+        "comparative": 0.12,
+        "confidence": 0.40759999999999996,
+        "language": "eng",
+        "tokens": [
+          "This",
+          "app",
+          "is",
+          "very",
+          "good"
+        ]
+      }
+    ],
+    [
+      68,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.4052,
+        "language": "eng",
+        "tokens": [
+          "Quality",
+          "of",
+          "the",
+          "songs",
+          "are",
+          "very",
+          "poor",
+          "when",
+          "compare",
+          "to",
+          "apple",
+          "loseless",
+          "and",
+          "Amazon",
+          "music",
+          "or",
+          "deezer"
+        ]
+      }
+    ],
+    [
+      69,
+      {
+        "score": 0.12121212121212122,
+        "comparative": 0.0036730945821854912,
+        "confidence": 0.6216848484848484,
+        "language": "eng",
+        "tokens": [
+          "I",
+          "love",
+          "all",
+          "the",
+          "songs",
+          "and",
+          "how",
+          "it",
+          "is",
+          "set",
+          "up",
+          "but",
+          "now",
+          "it",
+          "doesn",
+          "t",
+          "play",
+          "the",
+          "songs",
+          "on",
+          "my",
+          "Playlist",
+          "and",
+          "is",
+          "playing",
+          "songs",
+          "by",
+          "the",
+          "same",
+          "creators",
+          "on",
+          "my",
+          "Playlist"
+        ]
+      }
+    ],
+    [
+      70,
+      {
+        "score": 0.25,
+        "comparative": 0.0625,
+        "confidence": 0.5188999999999999,
+        "language": "nno",
+        "tokens": [
+          "cant",
+          "save",
+          "for",
+          "later"
+        ]
+      }
+    ],
+    [
+      71,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.5381999999999999,
+        "language": "eng",
+        "tokens": [
+          "totally",
+          "to",
+          "much",
+          "of",
+          "ads"
+        ]
+      }
+    ],
+    [
+      72,
+      {
+        "score": 1.5,
+        "comparative": 0.75,
+        "confidence": 0.4598,
+        "language": "und",
+        "tokens": [
+          "the",
+          "best"
+        ]
+      }
+    ],
+    [
+      73,
+      {
+        "score": 0.4,
+        "comparative": 0.08,
+        "confidence": 0.393,
+        "language": "sco",
+        "tokens": [
+          "my",
+          "favorite",
+          "app",
+          "for",
+          "music"
+        ]
+      }
+    ],
+    [
+      74,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.416,
+        "language": "eng",
+        "tokens": [
+          "Nag",
+          "me",
+          "for",
+          "a",
+          "review",
+          "and",
+          "this",
+          "is",
+          "what",
+          "you",
+          "get",
+          "If",
+          "I",
+          "was",
+          "going",
+          "to",
+          "review",
+          "of",
+          "my",
+          "own",
+          "accord",
+          "it",
+          "would",
+          "be",
+          "5",
+          "stars"
+        ]
+      }
+    ],
+    [
+      75,
+      {
+        "score": -0.375,
+        "comparative": -0.046875,
+        "confidence": 0.7043499999999999,
+        "language": "eng",
+        "tokens": [
+          "Too",
+          "expensive",
+          "asking",
+          "10eur",
+          "per",
+          "month",
+          "is",
+          "ridiculous"
+        ]
+      }
+    ],
+    [
+      76,
+      {
+        "score": 0.1111111111111111,
+        "comparative": 0.004115226337448559,
+        "confidence": 0.4214222222222222,
+        "language": "eng",
+        "tokens": [
+          "it",
+          "will",
+          "not",
+          "let",
+          "me",
+          "change",
+          "my",
+          "password",
+          "even",
+          "though",
+          "I",
+          "ve",
+          "forgotten",
+          "my",
+          "password",
+          "so",
+          "I",
+          "can",
+          "t",
+          "access",
+          "my",
+          "account",
+          "at",
+          "all",
+          "This",
+          "is",
+          "ridiculous"
+        ]
+      }
+    ],
+    [
+      77,
+      {
+        "score": -0.08,
+        "comparative": -0.0016,
+        "confidence": 0.49839999999999995,
+        "language": "eng",
+        "tokens": [
+          "Spotify",
+          "it",
+          "was",
+          "not",
+          "expected",
+          "from",
+          "you",
+          "5",
+          "6",
+          "skip",
+          "in",
+          "hour",
+          "not",
+          "allowed",
+          "to",
+          "choose",
+          "fav",
+          "part",
+          "not",
+          "allowed",
+          "to",
+          "play",
+          "fav",
+          "song",
+          "why",
+          "the",
+          "hell",
+          "are",
+          "you",
+          "making",
+          "me",
+          "to",
+          "purchase",
+          "a",
+          "premium",
+          "plan",
+          "that",
+          "I",
+          "can",
+          "t",
+          "even",
+          "buy",
+          "you",
+          "re",
+          "just",
+          "making",
+          "your",
+          "competition",
+          "grow",
+          "big"
+        ]
+      }
+    ],
+    [
+      78,
+      {
+        "score": 1,
+        "comparative": 0.5,
+        "confidence": 0.4284,
+        "language": "hnj",
+        "tokens": [
+          "loved",
+          "it"
+        ]
+      }
+    ],
+    [
+      79,
+      {
+        "score": 2,
+        "comparative": 0.6666666666666666,
+        "confidence": 0.4971999999999999,
+        "language": "nld",
+        "tokens": [
+          "best",
+          "of",
+          "best"
+        ]
+      }
+    ],
+    [
+      80,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.3566,
+        "language": "eng",
+        "tokens": [
+          "lots",
+          "of",
+          "ads"
+        ]
+      }
+    ],
+    [
+      81,
+      {
+        "score": 0.6428571428571429,
+        "comparative": 0.04591836734693878,
+        "confidence": 0.43399999999999994,
+        "language": "eng",
+        "tokens": [
+          "it",
+          "has",
+          "all",
+          "my",
+          "favorite",
+          "songs",
+          "my",
+          "favorite",
+          "podcast",
+          "and",
+          "it",
+          "s",
+          "so",
+          "good"
+        ]
+      }
+    ],
+    [
+      82,
+      {
+        "score": 0.08,
+        "comparative": 0.0032,
+        "confidence": 0.599,
+        "language": "eng",
+        "tokens": [
+          "great",
+          "app",
+          "it",
+          "s",
+          "only",
+          "not",
+          "5",
+          "stars",
+          "because",
+          "i",
+          "couldn",
+          "t",
+          "find",
+          "all",
+          "the",
+          "niche",
+          "gaming",
+          "music",
+          "i",
+          "wanted",
+          "to",
+          "add",
+          "to",
+          "my",
+          "playlist"
+        ]
+      }
+    ],
+    [
+      83,
+      {
+        "score": -0.10526315789473684,
+        "comparative": -0.00554016620498615,
+        "confidence": 0.7574315789473683,
+        "language": "eng",
+        "tokens": [
+          "Just",
+          "another",
+          "greedy",
+          "company",
+          "that",
+          "finds",
+          "an",
+          "excuse",
+          "to",
+          "play",
+          "commercials",
+          "for",
+          "you",
+          "even",
+          "while",
+          "you",
+          "pay",
+          "them",
+          "monthly"
+        ]
+      }
+    ],
+    [
+      84,
+      {
+        "score": 0.041666666666666664,
+        "comparative": 0.0008680555555555555,
+        "confidence": 0.5114833333333333,
+        "language": "eng",
+        "tokens": [
+          "Less",
+          "restrictions",
+          "when",
+          "it",
+          "comes",
+          "to",
+          "extreme",
+          "metal",
+          "styles",
+          "please",
+          "Music",
+          "is",
+          "art",
+          "restricted",
+          "censored",
+          "art",
+          "loss",
+          "its",
+          "essence",
+          "I",
+          "pay",
+          "for",
+          "it",
+          "your",
+          "company",
+          "is",
+          "nord",
+          "Scandinavia",
+          "was",
+          "the",
+          "place",
+          "for",
+          "the",
+          "most",
+          "amazing",
+          "extreme",
+          "metal",
+          "bands",
+          "of",
+          "the",
+          "last",
+          "century",
+          "please",
+          "Spotify",
+          "be",
+          "proud",
+          "of",
+          "it"
+        ]
+      }
+    ],
+    [
+      85,
+      {
+        "score": 1,
+        "comparative": 0.5,
+        "confidence": 0.4266,
+        "language": "hnj",
+        "tokens": [
+          "loved",
+          "it"
+        ]
+      }
+    ],
+    [
+      86,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5623999999999999,
+        "language": "und",
+        "tokens": [
+          "nice"
+        ]
+      }
+    ],
+    [
+      87,
+      {
+        "score": 0.18181818181818182,
+        "comparative": 0.01652892561983471,
+        "confidence": 0.3945272727272727,
+        "language": "eng",
+        "tokens": [
+          "I",
+          "like",
+          "Spotify",
+          "because",
+          "this",
+          "is",
+          "a",
+          "music",
+          "is",
+          "very",
+          "smooth"
+        ]
+      }
+    ],
+    [
+      88,
+      {
+        "score": null,
+        "comparative": 0,
+        "confidence": null,
+        "language": "und",
+        "tokens": []
+      }
+    ],
+    [
+      89,
+      {
+        "score": 0.7142857142857143,
+        "comparative": 0.05102040816326531,
+        "confidence": 0.44199999999999995,
+        "language": "sco",
+        "tokens": [
+          "Best",
+          "music",
+          "streaming",
+          "app",
+          "I",
+          "use",
+          "it",
+          "on",
+          "my",
+          "console",
+          "and",
+          "laptop",
+          "too",
+          "lol"
+        ]
+      }
+    ],
+    [
+      90,
+      {
+        "score": null,
+        "comparative": 0,
+        "confidence": null,
+        "language": "und",
+        "tokens": []
+      }
+    ],
+    [
+      91,
+      {
+        "score": 0.875,
+        "comparative": 0.109375,
+        "confidence": 0.6156499999999999,
+        "language": "glg",
+        "tokens": [
+          "Nice",
+          "experience",
+          "to",
+          "listen",
+          "to",
+          "my",
+          "favorites",
+          "Thanks"
+        ]
+      }
+    ],
+    [
+      92,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5623999999999999,
+        "language": "und",
+        "tokens": [
+          "nice"
+        ]
+      }
+    ],
+    [
+      93,
+      {
+        "score": 0.24705882352941178,
+        "comparative": 0.0029065743944636678,
+        "confidence": 0.5679058823529411,
+        "language": "eng",
+        "tokens": [
+          "This",
+          "app",
+          "was",
+          "used",
+          "to",
+          "be",
+          "good",
+          "but",
+          "they",
+          "got",
+          "greedy",
+          "you",
+          "can",
+          "barely",
+          "use",
+          "it",
+          "it",
+          "s",
+          "like",
+          "just",
+          "4",
+          "hours",
+          "and",
+          "you",
+          "have",
+          "to",
+          "wait",
+          "for",
+          "a",
+          "day",
+          "just",
+          "to",
+          "play",
+          "the",
+          "song",
+          "you",
+          "want",
+          "and",
+          "the",
+          "commercials",
+          "are",
+          "like",
+          "cockroach",
+          "keep",
+          "coming",
+          "back",
+          "and",
+          "also",
+          "the",
+          "smart",
+          "play",
+          "what",
+          "s",
+          "the",
+          "point",
+          "of",
+          "arranging",
+          "your",
+          "playlist",
+          "when",
+          "the",
+          "own",
+          "app",
+          "won",
+          "t",
+          "let",
+          "you",
+          "play",
+          "it",
+          "and",
+          "not",
+          "only",
+          "that",
+          "you",
+          "need",
+          "to",
+          "wait",
+          "an",
+          "hour",
+          "to",
+          "skip",
+          "songs",
+          "what",
+          "is",
+          "this"
+        ]
+      }
+    ],
+    [
+      94,
+      {
+        "score": 0.5,
+        "comparative": 0.041666666666666664,
+        "confidence": 0.4162,
+        "language": "eng",
+        "tokens": [
+          "Just",
+          "Please",
+          "PLEASE",
+          "NO",
+          "NOT",
+          "ADD",
+          "DJX",
+          "or",
+          "AI",
+          "to",
+          "this",
+          "app"
+        ]
+      }
+    ],
+    [
+      95,
+      {
+        "score": 0.033707865168539325,
+        "comparative": 0.0003787400580734756,
+        "confidence": 0.6037595505617976,
+        "language": "eng",
+        "tokens": [
+          "I",
+          "will",
+          "not",
+          "be",
+          "changing",
+          "my",
+          "one",
+          "star",
+          "until",
+          "I",
+          "am",
+          "able",
+          "to",
+          "listen",
+          "to",
+          "my",
+          "music",
+          "without",
+          "being",
+          "hounded",
+          "about",
+          "start",
+          "join",
+          "a",
+          "jam",
+          "session",
+          "I",
+          "D",
+          "LIKE",
+          "TO",
+          "KEEP",
+          "LISTENING",
+          "TO",
+          "MY",
+          "MUSIC",
+          "ON",
+          "MY",
+          "OWN",
+          "I",
+          "DON",
+          "T",
+          "NEED",
+          "ANYONE",
+          "ELSE",
+          "LISTENING",
+          "SO",
+          "Y",
+          "ALL",
+          "EITHER",
+          "FIX",
+          "THIS",
+          "OR",
+          "I",
+          "LL",
+          "FIND",
+          "A",
+          "A",
+          "DIFFERENT",
+          "MUSIC",
+          "STREAMING",
+          "SERVICE",
+          "TO",
+          "GO",
+          "TO",
+          "It",
+          "s",
+          "gotten",
+          "so",
+          "ridiculous",
+          "that",
+          "I",
+          "can",
+          "t",
+          "even",
+          "have",
+          "a",
+          "second",
+          "to",
+          "myself",
+          "to",
+          "look",
+          "for",
+          "music",
+          "Whoever",
+          "had",
+          "this",
+          "idea",
+          "is",
+          "stupid"
+        ]
+      }
+    ],
+    [
+      96,
+      {
+        "score": 0.10256410256410256,
+        "comparative": 0.0026298487836949372,
+        "confidence": 0.6348205128205128,
+        "language": "eng",
+        "tokens": [
+          "I",
+          "love",
+          "the",
+          "app",
+          "when",
+          "it",
+          "works",
+          "but",
+          "recently",
+          "it",
+          "constantly",
+          "shuts",
+          "down",
+          "and",
+          "exits",
+          "the",
+          "interface",
+          "when",
+          "I",
+          "try",
+          "DJ",
+          "mode",
+          "or",
+          "try",
+          "to",
+          "start",
+          "new",
+          "podcast",
+          "episodes",
+          "premium",
+          "isn",
+          "t",
+          "worth",
+          "it",
+          "if",
+          "it",
+          "keeps",
+          "doing",
+          "this"
+        ]
+      }
+    ],
+    [
+      97,
+      {
+        "score": 0.13636363636363635,
+        "comparative": 0.006198347107438016,
+        "confidence": 0.42194545454545457,
+        "language": "sco",
+        "tokens": [
+          "Music",
+          "is",
+          "the",
+          "best",
+          "Only",
+          "thing",
+          "is",
+          "it",
+          "s",
+          "a",
+          "memory",
+          "sucker",
+          "so",
+          "you",
+          "keep",
+          "deleting",
+          "cache",
+          "etc",
+          "10",
+          "gigs",
+          "is",
+          "absurd"
+        ]
+      }
+    ],
+    [
+      98,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.7432,
+        "language": "eng",
+        "tokens": [
+          "why",
+          "can",
+          "t",
+          "the",
+          "songs",
+          "in",
+          "my",
+          "playlist",
+          "be",
+          "opened",
+          "why",
+          "are",
+          "all",
+          "my",
+          "songs",
+          "gone"
+        ]
+      }
+    ],
+    [
+      99,
+      {
+        "score": 0.3333333333333333,
+        "comparative": 0.05555555555555555,
+        "confidence": 0.34946666666666665,
+        "language": "eng",
+        "tokens": [
+          "Only",
+          "premium",
+          "want",
+          "atleast",
+          "skip",
+          "Free"
+        ]
+      }
+    ],
+    [
+      100,
+      {
+        "score": 0.5,
+        "comparative": 0.08333333333333333,
+        "confidence": 0.4072,
+        "language": "nob",
+        "tokens": [
+          "Spotify",
+          "is",
+          "best",
+          "for",
+          "listening",
+          "musics"
+        ]
+      }
+    ],
+    [
+      101,
+      {
+        "score": -0.024390243902439025,
+        "comparative": -0.000594883997620464,
+        "confidence": 0.6479073170731706,
+        "language": "eng",
+        "tokens": [
+          "Good",
+          "music",
+          "bad",
+          "app",
+          "If",
+          "i",
+          "m",
+          "not",
+          "getting",
+          "30",
+          "second",
+          "unskippable",
+          "ads",
+          "reminding",
+          "me",
+          "what",
+          "app",
+          "i",
+          "m",
+          "using",
+          "i",
+          "m",
+          "being",
+          "forced",
+          "to",
+          "listen",
+          "to",
+          "random",
+          "music",
+          "that",
+          "spotify",
+          "thinks",
+          "I",
+          "like",
+          "How",
+          "greedy",
+          "for",
+          "money",
+          "can",
+          "you",
+          "be"
+        ]
+      }
+    ],
+    [
+      102,
+      {
+        "score": 0.75,
+        "comparative": 0.1875,
+        "confidence": 0.41329999999999995,
+        "language": "nds",
+        "tokens": [
+          "great",
+          "to",
+          "listen",
+          "to"
+        ]
+      }
+    ],
+    [
+      103,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5623999999999999,
+        "language": "und",
+        "tokens": [
+          "Good"
+        ]
+      }
+    ],
+    [
+      104,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.4184,
+        "language": "eng",
+        "tokens": [
+          "forces",
+          "you",
+          "to",
+          "get",
+          "premium",
+          "no",
+          "option",
+          "to",
+          "choose",
+          "specific",
+          "songs",
+          "and",
+          "forces",
+          "you",
+          "to",
+          "shuffle",
+          "songs",
+          "lame",
+          "app",
+          "do",
+          "better"
+        ]
+      }
+    ],
+    [
+      105,
+      {
+        "score": 1,
+        "comparative": 0.3333333333333333,
+        "confidence": 0.42719999999999997,
+        "language": "plt",
+        "tokens": [
+          "Easy",
+          "to",
+          "use"
+        ]
+      }
+    ],
+    [
+      106,
+      {
+        "score": 1,
+        "comparative": 0.3333333333333333,
+        "confidence": 0.432,
+        "language": "eng",
+        "tokens": [
+          "very",
+          "nice",
+          "experience"
+        ]
+      }
+    ],
+    [
+      107,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5653999999999999,
+        "language": "und",
+        "tokens": [
+          "excellent"
+        ]
+      }
+    ],
+    [
+      108,
+      {
+        "score": 1,
+        "comparative": 0.3333333333333333,
+        "confidence": 0.42719999999999997,
+        "language": "eng",
+        "tokens": [
+          "the",
+          "best",
+          "app"
+        ]
+      }
+    ],
+    [
+      109,
+      {
+        "score": 0.5,
+        "comparative": 0.08333333333333333,
+        "confidence": 0.4018,
+        "language": "eng",
+        "tokens": [
+          "The",
+          "best",
+          "app",
+          "ever",
+          "for",
+          "music"
+        ]
+      }
+    ],
+    [
+      110,
+      {
+        "score": 0.14,
+        "comparative": 0.0014000000000000002,
+        "confidence": 0.6574,
+        "language": "eng",
+        "tokens": [
+          "Great",
+          "app",
+          "I",
+          "always",
+          "listen",
+          "to",
+          "songs",
+          "in",
+          "the",
+          "eavning",
+          "Most",
+          "of",
+          "them",
+          "are",
+          "j",
+          "pop",
+          "and",
+          "anime",
+          "intros",
+          "and",
+          "phonk",
+          "And",
+          "today",
+          "when",
+          "i",
+          "opened",
+          "spotify",
+          "I",
+          "WAS",
+          "AMAZED",
+          "Tgey",
+          "made",
+          "a",
+          "specific",
+          "playlist",
+          "for",
+          "me",
+          "and",
+          "they",
+          "had",
+          "a",
+          "discription",
+          "saying",
+          "You",
+          "listen",
+          "to",
+          "j",
+          "pop",
+          "and",
+          "phonk",
+          "every",
+          "eavning",
+          "so",
+          "we",
+          "made",
+          "a",
+          "playlist",
+          "just",
+          "for",
+          "you",
+          "according",
+          "to",
+          "tye",
+          "vibe",
+          "and",
+          "the",
+          "songs",
+          "you",
+          "listen",
+          "to",
+          "D",
+          "This",
+          "is",
+          "a",
+          "great",
+          "playlist",
+          "that",
+          "i",
+          "played",
+          "today",
+          "Thank",
+          "you",
+          "spotify",
+          "team",
+          "fir",
+          "creating",
+          "such",
+          "a",
+          "app",
+          "i",
+          "font",
+          "even",
+          "have",
+          "to",
+          "open",
+          "the",
+          "tab",
+          "for",
+          "music",
+          "play"
+        ]
+      }
+    ],
+    [
+      111,
+      {
+        "score": -0.016129032258064516,
+        "comparative": -0.0002601456815816857,
+        "confidence": 0.5437290322580646,
+        "language": "eng",
+        "tokens": [
+          "9",
+          "months",
+          "for",
+          "Spotify",
+          "to",
+          "give",
+          "me",
+          "back",
+          "my",
+          "goddamn",
+          "lyrics",
+          "I",
+          "could",
+          "ve",
+          "gave",
+          "birth",
+          "in",
+          "that",
+          "time",
+          "frame",
+          "Customer",
+          "service",
+          "failed",
+          "me",
+          "EIGHT",
+          "TIMES",
+          "I",
+          "m",
+          "a",
+          "premium",
+          "user",
+          "of",
+          "almost",
+          "3",
+          "years",
+          "stop",
+          "raising",
+          "the",
+          "price",
+          "and",
+          "lowering",
+          "your",
+          "quality",
+          "Update",
+          "it",
+          "s",
+          "the",
+          "big",
+          "25",
+          "now",
+          "late",
+          "March",
+          "might",
+          "I",
+          "add",
+          "still",
+          "no",
+          "lyrics",
+          "STOP",
+          "HOLDING",
+          "THEM",
+          "HOSTAGE"
+        ]
+      }
+    ],
+    [
+      112,
+      {
+        "score": 0.375,
+        "comparative": 0.046875,
+        "confidence": 0.39604999999999996,
+        "language": "sco",
+        "tokens": [
+          "it",
+          "s",
+          "the",
+          "best",
+          "music",
+          "app",
+          "out",
+          "there"
+        ]
+      }
+    ],
+    [
+      113,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5623999999999999,
+        "language": "und",
+        "tokens": [
+          "good"
+        ]
+      }
+    ],
+    [
+      114,
+      {
+        "score": 2,
+        "comparative": 2,
+        "confidence": 0.4941999999999999,
+        "language": "und",
+        "tokens": [
+          "perfect"
+        ]
+      }
+    ],
+    [
+      115,
+      {
+        "score": -0.034482758620689655,
+        "comparative": -0.0011890606420927466,
+        "confidence": 0.7797862068965518,
+        "language": "eng",
+        "tokens": [
+          "the",
+          "new",
+          "queue",
+          "sucks",
+          "instead",
+          "of",
+          "clicking",
+          "twice",
+          "to",
+          "bring",
+          "a",
+          "song",
+          "to",
+          "the",
+          "top",
+          "of",
+          "the",
+          "queue",
+          "I",
+          "have",
+          "to",
+          "drag",
+          "them",
+          "each",
+          "bring",
+          "back",
+          "the",
+          "old",
+          "one"
+        ]
+      }
+    ],
+    [
+      116,
+      {
+        "score": 4,
+        "comparative": 4,
+        "confidence": 0.6342,
+        "language": "und",
+        "tokens": [
+          "awesome"
+        ]
+      }
+    ],
+    [
+      117,
+      {
+        "score": 5,
+        "comparative": 5,
+        "confidence": 0.7036,
+        "language": "und",
+        "tokens": [
+          "superb"
+        ]
+      }
+    ],
+    [
+      118,
+      {
+        "score": 0.1111111111111111,
+        "comparative": 0.004115226337448559,
+        "confidence": 0.4172222222222222,
+        "language": "war",
+        "tokens": [
+          "very",
+          "bad",
+          "app",
+          "because",
+          "jab",
+          "bhi",
+          "aap",
+          "jo",
+          "song",
+          "play",
+          "kroge",
+          "vo",
+          "play",
+          "hoga",
+          "hi",
+          "nahi",
+          "koi",
+          "or",
+          "song",
+          "ho",
+          "Play",
+          "hoga",
+          "bacvas",
+          "app",
+          "hai",
+          "1",
+          "ratii"
+        ]
+      }
+    ],
+    [
+      119,
+      {
+        "score": 1.5,
+        "comparative": 0.75,
+        "confidence": 0.46099999999999997,
+        "language": "yao",
+        "tokens": [
+          "nice",
+          "music"
+        ]
+      }
+    ],
+    [
+      120,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.3746,
+        "language": "eng",
+        "tokens": [
+          "you",
+          "can",
+          "t",
+          "remove",
+          "songs",
+          "from",
+          "the",
+          "queue",
+          "now"
+        ]
+      }
+    ],
+    [
+      121,
+      {
+        "score": 0.44,
+        "comparative": 0.0176,
+        "confidence": 0.39119999999999994,
+        "language": "eng",
+        "tokens": [
+          "it",
+          "s",
+          "nice",
+          "app",
+          "but",
+          "it",
+          "s",
+          "getting",
+          "hang",
+          "when",
+          "I",
+          "play",
+          "one",
+          "song",
+          "like",
+          "if",
+          "I",
+          "play",
+          "dandelions",
+          "it",
+          "started",
+          "to",
+          "play",
+          "another",
+          "song"
+        ]
+      }
+    ],
+    [
+      122,
+      {
+        "score": -0.3333333333333333,
+        "comparative": -0.013888888888888888,
+        "confidence": 0.4531333333333333,
+        "language": "eng",
+        "tokens": [
+          "It",
+          "is",
+          "one",
+          "of",
+          "the",
+          "worst",
+          "app",
+          "for",
+          "listening",
+          "songs",
+          "Even",
+          "with",
+          "the",
+          "premium",
+          "subscription",
+          "I",
+          "literally",
+          "hatee",
+          "this",
+          "app",
+          "Not",
+          "at",
+          "all",
+          "recommend"
+        ]
+      }
+    ],
+    [
+      123,
+      {
+        "score": 0.6,
+        "comparative": 0.12,
+        "confidence": 0.41779999999999995,
+        "language": "fra",
+        "tokens": [
+          "wao",
+          "experience",
+          "excellent",
+          "songs",
+          "collections"
+        ]
+      }
+    ],
+    [
+      124,
+      {
+        "score": -0.22727272727272727,
+        "comparative": -0.010330578512396695,
+        "confidence": 0.43250909090909084,
+        "language": "eng",
+        "tokens": [
+          "Worst",
+          "App",
+          "install",
+          "if",
+          "you",
+          "wanna",
+          "listen",
+          "to",
+          "ads",
+          "not",
+          "songs",
+          "they",
+          "will",
+          "even",
+          "play",
+          "ads",
+          "in",
+          "between",
+          "ads",
+          "but",
+          "never",
+          "songs"
+        ]
+      }
+    ],
+    [
+      125,
+      {
+        "score": 1,
+        "comparative": 0.3333333333333333,
+        "confidence": 0.432,
+        "language": "eng",
+        "tokens": [
+          "very",
+          "good",
+          "experience"
+        ]
+      }
+    ],
+    [
+      126,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.6533999999999999,
+        "language": "eng",
+        "tokens": [
+          "podcast",
+          "still",
+          "playing",
+          "after",
+          "the",
+          "end",
+          "of",
+          "the",
+          "queue",
+          "while",
+          "i",
+          "have",
+          "the",
+          "option",
+          "no",
+          "auto",
+          "play",
+          "on",
+          "its",
+          "quite",
+          "annoying",
+          "whzn",
+          "you",
+          "listen",
+          "to",
+          "news",
+          "podcast",
+          "and",
+          "all",
+          "of",
+          "a",
+          "sudden",
+          "a",
+          "podcast",
+          "from",
+          "months",
+          "ago",
+          "just",
+          "start",
+          "for",
+          "no",
+          "reason"
+        ]
+      }
+    ],
+    [
+      127,
+      {
+        "score": 0.225,
+        "comparative": 0.005625,
+        "confidence": 0.47795,
+        "language": "eng",
+        "tokens": [
+          "very",
+          "very",
+          "good",
+          "to",
+          "have",
+          "a",
+          "app",
+          "like",
+          "this",
+          "wrapped",
+          "is",
+          "the",
+          "best",
+          "one",
+          "I",
+          "am",
+          "very",
+          "curious",
+          "to",
+          "see",
+          "how",
+          "much",
+          "time",
+          "I",
+          "spent",
+          "with",
+          "Spotify",
+          "because",
+          "I",
+          "see",
+          "listen",
+          "song",
+          "for",
+          "more",
+          "that",
+          "1",
+          "and",
+          "half",
+          "per",
+          "day"
+        ]
+      }
+    ],
+    [
+      128,
+      {
+        "score": -0.2857142857142857,
+        "comparative": -0.013605442176870748,
+        "confidence": 0.4456,
+        "language": "eng",
+        "tokens": [
+          "over",
+          "ads",
+          "over",
+          "rules",
+          "maintained",
+          "very",
+          "very",
+          "worst",
+          "song",
+          "skips",
+          "also",
+          "limited",
+          "per",
+          "day",
+          "waste",
+          "music",
+          "app",
+          "do",
+          "not",
+          "instal",
+          "anyone"
+        ]
+      }
+    ],
+    [
+      129,
+      {
+        "score": 0.6666666666666666,
+        "comparative": 0.1111111111111111,
+        "confidence": 0.4158666666666666,
+        "language": "nob",
+        "tokens": [
+          "awesome",
+          "experience",
+          "so",
+          "far",
+          "for",
+          "me"
+        ]
+      }
+    ],
+    [
+      130,
+      {
+        "score": 0.06451612903225806,
+        "comparative": 0.0020811654526534857,
+        "confidence": 0.6159161290322581,
+        "language": "sco",
+        "tokens": [
+          "Been",
+          "using",
+          "it",
+          "for",
+          "years",
+          "and",
+          "solid",
+          "overall",
+          "Some",
+          "bugs",
+          "here",
+          "and",
+          "there",
+          "and",
+          "at",
+          "the",
+          "moment",
+          "I",
+          "m",
+          "unable",
+          "to",
+          "upgrade",
+          "to",
+          "premium",
+          "on",
+          "the",
+          "web",
+          "or",
+          "on",
+          "the",
+          "App"
+        ]
+      }
+    ],
+    [
+      131,
+      {
+        "score": 0.15789473684210525,
+        "comparative": 0.0041551246537396115,
+        "confidence": 0.6195473684210526,
+        "language": "sco",
+        "tokens": [
+          "It",
+          "s",
+          "a",
+          "good",
+          "app",
+          "and",
+          "I",
+          "like",
+          "that",
+          "you",
+          "can",
+          "listen",
+          "while",
+          "your",
+          "phone",
+          "is",
+          "off",
+          "but",
+          "I",
+          "watched",
+          "the",
+          "30",
+          "minutes",
+          "of",
+          "ad",
+          "free",
+          "listening",
+          "ad",
+          "but",
+          "still",
+          "gor",
+          "an",
+          "ad",
+          "immediately",
+          "after",
+          "the",
+          "next",
+          "song"
+        ]
+      }
+    ],
+    [
+      132,
+      {
+        "score": 1.5,
+        "comparative": 0.375,
+        "confidence": 0.47,
+        "language": "eng",
+        "tokens": [
+          "best",
+          "of",
+          "the",
+          "best"
+        ]
+      }
+    ],
+    [
+      133,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5623999999999999,
+        "language": "und",
+        "tokens": [
+          "good"
+        ]
+      }
+    ],
+    [
+      134,
+      {
+        "score": 0.4090909090909091,
+        "comparative": 0.01859504132231405,
+        "confidence": 0.45003636363636357,
+        "language": "eng",
+        "tokens": [
+          "A",
+          "great",
+          "app",
+          "love",
+          "the",
+          "music",
+          "library",
+          "been",
+          "with",
+          "them",
+          "for",
+          "7",
+          "years",
+          "and",
+          "they",
+          "keep",
+          "getting",
+          "better",
+          "and",
+          "improving",
+          "thx",
+          "spotify"
+        ]
+      }
+    ],
+    [
+      135,
+      {
+        "score": -0.2,
+        "comparative": -0.02,
+        "confidence": 0.3928,
+        "language": "eng",
+        "tokens": [
+          "I",
+          "was",
+          "charged",
+          "but",
+          "I",
+          "did",
+          "not",
+          "subscribe",
+          "to",
+          "premium"
+        ]
+      }
+    ],
+    [
+      136,
+      {
+        "score": 0.75,
+        "comparative": 0.1875,
+        "confidence": 0.4169,
+        "language": "deu",
+        "tokens": [
+          "it",
+          "so",
+          "very",
+          "good"
+        ]
+      }
+    ],
+    [
+      137,
+      {
+        "score": -0.05,
+        "comparative": -0.0025,
+        "confidence": 0.39869999999999994,
+        "language": "eng",
+        "tokens": [
+          "I",
+          "love",
+          "the",
+          "fact",
+          "that",
+          "I",
+          "can",
+          "get",
+          "all",
+          "my",
+          "old",
+          "record",
+          "songs",
+          "on",
+          "Spotify",
+          "that",
+          "I",
+          "lost",
+          "years",
+          "ago"
+        ]
+      }
+    ],
+    [
+      138,
+      {
+        "score": 0.6,
+        "comparative": 0.12,
+        "confidence": 0.4094,
+        "language": "dan",
+        "tokens": [
+          "best",
+          "music",
+          "player",
+          "for",
+          "Spotify"
+        ]
+      }
+    ],
+    [
+      139,
+      {
+        "score": -1.5,
+        "comparative": -0.75,
+        "confidence": 0.6378,
+        "language": "hnj",
+        "tokens": [
+          "idiot",
+          "shuffle"
+        ]
+      }
+    ],
+    [
+      140,
+      {
+        "score": 2,
+        "comparative": 2,
+        "confidence": 0.6698,
+        "language": "und",
+        "tokens": [
+          "Enjoying"
+        ]
+      }
+    ],
+    [
+      141,
+      {
+        "score": 0.16216216216216217,
+        "comparative": 0.004382761139517896,
+        "confidence": 0.4675513513513514,
+        "language": "nno",
+        "tokens": [
+          "why",
+          "I",
+          "can",
+          "t",
+          "enjoy",
+          "my",
+          "playlist",
+          "I",
+          "already",
+          "register",
+          "but",
+          "it",
+          "s",
+          "doesn",
+          "t",
+          "work",
+          "btw",
+          "I",
+          "like",
+          "the",
+          "songs",
+          "but",
+          "can",
+          "someone",
+          "tell",
+          "me",
+          "why",
+          "when",
+          "I",
+          "download",
+          "Spotify",
+          "I",
+          "can",
+          "t",
+          "enjoy",
+          "my",
+          "playlist"
+        ]
+      }
+    ],
+    [
+      142,
+      {
+        "score": 1.2,
+        "comparative": 0.12,
+        "confidence": 0.636,
+        "language": "eng",
+        "tokens": [
+          "It",
+          "s",
+          "pretty",
+          "fun",
+          "to",
+          "use",
+          "and",
+          "has",
+          "great",
+          "features"
+        ]
+      }
+    ],
+    [
+      143,
+      {
+        "score": 0.3333333333333333,
+        "comparative": 0.037037037037037035,
+        "confidence": 0.5723333333333334,
+        "language": "sco",
+        "tokens": [
+          "this",
+          "apps",
+          "good",
+          "but",
+          "it",
+          "does",
+          "glitche",
+          "a",
+          "lot"
+        ]
+      }
+    ],
+    [
+      144,
+      {
+        "score": 1.5,
+        "comparative": 0.75,
+        "confidence": 0.45859999999999995,
+        "language": "und",
+        "tokens": [
+          "v",
+          "good"
+        ]
+      }
+    ],
+    [
+      145,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5641999999999999,
+        "language": "und",
+        "tokens": [
+          "Good"
+        ]
+      }
+    ],
+    [
+      146,
+      {
+        "score": 0.2,
+        "comparative": 0.04,
+        "confidence": 0.35579999999999995,
+        "language": "eng",
+        "tokens": [
+          "super",
+          "hard",
+          "to",
+          "cancel",
+          "subscription"
+        ]
+      }
+    ],
+    [
+      147,
+      {
+        "score": 0.05,
+        "comparative": 0.0025,
+        "confidence": 0.5951,
+        "language": "eng",
+        "tokens": [
+          "works",
+          "great",
+          "except",
+          "the",
+          "DJ",
+          "running",
+          "the",
+          "latest",
+          "version",
+          "of",
+          "Spotify",
+          "and",
+          "Android",
+          "and",
+          "it",
+          "keeps",
+          "just",
+          "crashing",
+          "the",
+          "app"
+        ]
+      }
+    ],
+    [
+      148,
+      {
+        "score": 0.6666666666666666,
+        "comparative": 0.2222222222222222,
+        "confidence": 0.4038666666666666,
+        "language": "rmn",
+        "tokens": [
+          "I",
+          "love",
+          "this"
+        ]
+      }
+    ],
+    [
+      149,
+      {
+        "score": 2,
+        "comparative": 0.6666666666666666,
+        "confidence": 0.5062,
+        "language": "eng",
+        "tokens": [
+          "excellent",
+          "and",
+          "marvellous"
+        ]
+      }
+    ],
+    [
+      150,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5648,
+        "language": "und",
+        "tokens": [
+          "BEST"
+        ]
+      }
+    ],
+    [
+      151,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5648,
+        "language": "und",
+        "tokens": [
+          "Adorable"
+        ]
+      }
+    ],
+    [
+      152,
+      {
+        "score": 1.5,
+        "comparative": 0.375,
+        "confidence": 0.46819999999999995,
+        "language": "deu",
+        "tokens": [
+          "Good",
+          "sounds",
+          "great",
+          "app"
+        ]
+      }
+    ],
+    [
+      153,
+      {
+        "score": null,
+        "comparative": 0,
+        "confidence": null,
+        "language": "und",
+        "tokens": []
+      }
+    ],
+    [
+      154,
+      {
+        "score": 1.5,
+        "comparative": 0.75,
+        "confidence": 0.4598,
+        "language": "und",
+        "tokens": [
+          "the",
+          "best"
+        ]
+      }
+    ],
+    [
+      155,
+      {
+        "score": -1.5,
+        "comparative": -0.75,
+        "confidence": 0.46519999999999995,
+        "language": "pam",
+        "tokens": [
+          "Disgusting",
+          "app"
+        ]
+      }
+    ],
+    [
+      156,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.5525999999999999,
+        "language": "afr",
+        "tokens": [
+          "shuffle",
+          "keeps",
+          "getting",
+          "turned",
+          "off",
+          "by",
+          "itself"
+        ]
+      }
+    ],
+    [
+      157,
+      {
+        "score": 1,
+        "comparative": 0.5,
+        "confidence": 0.42719999999999997,
+        "language": "eng",
+        "tokens": [
+          "Just",
+          "right"
+        ]
+      }
+    ],
+    [
+      158,
+      {
+        "score": 0.5,
+        "comparative": 0.08333333333333333,
+        "confidence": 0.4054,
+        "language": "nld",
+        "tokens": [
+          "very",
+          "very",
+          "nice",
+          "listening",
+          "music",
+          "app"
+        ]
+      }
+    ],
+    [
+      159,
+      {
+        "score": 0.42857142857142855,
+        "comparative": 0.061224489795918366,
+        "confidence": 0.4034,
+        "language": "eng",
+        "tokens": [
+          "Spotify",
+          "is",
+          "the",
+          "best",
+          "for",
+          "every",
+          "occasions"
+        ]
+      }
+    ],
+    [
+      160,
+      {
+        "score": 0.6666666666666666,
+        "comparative": 0.1111111111111111,
+        "confidence": 0.4152666666666666,
+        "language": "eng",
+        "tokens": [
+          "helps",
+          "me",
+          "to",
+          "entertain",
+          "my",
+          "cousin"
+        ]
+      }
+    ],
+    [
+      161,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5653999999999999,
+        "language": "und",
+        "tokens": [
+          "excellent"
+        ]
+      }
+    ],
+    [
+      162,
+      {
+        "score": -0.02564102564102564,
+        "comparative": -0.0006574621959237343,
+        "confidence": 0.46039487179487176,
+        "language": "eng",
+        "tokens": [
+          "it",
+          "won",
+          "t",
+          "allow",
+          "me",
+          "to",
+          "see",
+          "my",
+          "playlist",
+          "i",
+          "have",
+          "with",
+          "others",
+          "my",
+          "liked",
+          "songs",
+          "or",
+          "new",
+          "releases",
+          "and",
+          "this",
+          "is",
+          "the",
+          "official",
+          "version",
+          "I",
+          "m",
+          "very",
+          "upset",
+          "and",
+          "dislike",
+          "this",
+          "app",
+          "i",
+          "lost",
+          "1150",
+          "songs",
+          "to",
+          "this"
+        ]
+      }
+    ],
+    [
+      163,
+      {
+        "score": 0.375,
+        "comparative": 0.046875,
+        "confidence": 0.41285,
+        "language": "eng",
+        "tokens": [
+          "best",
+          "app",
+          "for",
+          "listening",
+          "music",
+          "everyone",
+          "should",
+          "download"
+        ]
+      }
+    ],
+    [
+      164,
+      {
+        "score": 1.5,
+        "comparative": 0.75,
+        "confidence": 0.4604,
+        "language": "und",
+        "tokens": [
+          "Very",
+          "good"
+        ]
+      }
+    ],
+    [
+      165,
+      {
+        "score": 0.4,
+        "comparative": 0.08,
+        "confidence": 0.3966,
+        "language": "dip",
+        "tokens": [
+          "can",
+          "t",
+          "live",
+          "without",
+          "music"
+        ]
+      }
+    ],
+    [
+      166,
+      {
+        "score": -0.3157894736842105,
+        "comparative": -0.016620498614958446,
+        "confidence": 0.38069473684210525,
+        "language": "eng",
+        "tokens": [
+          "I",
+          "ve",
+          "had",
+          "spotify",
+          "for",
+          "10",
+          "years",
+          "and",
+          "I",
+          "could",
+          "never",
+          "imagine",
+          "using",
+          "another",
+          "app",
+          "it",
+          "s",
+          "top",
+          "tier"
+        ]
+      }
+    ],
+    [
+      167,
+      {
+        "score": 0.6,
+        "comparative": 0.12,
+        "confidence": 0.40759999999999996,
+        "language": "eng",
+        "tokens": [
+          "This",
+          "app",
+          "is",
+          "very",
+          "good"
+        ]
+      }
+    ],
+    [
+      168,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.4052,
+        "language": "eng",
+        "tokens": [
+          "Quality",
+          "of",
+          "the",
+          "songs",
+          "are",
+          "very",
+          "poor",
+          "when",
+          "compare",
+          "to",
+          "apple",
+          "loseless",
+          "and",
+          "Amazon",
+          "music",
+          "or",
+          "deezer"
+        ]
+      }
+    ],
+    [
+      169,
+      {
+        "score": 0.12121212121212122,
+        "comparative": 0.0036730945821854912,
+        "confidence": 0.6216848484848484,
+        "language": "eng",
+        "tokens": [
+          "I",
+          "love",
+          "all",
+          "the",
+          "songs",
+          "and",
+          "how",
+          "it",
+          "is",
+          "set",
+          "up",
+          "but",
+          "now",
+          "it",
+          "doesn",
+          "t",
+          "play",
+          "the",
+          "songs",
+          "on",
+          "my",
+          "Playlist",
+          "and",
+          "is",
+          "playing",
+          "songs",
+          "by",
+          "the",
+          "same",
+          "creators",
+          "on",
+          "my",
+          "Playlist"
+        ]
+      }
+    ],
+    [
+      170,
+      {
+        "score": 0.25,
+        "comparative": 0.0625,
+        "confidence": 0.5188999999999999,
+        "language": "nno",
+        "tokens": [
+          "cant",
+          "save",
+          "for",
+          "later"
+        ]
+      }
+    ],
+    [
+      171,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.5381999999999999,
+        "language": "eng",
+        "tokens": [
+          "totally",
+          "to",
+          "much",
+          "of",
+          "ads"
+        ]
+      }
+    ],
+    [
+      172,
+      {
+        "score": 1.5,
+        "comparative": 0.75,
+        "confidence": 0.4598,
+        "language": "und",
+        "tokens": [
+          "the",
+          "best"
+        ]
+      }
+    ],
+    [
+      173,
+      {
+        "score": 0.4,
+        "comparative": 0.08,
+        "confidence": 0.393,
+        "language": "sco",
+        "tokens": [
+          "my",
+          "favorite",
+          "app",
+          "for",
+          "music"
+        ]
+      }
+    ],
+    [
+      174,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.416,
+        "language": "eng",
+        "tokens": [
+          "Nag",
+          "me",
+          "for",
+          "a",
+          "review",
+          "and",
+          "this",
+          "is",
+          "what",
+          "you",
+          "get",
+          "If",
+          "I",
+          "was",
+          "going",
+          "to",
+          "review",
+          "of",
+          "my",
+          "own",
+          "accord",
+          "it",
+          "would",
+          "be",
+          "5",
+          "stars"
+        ]
+      }
+    ],
+    [
+      175,
+      {
+        "score": -0.375,
+        "comparative": -0.046875,
+        "confidence": 0.7043499999999999,
+        "language": "eng",
+        "tokens": [
+          "Too",
+          "expensive",
+          "asking",
+          "10eur",
+          "per",
+          "month",
+          "is",
+          "ridiculous"
+        ]
+      }
+    ],
+    [
+      176,
+      {
+        "score": 0.1111111111111111,
+        "comparative": 0.004115226337448559,
+        "confidence": 0.4214222222222222,
+        "language": "eng",
+        "tokens": [
+          "it",
+          "will",
+          "not",
+          "let",
+          "me",
+          "change",
+          "my",
+          "password",
+          "even",
+          "though",
+          "I",
+          "ve",
+          "forgotten",
+          "my",
+          "password",
+          "so",
+          "I",
+          "can",
+          "t",
+          "access",
+          "my",
+          "account",
+          "at",
+          "all",
+          "This",
+          "is",
+          "ridiculous"
+        ]
+      }
+    ],
+    [
+      177,
+      {
+        "score": -0.08,
+        "comparative": -0.0016,
+        "confidence": 0.49839999999999995,
+        "language": "eng",
+        "tokens": [
+          "Spotify",
+          "it",
+          "was",
+          "not",
+          "expected",
+          "from",
+          "you",
+          "5",
+          "6",
+          "skip",
+          "in",
+          "hour",
+          "not",
+          "allowed",
+          "to",
+          "choose",
+          "fav",
+          "part",
+          "not",
+          "allowed",
+          "to",
+          "play",
+          "fav",
+          "song",
+          "why",
+          "the",
+          "hell",
+          "are",
+          "you",
+          "making",
+          "me",
+          "to",
+          "purchase",
+          "a",
+          "premium",
+          "plan",
+          "that",
+          "I",
+          "can",
+          "t",
+          "even",
+          "buy",
+          "you",
+          "re",
+          "just",
+          "making",
+          "your",
+          "competition",
+          "grow",
+          "big"
+        ]
+      }
+    ],
+    [
+      178,
+      {
+        "score": 1,
+        "comparative": 0.5,
+        "confidence": 0.4284,
+        "language": "hnj",
+        "tokens": [
+          "loved",
+          "it"
+        ]
+      }
+    ],
+    [
+      179,
+      {
+        "score": 2,
+        "comparative": 0.6666666666666666,
+        "confidence": 0.4971999999999999,
+        "language": "nld",
+        "tokens": [
+          "best",
+          "of",
+          "best"
+        ]
+      }
+    ],
+    [
+      180,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.3566,
+        "language": "eng",
+        "tokens": [
+          "lots",
+          "of",
+          "ads"
+        ]
+      }
+    ],
+    [
+      181,
+      {
+        "score": 0.6428571428571429,
+        "comparative": 0.04591836734693878,
+        "confidence": 0.43399999999999994,
+        "language": "eng",
+        "tokens": [
+          "it",
+          "has",
+          "all",
+          "my",
+          "favorite",
+          "songs",
+          "my",
+          "favorite",
+          "podcast",
+          "and",
+          "it",
+          "s",
+          "so",
+          "good"
+        ]
+      }
+    ],
+    [
+      182,
+      {
+        "score": 0.08,
+        "comparative": 0.0032,
+        "confidence": 0.599,
+        "language": "eng",
+        "tokens": [
+          "great",
+          "app",
+          "it",
+          "s",
+          "only",
+          "not",
+          "5",
+          "stars",
+          "because",
+          "i",
+          "couldn",
+          "t",
+          "find",
+          "all",
+          "the",
+          "niche",
+          "gaming",
+          "music",
+          "i",
+          "wanted",
+          "to",
+          "add",
+          "to",
+          "my",
+          "playlist"
+        ]
+      }
+    ],
+    [
+      183,
+      {
+        "score": -0.10526315789473684,
+        "comparative": -0.00554016620498615,
+        "confidence": 0.7574315789473683,
+        "language": "eng",
+        "tokens": [
+          "Just",
+          "another",
+          "greedy",
+          "company",
+          "that",
+          "finds",
+          "an",
+          "excuse",
+          "to",
+          "play",
+          "commercials",
+          "for",
+          "you",
+          "even",
+          "while",
+          "you",
+          "pay",
+          "them",
+          "monthly"
+        ]
+      }
+    ],
+    [
+      184,
+      {
+        "score": 0.041666666666666664,
+        "comparative": 0.0008680555555555555,
+        "confidence": 0.5114833333333333,
+        "language": "eng",
+        "tokens": [
+          "Less",
+          "restrictions",
+          "when",
+          "it",
+          "comes",
+          "to",
+          "extreme",
+          "metal",
+          "styles",
+          "please",
+          "Music",
+          "is",
+          "art",
+          "restricted",
+          "censored",
+          "art",
+          "loss",
+          "its",
+          "essence",
+          "I",
+          "pay",
+          "for",
+          "it",
+          "your",
+          "company",
+          "is",
+          "nord",
+          "Scandinavia",
+          "was",
+          "the",
+          "place",
+          "for",
+          "the",
+          "most",
+          "amazing",
+          "extreme",
+          "metal",
+          "bands",
+          "of",
+          "the",
+          "last",
+          "century",
+          "please",
+          "Spotify",
+          "be",
+          "proud",
+          "of",
+          "it"
+        ]
+      }
+    ],
+    [
+      185,
+      {
+        "score": 1,
+        "comparative": 0.5,
+        "confidence": 0.4266,
+        "language": "hnj",
+        "tokens": [
+          "loved",
+          "it"
+        ]
+      }
+    ],
+    [
+      186,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5623999999999999,
+        "language": "und",
+        "tokens": [
+          "nice"
+        ]
+      }
+    ],
+    [
+      187,
+      {
+        "score": 0.18181818181818182,
+        "comparative": 0.01652892561983471,
+        "confidence": 0.3945272727272727,
+        "language": "eng",
+        "tokens": [
+          "I",
+          "like",
+          "Spotify",
+          "because",
+          "this",
+          "is",
+          "a",
+          "music",
+          "is",
+          "very",
+          "smooth"
+        ]
+      }
+    ],
+    [
+      188,
+      {
+        "score": null,
+        "comparative": 0,
+        "confidence": null,
+        "language": "und",
+        "tokens": []
+      }
+    ],
+    [
+      189,
+      {
+        "score": 0.7142857142857143,
+        "comparative": 0.05102040816326531,
+        "confidence": 0.44199999999999995,
+        "language": "sco",
+        "tokens": [
+          "Best",
+          "music",
+          "streaming",
+          "app",
+          "I",
+          "use",
+          "it",
+          "on",
+          "my",
+          "console",
+          "and",
+          "laptop",
+          "too",
+          "lol"
+        ]
+      }
+    ],
+    [
+      190,
+      {
+        "score": null,
+        "comparative": 0,
+        "confidence": null,
+        "language": "und",
+        "tokens": []
+      }
+    ],
+    [
+      191,
+      {
+        "score": 0.875,
+        "comparative": 0.109375,
+        "confidence": 0.6156499999999999,
+        "language": "glg",
+        "tokens": [
+          "Nice",
+          "experience",
+          "to",
+          "listen",
+          "to",
+          "my",
+          "favorites",
+          "Thanks"
+        ]
+      }
+    ],
+    [
+      192,
+      {
+        "score": 3,
+        "comparative": 3,
+        "confidence": 0.5623999999999999,
+        "language": "und",
+        "tokens": [
+          "nice"
+        ]
+      }
+    ],
+    [
+      193,
+      {
+        "score": 0.24705882352941178,
+        "comparative": 0.0029065743944636678,
+        "confidence": 0.5679058823529411,
+        "language": "eng",
+        "tokens": [
+          "This",
+          "app",
+          "was",
+          "used",
+          "to",
+          "be",
+          "good",
+          "but",
+          "they",
+          "got",
+          "greedy",
+          "you",
+          "can",
+          "barely",
+          "use",
+          "it",
+          "it",
+          "s",
+          "like",
+          "just",
+          "4",
+          "hours",
+          "and",
+          "you",
+          "have",
+          "to",
+          "wait",
+          "for",
+          "a",
+          "day",
+          "just",
+          "to",
+          "play",
+          "the",
+          "song",
+          "you",
+          "want",
+          "and",
+          "the",
+          "commercials",
+          "are",
+          "like",
+          "cockroach",
+          "keep",
+          "coming",
+          "back",
+          "and",
+          "also",
+          "the",
+          "smart",
+          "play",
+          "what",
+          "s",
+          "the",
+          "point",
+          "of",
+          "arranging",
+          "your",
+          "playlist",
+          "when",
+          "the",
+          "own",
+          "app",
+          "won",
+          "t",
+          "let",
+          "you",
+          "play",
+          "it",
+          "and",
+          "not",
+          "only",
+          "that",
+          "you",
+          "need",
+          "to",
+          "wait",
+          "an",
+          "hour",
+          "to",
+          "skip",
+          "songs",
+          "what",
+          "is",
+          "this"
+        ]
+      }
+    ],
+    [
+      194,
+      {
+        "score": 0.5,
+        "comparative": 0.041666666666666664,
+        "confidence": 0.4162,
+        "language": "eng",
+        "tokens": [
+          "Just",
+          "Please",
+          "PLEASE",
+          "NO",
+          "NOT",
+          "ADD",
+          "DJX",
+          "or",
+          "AI",
+          "to",
+          "this",
+          "app"
+        ]
+      }
+    ],
+    [
+      195,
+      {
+        "score": 0.033707865168539325,
+        "comparative": 0.0003787400580734756,
+        "confidence": 0.6037595505617976,
+        "language": "eng",
+        "tokens": [
+          "I",
+          "will",
+          "not",
+          "be",
+          "changing",
+          "my",
+          "one",
+          "star",
+          "until",
+          "I",
+          "am",
+          "able",
+          "to",
+          "listen",
+          "to",
+          "my",
+          "music",
+          "without",
+          "being",
+          "hounded",
+          "about",
+          "start",
+          "join",
+          "a",
+          "jam",
+          "session",
+          "I",
+          "D",
+          "LIKE",
+          "TO",
+          "KEEP",
+          "LISTENING",
+          "TO",
+          "MY",
+          "MUSIC",
+          "ON",
+          "MY",
+          "OWN",
+          "I",
+          "DON",
+          "T",
+          "NEED",
+          "ANYONE",
+          "ELSE",
+          "LISTENING",
+          "SO",
+          "Y",
+          "ALL",
+          "EITHER",
+          "FIX",
+          "THIS",
+          "OR",
+          "I",
+          "LL",
+          "FIND",
+          "A",
+          "A",
+          "DIFFERENT",
+          "MUSIC",
+          "STREAMING",
+          "SERVICE",
+          "TO",
+          "GO",
+          "TO",
+          "It",
+          "s",
+          "gotten",
+          "so",
+          "ridiculous",
+          "that",
+          "I",
+          "can",
+          "t",
+          "even",
+          "have",
+          "a",
+          "second",
+          "to",
+          "myself",
+          "to",
+          "look",
+          "for",
+          "music",
+          "Whoever",
+          "had",
+          "this",
+          "idea",
+          "is",
+          "stupid"
+        ]
+      }
+    ],
+    [
+      196,
+      {
+        "score": 0.10256410256410256,
+        "comparative": 0.0026298487836949372,
+        "confidence": 0.6348205128205128,
+        "language": "eng",
+        "tokens": [
+          "I",
+          "love",
+          "the",
+          "app",
+          "when",
+          "it",
+          "works",
+          "but",
+          "recently",
+          "it",
+          "constantly",
+          "shuts",
+          "down",
+          "and",
+          "exits",
+          "the",
+          "interface",
+          "when",
+          "I",
+          "try",
+          "DJ",
+          "mode",
+          "or",
+          "try",
+          "to",
+          "start",
+          "new",
+          "podcast",
+          "episodes",
+          "premium",
+          "isn",
+          "t",
+          "worth",
+          "it",
+          "if",
+          "it",
+          "keeps",
+          "doing",
+          "this"
+        ]
+      }
+    ],
+    [
+      197,
+      {
+        "score": 0.13636363636363635,
+        "comparative": 0.006198347107438016,
+        "confidence": 0.42194545454545457,
+        "language": "sco",
+        "tokens": [
+          "Music",
+          "is",
+          "the",
+          "best",
+          "Only",
+          "thing",
+          "is",
+          "it",
+          "s",
+          "a",
+          "memory",
+          "sucker",
+          "so",
+          "you",
+          "keep",
+          "deleting",
+          "cache",
+          "etc",
+          "10",
+          "gigs",
+          "is",
+          "absurd"
+        ]
+      }
+    ],
+    [
+      198,
+      {
+        "score": 0,
+        "comparative": 0,
+        "confidence": 0.7432,
+        "language": "eng",
+        "tokens": [
+          "why",
+          "can",
+          "t",
+          "the",
+          "songs",
+          "in",
+          "my",
+          "playlist",
+          "be",
+          "opened",
+          "why",
+          "are",
+          "all",
+          "my",
+          "songs",
+          "gone"
+        ]
+      }
+    ],
+    [
+      199,
+      {
+        "score": 0.3333333333333333,
+        "comparative": 0.05555555555555555,
+        "confidence": 0.34946666666666665,
+        "language": "eng",
+        "tokens": [
+          "Only",
+          "premium",
+          "want",
+          "atleast",
+          "skip",
+          "Free"
+        ]
+      }
+    ]
+  ]
+}

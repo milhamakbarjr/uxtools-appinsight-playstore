@@ -32,6 +32,7 @@ type OverviewTabProps = {
       positive: number;
       neutral: number;
       negative: number;
+      averageConfidence: number;
     };
     overTime: Array<{
       date: string;
@@ -73,6 +74,9 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
         <Card className="border-0 shadow-sm bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
           <CardHeader className="pb-2">
             <CardTitle className="text-lg">Sentiment Analysis</CardTitle>
+            <CardDescription className="text-sm text-muted-foreground">
+              Analysis confidence: {(reviewsStats.sentiment.averageConfidence * 100).toFixed(1)}%
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
@@ -81,7 +85,7 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
                   <ThumbsUp className="h-4 w-4 text-green-500" />
                   <span className="text-sm">Positive</span>
                 </div>
-                <span className="text-sm font-medium">{reviewsStats.sentiment.positive}%</span>
+                <span className="text-sm font-medium">{reviewsStats.sentiment.positive.toFixed(1)}%</span>
               </div>
               <Progress value={reviewsStats.sentiment.positive} className="h-2 bg-slate-200 dark:bg-slate-700" />
               
@@ -90,7 +94,7 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
                   <span className="h-4 w-4 inline-block">〰️</span>
                   <span className="text-sm">Neutral</span>
                 </div>
-                <span className="text-sm font-medium">{reviewsStats.sentiment.neutral}%</span>
+                <span className="text-sm font-medium">{reviewsStats.sentiment.neutral.toFixed(1)}%</span>
               </div>
               <Progress value={reviewsStats.sentiment.neutral} className="h-2 bg-slate-200 dark:bg-slate-700" />
               
@@ -99,7 +103,7 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
                   <ThumbsDown className="h-4 w-4 text-red-500" />
                   <span className="text-sm">Negative</span>
                 </div>
-                <span className="text-sm font-medium">{reviewsStats.sentiment.negative}%</span>
+                <span className="text-sm font-medium">{reviewsStats.sentiment.negative.toFixed(1)}%</span>
               </div>
               <Progress value={reviewsStats.sentiment.negative} className="h-2 bg-slate-200 dark:bg-slate-700" />
             </div>

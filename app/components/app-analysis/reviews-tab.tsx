@@ -27,7 +27,12 @@ type Review = {
   version: string;
   device: string;
   likes: number;
-  sentiment: number;
+  sentiment: {
+    score: number;
+    comparative: number;
+    confidence: number;
+    language: string;
+  };
   topics: string[];
 };
 
@@ -77,9 +82,12 @@ export default function ReviewsTab({ reviews }: ReviewsTabProps) {
     }
     
     // Sentiment filter
-    if (filterValues.sentiment === "positive" && review.sentiment < 0.3) return false;
-    if (filterValues.sentiment === "neutral" && (review.sentiment < -0.3 || review.sentiment > 0.3)) return false;
-    if (filterValues.sentiment === "negative" && review.sentiment > -0.3) return false;
+    if (filterValues.sentiment !== "all") {
+      const normalizedScore = review.sentiment.score / 5;
+      if (filterValues.sentiment === "positive" && normalizedScore < 0.3) return false;
+      if (filterValues.sentiment === "neutral" && (normalizedScore < -0.3 || normalizedScore > 0.3)) return false;
+      if (filterValues.sentiment === "negative" && normalizedScore > -0.3) return false;
+    }
     
     // Date range filter can be implemented with actual date filtering logic
     
@@ -117,10 +125,28 @@ export default function ReviewsTab({ reviews }: ReviewsTabProps) {
   };
 
   // Function to get sentiment badge variant
-  const getSentimentBadge = (sentiment: number) => {
-    if (sentiment >= 0.3) return { variant: "success" as const, label: "Positive" };
-    if (sentiment <= -0.3) return { variant: "destructive" as const, label: "Negative" };
-    return { variant: "outline" as const, label: "Neutral" };
+  const getSentimentBadge = (sentiment: { score: number; confidence: number }) => {
+    const normalizedScore = sentiment.score / 5; // Convert -5 to 5 range to -1 to 1
+    
+    if (normalizedScore >= 0.3) {
+      return { 
+        variant: "success" as const, 
+        label: "Positive",
+        confidence: sentiment.confidence
+      };
+    }
+    if (normalizedScore <= -0.3) {
+      return { 
+        variant: "destructive" as const, 
+        label: "Negative",
+        confidence: sentiment.confidence
+      };
+    }
+    return { 
+      variant: "outline" as const, 
+      label: "Neutral",
+      confidence: sentiment.confidence
+    };
   };
   
   // Function to render star rating
