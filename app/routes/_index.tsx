@@ -1,184 +1,118 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "~/components/ui/card";
-import { useState } from "react";
-import { Search, Star, History, Package, Smartphone, ArrowRight } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
+import { Search, Package, Smartphone, BarChart2 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import { Separator } from "~/components/ui/separator";
-import { Badge } from "~/components/ui/badge";
-import { ScrollArea } from "~/components/ui/scroll-area";
+import { useNavigate } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "UXTools Play Store Scraper" },
+    { title: "AppInsight - Play Store Analytics" },
     { name: "description", content: "Extract and analyze Google Play Store reviews" },
   ];
 };
 
 export default function Index() {
-  const [recentSearches] = useState([
-    {
-      id: "com.spotify.music",
-      name: "Spotify",
-      icon: "https://play-lh.googleusercontent.com/P2VMEenhpIsubG2oWbvuLGrs0GyyzLiDosGTg8bi8htRXg9Uf0eUtHiUjC28p1jgHzo=s48-rw",
-      rating: 4.3,
-      reviews: "35M+",
-      category: "Music & Audio",
-      lastAnalyzed: "2 hours ago"
-    },
-    {
-      id: "com.netflix.mediaclient",
-      name: "Netflix",
-      icon: "https://play-lh.googleusercontent.com/TBRwjS_qfJCSj1m7zZB93FnpJM5fSpMA_wUlFDLxWAb45T9RmwBvQd5cWR5viJJOhkI=s48-rw",
-      rating: 4.2,
-      reviews: "15M+",
-      category: "Entertainment",
-      lastAnalyzed: "1 day ago"
-    }
-  ]);
+  const navigate = useNavigate();
+  
+  const handleSearch = (type: string) => {
+    // In a real app, we would use the input value to search
+    // For now, we'll just navigate to a mock app ID
+    const mockAppId = type === "name" ? "com.spotify.music" : "com.netflix.mediaclient";
+    navigate(`/analysis/${mockAppId}`);
+  };
 
   return (
-    <div className="min-h-screen bg-background p-6">
-      <div className="mx-auto max-w-7xl space-y-8">
-        <header className="space-y-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tight">UXTools Play Store Scraper</h1>
-          <p className="text-lg text-muted-foreground">
-            Extract and analyze user reviews from Google Play Store apps
-          </p>
-        </header>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-950 flex items-center justify-center p-4 sm:p-6">
+      <div className="w-full max-w-2xl mx-auto">
+        {/* Minimal Logo/Icon Header */}
+        <div className="flex items-center justify-center mb-8">
+          <div className="bg-primary/10 p-3 rounded-full">
+            <BarChart2 className="h-8 w-8 text-primary" />
+          </div>
+          <h1 className="ml-3 text-2xl font-bold tracking-tight">AppInsight</h1>
+        </div>
 
-        <Card className="mt-6">
+        <Card className="border-0 shadow-sm bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle>Search App</CardTitle>
+            <CardTitle className="text-xl">Find an app to analyze</CardTitle>
             <CardDescription>
-              Enter an app name or package ID to start analyzing reviews
+              Discover insights from user reviews and ratings
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="name" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 mb-6">
-                <TabsTrigger value="name">
+              <TabsList className="grid w-full grid-cols-2 mb-6 bg-slate-100 dark:bg-slate-800 p-1">
+                <TabsTrigger value="name" className="rounded-md data-[state=active]:bg-white dark:data-[state=active]:bg-slate-950">
                   <Smartphone className="h-4 w-4 mr-2" />
-                  Search by Name
+                  App Name
                 </TabsTrigger>
-                <TabsTrigger value="package">
+                <TabsTrigger value="package" className="rounded-md data-[state=active]:bg-white dark:data-[state=active]:bg-slate-950">
                   <Package className="h-4 w-4 mr-2" />
                   Package ID
                 </TabsTrigger>
               </TabsList>
               
-              <TabsContent value="name" className="space-y-4">
-                <div className="flex flex-col gap-4">
-                  <div className="flex gap-2">
-                    <Input 
-                      placeholder="Enter app name (e.g., Spotify, Netflix)" 
-                      className="h-11"
-                    />
-                    <Button size="lg" className="gap-2 min-w-32">
-                      <Search className="h-4 w-4" />
-                      Search
-                    </Button>
+              <div className="min-h-[100px]">
+                <TabsContent value="name" className="space-y-4">
+                  <div className="flex flex-col gap-4">
+                    <div className="flex gap-2">
+                      <Input 
+                        placeholder="Enter app name (e.g., Spotify, Netflix)" 
+                        className="h-12 bg-white dark:bg-slate-950"
+                      />
+                      <Button 
+                        size="lg" 
+                        className="gap-2 min-w-32 h-12" 
+                        onClick={() => handleSearch("name")}
+                      >
+                        <Search className="h-4 w-4" />
+                        Search
+                      </Button>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <span>Popular:</span>
+                      <div className="flex flex-wrap gap-2">
+                        <Button variant="outline" size="sm" className="h-8 rounded-full">Spotify</Button>
+                        <Button variant="outline" size="sm" className="h-8 rounded-full">Netflix</Button>
+                        <Button variant="outline" size="sm" className="h-8 rounded-full">Instagram</Button>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-sm text-muted-foreground">
-                    Popular searches: 
-                    <Button variant="link" className="px-1.5 h-auto">Spotify</Button>
-                    <Button variant="link" className="px-1.5 h-auto">Netflix</Button>
-                    <Button variant="link" className="px-1.5 h-auto">Instagram</Button>
-                  </p>
-                </div>
-              </TabsContent>
+                </TabsContent>
 
-              <TabsContent value="package" className="space-y-4">
-                <div className="flex flex-col gap-4">
-                  <div className="flex gap-2">
-                    <Input 
-                      placeholder="Enter package ID (e.g., com.spotify.music)" 
-                      className="h-11 font-mono"
-                    />
-                    <Button size="lg" className="gap-2 min-w-32">
-                      <Search className="h-4 w-4" />
-                      Search
-                    </Button>
+                <TabsContent value="package" className="space-y-4">
+                  <div className="flex flex-col gap-4">
+                    <div className="flex gap-2">
+                      <Input 
+                        placeholder="Enter package ID (e.g., com.spotify.music)" 
+                        className="h-12 bg-white dark:bg-slate-950"
+                      />
+                      <Button 
+                        size="lg" 
+                        className="gap-2 min-w-32 h-12"
+                        onClick={() => handleSearch("package")}
+                      >
+                        <Search className="h-4 w-4" />
+                        Search
+                      </Button>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                      <span>Examples:</span>
+                      <code className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-xs">com.spotify.music</code>
+                      <code className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-xs">com.netflix.mediaclient</code>
+                    </div>
                   </div>
-                  <p className="text-sm text-muted-foreground">
-                    Example IDs: 
-                    <code className="mx-1.5 px-1.5 py-0.5 rounded bg-muted">com.spotify.music</code>
-                    <code className="mx-1.5 px-1.5 py-0.5 rounded bg-muted">com.netflix.mediaclient</code>
-                  </p>
-                </div>
-              </TabsContent>
+                </TabsContent>
+              </div>
             </Tabs>
           </CardContent>
         </Card>
-
-        {recentSearches.length > 0 && (
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between">
-              <div className="space-y-1.5">
-                <CardTitle className="flex items-center gap-2">
-                  <History className="h-5 w-5" />
-                  Recent Analyses
-                </CardTitle>
-                <CardDescription>
-                  Quick access to your recently analyzed apps
-                </CardDescription>
-              </div>
-              <Button variant="ghost" size="sm">
-                View All
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </CardHeader>
-            <CardContent>
-              <ScrollArea className="h-[400px] pr-4">
-                <div className="grid gap-4 md:grid-cols-2">
-                  {recentSearches.map((app) => (
-                    <Card key={app.id} className="transition-shadow hover:shadow-md">
-                      <CardHeader className="flex flex-row items-center gap-4 space-y-0">
-                        <img
-                          src={app.icon}
-                          alt={app.name}
-                          className="h-12 w-12 rounded-xl"
-                        />
-                        <div className="space-y-1">
-                          <CardTitle className="text-base flex items-center gap-2">
-                            {app.name}
-                            <Badge variant="secondary" className="ml-2">
-                              {app.category}
-                            </Badge>
-                          </CardTitle>
-                          <CardDescription className="font-mono text-xs">
-                            {app.id}
-                          </CardDescription>
-                        </div>
-                      </CardHeader>
-                      <Separator />
-                      <CardContent className="pt-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                            <Star className="h-4 w-4 fill-current text-yellow-400 stroke-yellow-400" />
-                            <span>{app.rating}</span>
-                            <span className="mx-1">•</span>
-                            <span>{app.reviews} reviews</span>
-                          </div>
-                          <span className="text-xs text-muted-foreground">
-                            Last analyzed {app.lastAnalyzed}
-                          </span>
-                        </div>
-                      </CardContent>
-                      <CardFooter className="grid grid-cols-2 gap-2">
-                        <Button variant="secondary">View Report</Button>
-                        <Button>
-                          New Analysis
-                        </Button>
-                      </CardFooter>
-                    </Card>
-                  ))}
-                </div>
-              </ScrollArea>
-            </CardContent>
-          </Card>
-        )}
+        
+        <p className="text-xs text-center text-muted-foreground mt-6">
+          Analyze app reviews and gain valuable user insights in seconds
+        </p>
       </div>
     </div>
   );
