@@ -152,13 +152,57 @@ Lucide icons for visual consistency
 
 5. Data Logic & Processing
 5.1 Scraping Architecture
-Implementation: Server-side processing via Remix loaders
+Implementation: Hybrid approach combining server-side scraping with client-side processing
+
 Details:
-google-play-scraper integration in server-side code
-Caching layer to prevent redundant fetching
-Error handling with graceful degradation
-Pagination strategy for large review sets
-Data transformation for client consumption
+1. Server-Side Components:
+   - Remix loader integration with google-play-scraper
+   - Controlled batch processing (100 reviews per request)
+   - Basic error handling and retry logic
+   - Rate limiting implementation
+   - Data transformation for client consumption
+
+2. Client-Side Processing:
+   - Review analysis and sentiment scoring
+   - Topic extraction and categorization
+   - Real-time visualization updates
+   - Progressive loading interface
+
+3. Data Storage Strategy:
+   - IndexedDB implementation for review storage
+   - Separate stores for raw reviews and analysis results
+   - Automatic cleanup of old data
+   - Storage limit handling
+
+4. Performance Optimizations:
+   - Batch processing to stay within serverless limits
+   - Client-side caching to prevent redundant fetches
+   - Progressive loading with status indicators
+   - Memory-efficient data processing
+
+5. Error Handling:
+   - Graceful degradation on API failures
+   - Storage quota management
+   - Network error recovery
+   - Clear user feedback on processing status
+   - Robust retry logic with the following rules:
+     * Maximum 3 retry attempts per request
+     * Exponential backoff between retries (1s, 2s, 4s)
+     * Circuit breaker pattern for consecutive failures
+     * Immediate termination conditions:
+       - Zero reviews returned after first successful request
+       - HTTP 404 status (app not found)
+       - Rate limit exceeded response
+     * Clear user feedback on termination conditions
+   - Request timeout handling:
+     * 10-second timeout per request
+     * Automatic cancellation of pending requests on user navigation
+     * Cleanup of partial data on timeout
+   - Progress tracking:
+     * Accurate progress indication including retry attempts
+     * Clear success/failure status messages
+     * Option to manually retry failed batches
+     * Session history of failed requests
 
 5.2 Analysis Pipeline
 5.2.1 Sentiment Analysis
@@ -249,6 +293,12 @@ Session-based data storage only
 Limited historical analysis capabilities
 Play Store API limitations and rate limits
 Vercel free tier constraints
+Scraping Safety Measures:
+- Maximum 3 consecutive empty response handling
+- Automatic termination on repeated zero-review responses
+- Total request timeout of 2 minutes per app
+- Maximum batch retry attempts: 3 per batch
+- Clear indicators for termination conditions
 
 9.2 User Communication
 Clear expectations about free tool limitations

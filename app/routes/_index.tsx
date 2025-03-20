@@ -46,10 +46,14 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-950 flex items-center justify-center p-4 sm:p-6">
       <div className="w-full max-w-2xl mx-auto">
-        {/* Minimal Logo/Icon Header */}
+        {/* Logo Header */}
         <div className="flex items-center justify-center mb-8">
-          <div className="bg-primary/10 p-3 rounded-full">
-            <BarChart2 className="h-8 w-8 text-primary" />
+          <div className="h-12 w-12">
+            <img 
+              src="/icons/logo-light.png" 
+              alt="AppInsight Logo" 
+              className="w-full h-full object-contain"
+            />
           </div>
           <h1 className="ml-3 text-2xl font-bold tracking-tight">AppInsight</h1>
         </div>
