@@ -335,7 +335,7 @@ export default function ReviewsTab({ reviews }: ReviewsTabProps) {
                         
                         <Separator />
                         
-                        <div className="flex justify-between items-center">
+                        <div className="flex justify-between items-start">
                           <div>
                             <div className="font-medium mb-1">Topics:</div>
                             <div className="flex flex-wrap gap-2">
@@ -344,7 +344,7 @@ export default function ReviewsTab({ reviews }: ReviewsTabProps) {
                               ))}
                             </div>
                           </div>
-                          <div className="flex items-center gap-1 text-muted-foreground text-sm">
+                          <div className="flex items-center gap-1 text-muted-foreground text-sm mt-8">
                             <ThumbsUp className="h-4 w-4" />
                             <span>{review.likes} users found this helpful</span>
                           </div>
