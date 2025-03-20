@@ -8,6 +8,15 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "~/component
 import { ScrollArea } from "~/components/ui/scroll-area";
 import { Separator } from "~/components/ui/separator";
 import { Badge } from "~/components/ui/badge";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "~/components/ui/pagination";
 
 type Review = {
   id: string;
@@ -36,6 +45,9 @@ export default function ReviewsTab({ reviews }: ReviewsTabProps) {
     sortBy: "date",
     sortOrder: "desc",
   });
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10; // Number of reviews per page
 
   // Handle window resize to show filters on large screens
   useEffect(() => {
@@ -86,6 +98,24 @@ export default function ReviewsTab({ reviews }: ReviewsTabProps) {
     return 0;
   });
   
+  // Calculate pagination values
+  const totalPages = Math.ceil(filteredReviews.length / itemsPerPage);
+  const indexOfLastReview = currentPage * itemsPerPage;
+  const indexOfFirstReview = indexOfLastReview - itemsPerPage;
+  const currentReviews = filteredReviews.slice(indexOfFirstReview, indexOfLastReview);
+  
+  // Reset to first page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filterValues]);
+  
+  // Function to change page
+  const paginate = (pageNumber: number) => {
+    if (pageNumber > 0 && pageNumber <= totalPages) {
+      setCurrentPage(pageNumber);
+    }
+  };
+
   // Function to get sentiment badge variant
   const getSentimentBadge = (sentiment: number) => {
     if (sentiment >= 0.3) return { variant: "success" as const, label: "Positive" };
@@ -263,15 +293,15 @@ export default function ReviewsTab({ reviews }: ReviewsTabProps) {
               </div>
             </div>
             <CardDescription>
-              Showing {filteredReviews.length} out of {reviews.length} reviews
+              Showing {indexOfFirstReview + 1}-{Math.min(indexOfLastReview, filteredReviews.length)} of {filteredReviews.length} reviews
             </CardDescription>
           </CardHeader>
           
           <CardContent>
             <ScrollArea className="h-[calc(100vh-300px)] pr-4">
               <div className="space-y-4">
-                {filteredReviews.length > 0 ? (
-                  filteredReviews.map((review) => (
+                {currentReviews.length > 0 ? (
+                  currentReviews.map((review) => (
                     <Collapsible key={review.id} className="border rounded-lg p-4 bg-white dark:bg-slate-950">
                       <div className="flex justify-between items-start">
                         <div className="space-y-1">
@@ -335,6 +365,102 @@ export default function ReviewsTab({ reviews }: ReviewsTabProps) {
                       Reset filters
                     </Button>
                   </div>
+                )}
+                
+                {/* Pagination controls */}
+                {filteredReviews.length > 0 && (
+                  <Pagination className="mt-8">
+                    <PaginationContent>
+                      <PaginationItem>
+                        <PaginationPrevious 
+                          onClick={() => paginate(currentPage - 1)}
+                          className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"} 
+                        />
+                      </PaginationItem>
+                      
+                      {totalPages <= 5 ? (
+                        // Show all pages if 5 or fewer
+                        Array.from({ length: totalPages }).map((_, index) => (
+                          <PaginationItem key={index}>
+                            <PaginationLink
+                              onClick={() => paginate(index + 1)}
+                              isActive={currentPage === index + 1}
+                            >
+                              {index + 1}
+                            </PaginationLink>
+                          </PaginationItem>
+                        ))
+                      ) : (
+                        // Show limited pages with ellipsis for larger page counts
+                        <>
+                          <PaginationItem>
+                            <PaginationLink
+                              onClick={() => paginate(1)}
+                              isActive={currentPage === 1}
+                            >
+                              1
+                            </PaginationLink>
+                          </PaginationItem>
+                          
+                          {currentPage > 3 && (
+                            <PaginationItem>
+                              <PaginationEllipsis />
+                            </PaginationItem>
+                          )}
+                          
+                          {currentPage > 2 && (
+                            <PaginationItem>
+                              <PaginationLink
+                                onClick={() => paginate(currentPage - 1)}
+                              >
+                                {currentPage - 1}
+                              </PaginationLink>
+                            </PaginationItem>
+                          )}
+                          
+                          {currentPage !== 1 && currentPage !== totalPages && (
+                            <PaginationItem>
+                              <PaginationLink isActive>
+                                {currentPage}
+                              </PaginationLink>
+                            </PaginationItem>
+                          )}
+                          
+                          {currentPage < totalPages - 1 && (
+                            <PaginationItem>
+                              <PaginationLink
+                                onClick={() => paginate(currentPage + 1)}
+                              >
+                                {currentPage + 1}
+                              </PaginationLink>
+                            </PaginationItem>
+                          )}
+                          
+                          {currentPage < totalPages - 2 && (
+                            <PaginationItem>
+                              <PaginationEllipsis />
+                            </PaginationItem>
+                          )}
+                          
+                          <PaginationItem>
+                            <PaginationLink
+                              onClick={() => paginate(totalPages)}
+                              isActive={currentPage === totalPages}
+                            >
+                              {totalPages}
+                            </PaginationLink>
+                          </PaginationItem>
+                        </>
+                      )}
+                      
+                      <PaginationItem>
+                        <PaginationNext 
+                          onClick={() => paginate(currentPage + 1)}
+                          className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"} 
+                        />
+                      </PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
                 )}
               </div>
             </ScrollArea>
