@@ -1,26 +1,12 @@
 import { useLoaderData, json, Link } from "@remix-run/react";
 import { LoaderFunctionArgs } from "@remix-run/node";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import { ArrowLeft, Star, BarChart2, ListFilter, Download, MessageSquare, PieChart, ThumbsUp, ThumbsDown } from "lucide-react";
+import { ArrowLeft, Star, BarChart2, Download, MessageSquare, PieChart } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
-import { Progress } from "~/components/ui/progress";
-import { useState } from "react";
-import {
-  Area,
-  Bar,
-  CartesianGrid,
-  ComposedChart,
-  Line,
-  XAxis,
-  YAxis,
-} from "recharts";
-import { 
-  ChartContainer, 
-  ChartTooltip, 
-  ChartTooltipContent 
-} from "~/components/ui/chart";
+import OverviewTab from "~/components/app-analysis/overview-tab";
+import ReviewsTab from "~/components/app-analysis/reviews-tab";
+import TopicsTab from "~/components/app-analysis/topics-tab";
 
 export function loader({ params }: LoaderFunctionArgs) {
   // In a real app, we would fetch the app data using the appId
@@ -62,12 +48,110 @@ export function loader({ params }: LoaderFunctionArgs) {
         { name: "Offline Mode", count: 1987, sentiment: 0.2 },
         { name: "Ads", count: 1856, sentiment: -0.7 },
       ]
-    }
+    },
+    reviews: [
+      {
+        id: "1",
+        author: "John D.",
+        date: "2023-06-10",
+        rating: 5,
+        text: "This app is amazing! The sound quality is top-notch, and I love how easy it is to create playlists. The interface is intuitive and I never have issues with playback. Highly recommended for music lovers.",
+        version: "8.8.10",
+        device: "Pixel 6",
+        likes: 42,
+        sentiment: 0.9,
+        topics: ["Audio Quality", "User Interface", "Playlists"]
+      },
+      {
+        id: "2",
+        author: "Sarah M.",
+        date: "2023-06-05",
+        rating: 4,
+        text: "Pretty good overall, but the ads can get annoying if you don't have premium. The app works well otherwise and I enjoy using it daily.",
+        version: "8.8.9",
+        device: "iPhone 13",
+        likes: 15,
+        sentiment: 0.4,
+        topics: ["Ads"]
+      },
+      {
+        id: "3",
+        author: "Mike T.",
+        date: "2023-05-28",
+        rating: 2,
+        text: "After the latest update, the app keeps crashing when I try to download music for offline listening. Please fix this issue! It used to work perfectly.",
+        version: "8.8.8",
+        device: "Galaxy S21",
+        likes: 27,
+        sentiment: -0.6,
+        topics: ["Offline Mode", "App Stability"]
+      },
+      {
+        id: "4",
+        author: "Lisa K.",
+        date: "2023-05-22",
+        rating: 5,
+        text: "Love the recommendations! Spotify's algorithm really knows my taste and introduces me to new artists I enjoy. The sound quality is excellent too.",
+        version: "8.8.7",
+        device: "iPhone 12",
+        likes: 36,
+        sentiment: 0.8,
+        topics: ["Recommendations", "Audio Quality"]
+      },
+      {
+        id: "5",
+        author: "Alex B.",
+        date: "2023-05-15",
+        rating: 3,
+        text: "It's decent but uses a lot of battery power. I've also noticed it sometimes stops playing in the background. The music selection is great though.",
+        version: "8.8.7",
+        device: "OnePlus 9",
+        likes: 9,
+        sentiment: 0.1,
+        topics: ["Battery Usage", "Background Playback"]
+      },
+      {
+        id: "6",
+        author: "Emma W.",
+        date: "2023-05-02",
+        rating: 1,
+        text: "Terrible experience lately. App freezes constantly and logs me out randomly. Customer service was unhelpful when I reported these issues. Considering switching to another service.",
+        version: "8.8.6",
+        device: "Pixel 5",
+        likes: 53,
+        sentiment: -0.8,
+        topics: ["App Stability", "Customer Service"]
+      },
+      {
+        id: "7",
+        author: "Robert J.",
+        date: "2023-04-28",
+        rating: 5,
+        text: "Best music app by far! The playlist sharing feature is fantastic and I love discovering new podcasts. Worth every penny for Premium.",
+        version: "8.8.5",
+        device: "iPhone 13 Pro",
+        likes: 21,
+        sentiment: 0.9,
+        topics: ["Playlists", "Podcasts", "Premium Features"]
+      },
+      {
+        id: "8",
+        author: "Maria G.",
+        date: "2023-04-20",
+        rating: 4,
+        text: "Good app overall, but I wish they would bring back the lyric cards feature. The current lyrics display is not as nice. Sound quality is great though.",
+        version: "8.8.5",
+        device: "Galaxy S22",
+        likes: 17,
+        sentiment: 0.5,
+        topics: ["Lyrics", "Audio Quality"]
+      }
+    ]
   });
 }
 
 export default function AppAnalysis() {
-  const { app, reviewsStats } = useLoaderData<typeof loader>();
+  const { app, reviewsStats, reviews } = useLoaderData<typeof loader>();
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-950 p-4 sm:p-6">
@@ -126,289 +210,19 @@ export default function AppAnalysis() {
                 Topic Analysis
               </TabsTrigger>
             </TabsList>
-            
-            
           </div>
           
-          {/* Overview Tab Content */}
-          <TabsContent value="overview" className="space-y-6">
-            {/* Top Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Card className="border-0 shadow-sm bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">Overall Rating</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center gap-2">
-                    <div className="text-4xl font-bold">{app.rating}</div>
-                    <div className="flex items-center">
-                      <Star className="h-5 w-5 fill-amber-400 text-amber-400" />
-                      <Star className="h-5 w-5 fill-amber-400 text-amber-400" />
-                      <Star className="h-5 w-5 fill-amber-400 text-amber-400" />
-                      <Star className="h-5 w-5 fill-amber-400 text-amber-400" />
-                      <Star className="h-5 w-5 text-amber-400 fill-none" />
-                    </div>
-                  </div>
-                  <div className="text-sm text-muted-foreground mt-1">Based on {(app.reviews / 1000000).toFixed(1)}M reviews</div>
-                </CardContent>
-              </Card>
-              
-              <Card className="border-0 shadow-sm bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">Sentiment Analysis</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <ThumbsUp className="h-4 w-4 text-green-500" />
-                        <span className="text-sm">Positive</span>
-                      </div>
-                      <span className="text-sm font-medium">{reviewsStats.sentiment.positive}%</span>
-                    </div>
-                    <Progress value={reviewsStats.sentiment.positive} className="h-2 bg-slate-200 dark:bg-slate-700" />
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="h-4 w-4 inline-block">〰️</span>
-                        <span className="text-sm">Neutral</span>
-                      </div>
-                      <span className="text-sm font-medium">{reviewsStats.sentiment.neutral}%</span>
-                    </div>
-                    <Progress value={reviewsStats.sentiment.neutral} className="h-2 bg-slate-200 dark:bg-slate-700" />
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <ThumbsDown className="h-4 w-4 text-red-500" />
-                        <span className="text-sm">Negative</span>
-                      </div>
-                      <span className="text-sm font-medium">{reviewsStats.sentiment.negative}%</span>
-                    </div>
-                    <Progress value={reviewsStats.sentiment.negative} className="h-2 bg-slate-200 dark:bg-slate-700" />
-                  </div>
-                </CardContent>
-              </Card>
-              
-              <Card className="border-0 shadow-sm bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">Top Topics</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    {reviewsStats.commonTopics.slice(0, 4).map((topic, index) => (
-                      <div key={index} className="flex items-center justify-between">
-                        <span className="text-sm">{topic.name}</span>
-                        <Badge variant={topic.sentiment > 0.5 ? "success" : topic.sentiment < 0 ? "destructive" : "outline"}>
-                          {topic.count.toLocaleString()}
-                        </Badge>
-                      </div>
-                    ))}
-                    <Button variant="ghost" size="sm" className="w-full mt-2 text-xs">
-                      View all topics →
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-            
-            {/* Rating Distribution Card */}
-            <Card className="border-0 shadow-sm bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-lg">Rating Distribution</CardTitle>
-                <CardDescription>
-                  Breakdown of ratings from 1 to 5 stars
-                  <span className="block text-xs mt-1">
-                    Based on {reviewsStats.total.toLocaleString()} reviews total
-                  </span>
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {[5, 4, 3, 2, 1].map((stars, index) => {
-                    const count = reviewsStats.distribution[5 - stars];
-                    const percentage = Math.round((count / reviewsStats.total) * 100);
-                    return (
-                      <div key={stars} className="flex items-center gap-3">
-                        <div className="w-16 text-sm font-medium flex items-center">
-                          {stars} <Star className="h-3 w-3 fill-amber-400 text-amber-400 ml-1" />
-                        </div>
-                        <div className="flex-1">
-                          <Progress value={percentage} className="h-2 bg-slate-200 dark:bg-slate-700" />
-                        </div>
-                        <div className="w-16 text-sm text-muted-foreground text-right">{percentage}%</div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </CardContent>
-            </Card>
-            
-            {/* Ratings Over Time Card */}
-            <Card className="border-0 shadow-sm bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-lg">Ratings Over Time</CardTitle>
-                <CardDescription>
-                  Average rating and review count by month
-                  <span className="block text-xs mt-1">
-                    Based on 1,452 reviews from Jan 2023 - Jun 2023
-                  </span>
-                </CardDescription>
-              </CardHeader>
-              
-              <div className="px-6 pb-4 flex flex-wrap gap-2 justify-between items-center">
-                <div className="flex gap-2">
-                  <Button variant="outline" size="sm" className="bg-primary/10">
-                    All time
-                  </Button>
-                  <Button variant="outline" size="sm">
-                    Last 6 months
-                  </Button>
-                  <Button variant="outline" size="sm">
-                    Last 3 months
-                  </Button>
-                </div>
-                
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <div className="w-3 h-3 bg-primary/80 rounded"></div>
-                    <span>Avg. Rating</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <div className="w-3 h-3 bg-slate-300 dark:bg-slate-700 rounded"></div>
-                    <span>Review Count</span>
-                  </div>
-                </div>
-              </div>
-              
-              <CardContent className="pb-8">
-                {reviewsStats.overTime.length > 0 ? (
-                  <div className="w-full" style={{ height: "592px" }}> {/* Use explicit height with style */}
-                    <ChartContainer
-                      config={{
-                        avgRating: {
-                          label: "Average Rating",
-                          color: "hsl(var(--primary))",
-                        },
-                        reviewCount: {
-                          label: "Review Count",
-                          color: "hsl(var(--muted-foreground) / 0.2)",
-                        },
-                      }}
-                    >
-                      <ComposedChart
-                        data={reviewsStats.overTime}
-                        margin={{ top: 30, right: 40, bottom: 40, left: 40 }} 
-                      >
-                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                        <XAxis
-                          dataKey="date"
-                          tick={{ fontSize: 12 }}
-                          tickLine={false}
-                          axisLine={false}
-                        />
-                        <YAxis
-                          yAxisId="left"
-                          domain={[0, 5]}
-                          orientation="left"
-                          tickCount={6}
-                          tick={{ fontSize: 12 }}
-                          tickLine={false}
-                          axisLine={false}
-                          label={{ 
-                            value: "Rating", 
-                            angle: -90, 
-                            position: "insideLeft",
-                            style: { fontSize: 12, fill: "var(--muted-foreground)" }  
-                          }}
-                        />
-                        <YAxis
-                          yAxisId="right"
-                          orientation="right"
-                          domain={[0, 150000]}
-                          tickFormatter={(value) => `${value / 1000}k`}
-                          tick={{ fontSize: 12 }}
-                          tickLine={false}
-                          axisLine={false}
-                          label={{ 
-                            value: "Reviews", 
-                            angle: 90, 
-                            position: "insideRight",
-                            style: { fontSize: 12, fill: "var(--muted-foreground)" }
-                          }}
-                        />
-                        <Bar
-                          dataKey="count"
-                          yAxisId="right"
-                          fill="var(--color-reviewCount)"
-                          radius={[4, 4, 0, 0]}
-                          barSize={20}
-                        />
-                        <Line
-                          type="monotone"
-                          dataKey="avg"
-                          yAxisId="left"
-                          stroke="var(--color-avgRating)"
-                          strokeWidth={3}
-                          dot={{ r: 4, strokeWidth: 2 }}
-                          activeDot={{ r: 6, strokeWidth: 2 }}
-                        />
-                        <ChartTooltip
-                          content={
-                            <ChartTooltipContent 
-                              formatter={(value, name) => {
-                                if (name === "avg") {
-                                  return [Number(value).toFixed(1), "Rating"];
-                                }
-                                return [Number(value).toLocaleString(), "Reviews"];
-                              }}
-                            />
-                          }
-                        />
-                      </ComposedChart>
-                    </ChartContainer>
-                  </div>
-                ) : (
-                  <div className="h-64 flex flex-col items-center justify-center text-muted-foreground">
-                    <BarChart2 className="h-12 w-12 mb-2 opacity-20" />
-                    <p className="text-sm">No rating history data available for this time period.</p>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
+          {/* Tab Contents using the extracted components */}
+          <TabsContent value="overview">
+            <OverviewTab app={app} reviewsStats={reviewsStats} />
           </TabsContent>
           
-          {/* Reviews Tab Content - Will be developed later */}
           <TabsContent value="reviews">
-            <Card className="border-0 shadow-sm bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle>Reviews</CardTitle>
-                <CardDescription>
-                  This tab will be developed in the next phase.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="p-8 text-center text-muted-foreground">
-                  Reviews tab content will be added soon.
-                </div>
-              </CardContent>
-            </Card>
+            <ReviewsTab reviews={reviews} />
           </TabsContent>
           
-          {/* Topic Analysis Tab Content - Will be developed later */}
           <TabsContent value="topics">
-            <Card className="border-0 shadow-sm bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle>Topic Analysis</CardTitle>
-                <CardDescription>
-                  This tab will be developed in the next phase.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="p-8 text-center text-muted-foreground">
-                  Topic Analysis tab content will be added soon.
-                </div>
-              </CardContent>
-            </Card>
+            <TopicsTab />
           </TabsContent>
         </Tabs>
       </div>
