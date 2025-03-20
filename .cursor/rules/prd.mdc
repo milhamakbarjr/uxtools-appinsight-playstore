@@ -206,40 +206,71 @@ Details:
 
 5.2 Analysis Pipeline
 5.2.1 Sentiment Analysis
-Implementation: Natural library's sentiment analyzer
+Implementation: Natural library's sentiment analyzer with batch processing
 Details:
-AFINN-based lexicon approach
-Rating-weighted sentiment scoring
-Confidence scoring based on text length
-Language detection for multi-language support
-Domain-specific term adjustment
+- Batch-based processing (100 reviews per batch)
+- AFINN-based lexicon approach with progressive analysis
+- Rating-weighted sentiment scoring
+- Confidence scoring based on text length and rating correlation
+- Language detection for multi-language support
+- Domain-specific term adjustment
+- Real-time sentiment updates as batches complete
+- Caching of intermediate results in IndexedDB
 
 5.2.2 Topic Extraction
-Implementation: Natural library's TF-IDF and tokenization
+Implementation: Natural library's TF-IDF and tokenization with batch optimization
 Details:
-N-gram extraction for phrase identification
-Stop word filtering customized for app reviews
-Stemming for word normalization
-Frequency analysis for common terms
-Topic clustering based on co-occurrence
+- Batch-level topic extraction (100 reviews per batch)
+- Progressive topic refinement as new batches arrive
+- N-gram extraction for phrase identification
+- Stop word filtering customized for app reviews
+- Stemming for word normalization
+- Frequency analysis with batch-aware weighting
+- Topic clustering based on co-occurrence patterns
+- Real-time topic cloud updates
+- Web Worker implementation for heavy processing
 
 5.2.3 Pattern Recognition
-Implementation: Regular expression patterns with Natural
+Implementation: Regular expression patterns with batch processing
 Details:
-Feature request pattern matching ("I wish", "please add")
-Bug report identification ("crashes", "doesn't work")
-Version correlation with reported issues
-Device-specific problem detection
-Personal information redaction
+- Pattern matching optimized for batch processing
+- Feature request identification with confidence scoring
+- Bug report classification with version correlation
+- Progressive pattern detection as batches arrive
+- Device-specific issue tracking
+- Personal information redaction
+- Real-time pattern frequency updates
+- Cached pattern results in IndexedDB
 
 5.3 State Management
-Implementation: Remix-centric state management
+Implementation: Remix-centric state management with progressive updates
 Details:
-URL parameters for shareable filter states
-Form data for interactive filtering
-Client-side state for temporary UI interactions
-SessionStorage for preserving analysis state
-Clear separation of server and client state
+- Batch-aware state management
+- Progress tracking for each processing phase:
+  * Scraping progress
+  * Sentiment analysis status
+  * Topic extraction progress
+  * Pattern recognition status
+- URL parameters for shareable analysis states
+- IndexedDB storage structure:
+  * Raw reviews store
+  * Analysis results store
+  * Batch metadata store
+  * User preferences store
+- State persistence strategy:
+  * Immediate storage of raw reviews
+  * Progressive storage of analysis results
+  * Batch-level caching
+  * Auto-cleanup of old data
+- Error state handling:
+  * Batch failure tracking
+  * Recovery mechanisms
+  * Partial results display
+- Performance optimization:
+  * Chunked state updates
+  * Debounced UI updates
+  * Progressive rendering
+  * Web Worker offloading
 
 6. Performance Requirements
 6.1 Client Performance
