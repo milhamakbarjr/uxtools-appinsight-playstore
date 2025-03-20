@@ -91,22 +91,26 @@ export default function TopicsTab() {
                 <div className="space-y-6">
                   {Object.entries(topicTimeline).map(([topic, months]: [string, any]) => (
                     <div key={topic} className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <Badge variant="outline">{topic}</Badge>
-                      </div>
-                      <div className="grid grid-cols-6 gap-2">
+                      <Badge variant="outline">{topic}</Badge>
+                      <div className="space-y-2">
                         {Object.entries(months).map(([month, data]: [string, any]) => {
                           const avgScore = data.score / data.count;
                           return (
-                            <div key={month} className="text-center">
-                              <div className={`text-xs font-medium ${
-                                avgScore >= 4 ? "text-green-500" : 
-                                avgScore < 3 ? "text-red-500" : "text-yellow-500"
-                              }`}>
-                                {month}
-                              </div>
-                              <div className="text-xs text-muted-foreground">
-                                {data.count} • {avgScore.toFixed(1)}★
+                            <div key={month} className="flex items-center gap-4">
+                              <div className="w-16 text-sm">{month}</div>
+                              <div className="flex-1">
+                                <div className="flex items-center gap-2">
+                                  <div 
+                                    className={`h-8 rounded-md ${
+                                      avgScore >= 4 ? "bg-green-500" : 
+                                      avgScore < 3 ? "bg-red-500" : "bg-yellow-500"
+                                    }`}
+                                    style={{ width: `${(avgScore / 5) * 100}%` }}
+                                  />
+                                  <div className="text-sm whitespace-nowrap">
+                                    {avgScore.toFixed(1)}★ ({data.count} reviews)
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           );
