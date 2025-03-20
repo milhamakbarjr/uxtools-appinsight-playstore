@@ -6,6 +6,21 @@ import { ArrowLeft, Star, BarChart2, ListFilter, Download, MessageSquare, PieCha
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
 import { Progress } from "~/components/ui/progress";
+import { useState } from "react";
+import {
+  Area,
+  Bar,
+  CartesianGrid,
+  ComposedChart,
+  Line,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { 
+  ChartContainer, 
+  ChartTooltip, 
+  ChartTooltipContent 
+} from "~/components/ui/chart";
 
 export function loader({ params }: LoaderFunctionArgs) {
   // In a real app, we would fetch the app data using the appId
@@ -112,10 +127,7 @@ export default function AppAnalysis() {
               </TabsTrigger>
             </TabsList>
             
-            <Button variant="outline" size="sm" className="gap-2">
-              <ListFilter className="h-4 w-4" />
-              Filters
-            </Button>
+            
           </div>
           
           {/* Overview Tab Content */}
@@ -205,6 +217,9 @@ export default function AppAnalysis() {
                 <CardTitle className="text-lg">Rating Distribution</CardTitle>
                 <CardDescription>
                   Breakdown of ratings from 1 to 5 stars
+                  <span className="block text-xs mt-1">
+                    Based on {reviewsStats.total.toLocaleString()} reviews total
+                  </span>
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -234,35 +249,130 @@ export default function AppAnalysis() {
                 <CardTitle className="text-lg">Ratings Over Time</CardTitle>
                 <CardDescription>
                   Average rating and review count by month
+                  <span className="block text-xs mt-1">
+                    Based on 1,452 reviews from Jan 2023 - Jun 2023
+                  </span>
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="h-64 flex items-end justify-between gap-2 pt-10 relative">
-                  {/* Y-axis labels */}
-                  <div className="absolute top-0 left-0 h-full flex flex-col justify-between text-xs text-muted-foreground pr-2">
-                    <span>5.0</span>
-                    <span>4.0</span>
-                    <span>3.0</span>
-                    <span>2.0</span>
-                    <span>1.0</span>
+              
+              <div className="px-6 pb-4 flex flex-wrap gap-2 justify-between items-center">
+                <div className="flex gap-2">
+                  <Button variant="outline" size="sm" className="bg-primary/10">
+                    All time
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    Last 6 months
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    Last 3 months
+                  </Button>
+                </div>
+                
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-1">
+                    <div className="w-3 h-3 bg-primary/80 rounded"></div>
+                    <span>Avg. Rating</span>
                   </div>
-                  
-                  {/* Chart (simplified for this mock) */}
-                  <div className="flex-1 flex items-end justify-between pl-8">
-                    {reviewsStats.overTime.map((month, index) => {
-                      const barHeight = (month.avg / 5) * 100;
-                      return (
-                        <div key={index} className="flex flex-col items-center gap-1 w-full">
-                          <div 
-                            className="w-full bg-primary/80 rounded-t"
-                            style={{ height: `${barHeight}%` }}
-                          ></div>
-                          <span className="text-xs text-muted-foreground">{month.date}</span>
-                        </div>
-                      );
-                    })}
+                  <div className="flex items-center gap-1">
+                    <div className="w-3 h-3 bg-slate-300 dark:bg-slate-700 rounded"></div>
+                    <span>Review Count</span>
                   </div>
                 </div>
+              </div>
+              
+              <CardContent className="pb-8">
+                {reviewsStats.overTime.length > 0 ? (
+                  <div className="w-full" style={{ height: "592px" }}> {/* Use explicit height with style */}
+                    <ChartContainer
+                      config={{
+                        avgRating: {
+                          label: "Average Rating",
+                          color: "hsl(var(--primary))",
+                        },
+                        reviewCount: {
+                          label: "Review Count",
+                          color: "hsl(var(--muted-foreground) / 0.2)",
+                        },
+                      }}
+                    >
+                      <ComposedChart
+                        data={reviewsStats.overTime}
+                        margin={{ top: 30, right: 40, bottom: 40, left: 40 }} 
+                      >
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis
+                          dataKey="date"
+                          tick={{ fontSize: 12 }}
+                          tickLine={false}
+                          axisLine={false}
+                        />
+                        <YAxis
+                          yAxisId="left"
+                          domain={[0, 5]}
+                          orientation="left"
+                          tickCount={6}
+                          tick={{ fontSize: 12 }}
+                          tickLine={false}
+                          axisLine={false}
+                          label={{ 
+                            value: "Rating", 
+                            angle: -90, 
+                            position: "insideLeft",
+                            style: { fontSize: 12, fill: "var(--muted-foreground)" }  
+                          }}
+                        />
+                        <YAxis
+                          yAxisId="right"
+                          orientation="right"
+                          domain={[0, 150000]}
+                          tickFormatter={(value) => `${value / 1000}k`}
+                          tick={{ fontSize: 12 }}
+                          tickLine={false}
+                          axisLine={false}
+                          label={{ 
+                            value: "Reviews", 
+                            angle: 90, 
+                            position: "insideRight",
+                            style: { fontSize: 12, fill: "var(--muted-foreground)" }
+                          }}
+                        />
+                        <Bar
+                          dataKey="count"
+                          yAxisId="right"
+                          fill="var(--color-reviewCount)"
+                          radius={[4, 4, 0, 0]}
+                          barSize={20}
+                        />
+                        <Line
+                          type="monotone"
+                          dataKey="avg"
+                          yAxisId="left"
+                          stroke="var(--color-avgRating)"
+                          strokeWidth={3}
+                          dot={{ r: 4, strokeWidth: 2 }}
+                          activeDot={{ r: 6, strokeWidth: 2 }}
+                        />
+                        <ChartTooltip
+                          content={
+                            <ChartTooltipContent 
+                              formatter={(value, name) => {
+                                if (name === "avg") {
+                                  return [Number(value).toFixed(1), "Rating"];
+                                }
+                                return [Number(value).toLocaleString(), "Reviews"];
+                              }}
+                            />
+                          }
+                        />
+                      </ComposedChart>
+                    </ChartContainer>
+                  </div>
+                ) : (
+                  <div className="h-64 flex flex-col items-center justify-center text-muted-foreground">
+                    <BarChart2 className="h-12 w-12 mb-2 opacity-20" />
+                    <p className="text-sm">No rating history data available for this time period.</p>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </TabsContent>
