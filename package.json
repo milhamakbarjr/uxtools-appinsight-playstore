@@ -12,7 +12,8 @@
     "typecheck": "tsc",
     "test": "tsx src/lib/scraper/test.ts",
     "test:scraper": "tsx app/lib/scraper/test.ts",
-    "test:sentiment": "tsx app/lib/analysis/test-sentiment.ts"
+    "test:sentiment": "tsx app/lib/analysis/test-sentiment.ts",
+    "test:topics": "tsx app/lib/analysis/test-topics.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
