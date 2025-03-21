@@ -1,0 +1,214 @@
+{
+  "filter": "negative sentiment",
+  "count": 54,
+  "reviews": [
+    {
+      "id": "4e9c4356-f69e-40dc-b9bc-d77e9b69a649",
+      "author": "Eliora Gaju",
+      "date": "2025-03-04T02:19:37.981Z",
+      "rating": 1,
+      "text": "i mean even tho its good the things of \"skipping\"and \"not being able to play the music u want to play AT THE MOMENT\"is js annoying",
+      "version": "Unknown",
+      "device": "Android Device",
+      "likes": 1,
+      "sentiment": {
+        "score": -4,
+        "comparative": -0.8,
+        "confidence": 0.8086776869922847,
+        "language": "en"
+      },
+      "topics": [
+        "music",
+        "good",
+        "play",
+        "want",
+        "even"
+      ]
+    },
+    {
+      "id": "38a24505-9433-45cc-8c5d-c65c52e2befa",
+      "author": "Abhay",
+      "date": "2025-02-10T07:22:22.981Z",
+      "rating": 1,
+      "text": "this app is very poor why are come the ad the download songs are not serial wise play and much song do not download why when this app is very poor",
+      "version": "9.0.16.572",
+      "device": "Android Device",
+      "likes": 7,
+      "sentiment": {
+        "score": -4,
+        "comparative": -0.8,
+        "confidence": 0.8043802788143629,
+        "language": "en"
+      },
+      "topics": [
+        "song",
+        "songs",
+        "play",
+        "poor"
+      ]
+    },
+    {
+      "id": "6221a263-6aac-4aa2-a7c0-d127ac773005",
+      "author": "AYUSH AYUSH TIWARI",
+      "date": "2025-02-22T06:44:33.981Z",
+      "rating": 1,
+      "text": "too much add.",
+      "version": "Unknown",
+      "device": "Android Device",
+      "likes": 2,
+      "sentiment": {
+        "score": -4,
+        "comparative": -0.8,
+        "confidence": 0.9206013540799168,
+        "language": "en"
+      },
+      "topics": []
+    },
+    {
+      "id": "ef6221dc-181c-4ba5-80b9-bca8f1b88467",
+      "author": "P.Diocee",
+      "date": "2025-02-13T16:58:54.981Z",
+      "rating": 1,
+      "text": "app has become unusable on Android. even with an s24U and cache cleared, app redownloaded multiple times, there is lots of lag. 20 seconds or so for album art to come up and for the music to start playing. might as well get apple music or another service",
+      "version": "9.0.26.632",
+      "device": "Android Device",
+      "likes": 8,
+      "sentiment": {
+        "score": -4,
+        "comparative": -0.8,
+        "confidence": 0.9189968111666049,
+        "language": "en"
+      },
+      "topics": [
+        "music",
+        "play",
+        "even",
+        "playing"
+      ]
+    },
+    {
+      "id": "bf12ae64-c8a9-4ffb-b2e2-bf93e24056de",
+      "author": "reyfi almonte",
+      "date": "2025-02-13T03:04:49.981Z",
+      "rating": 1,
+      "text": "awful",
+      "version": "9.0.26.632",
+      "device": "Android Device",
+      "likes": 7,
+      "sentiment": {
+        "score": -4,
+        "comparative": -0.8,
+        "confidence": 0.8659658283226123,
+        "language": "en"
+      },
+      "topics": []
+    },
+    {
+      "id": "ed40437e-dfd8-4600-b8e9-8cc1325480bd",
+      "author": "PORTUGUEZ, JEANNETTE P.",
+      "date": "2025-02-10T03:11:34.981Z",
+      "rating": 1,
+      "text": "This lil happens when I open the app! I don't like it! Please fix this, NOW! You need to fix this immediately! I hate it when the song suddenly stops and ruins my vibe! everything is paid!",
+      "version": "9.0.26.632",
+      "device": "Android Device",
+      "likes": 1,
+      "sentiment": {
+        "score": -4,
+        "comparative": -0.8,
+        "confidence": 0.8809201224504261,
+        "language": "en"
+      },
+      "topics": [
+        "song",
+        "like",
+        "need",
+        "ever"
+      ]
+    },
+    {
+      "id": "70879a07-d0fa-438c-a78c-9c4ab9473481",
+      "author": "Torrence Thornton",
+      "date": "2025-02-21T03:10:52.981Z",
+      "rating": 1,
+      "text": "why do I need premium to stop the shuffle that's dumb",
+      "version": "9.0.26.632",
+      "device": "Android Device",
+      "likes": 8,
+      "sentiment": {
+        "score": -4,
+        "comparative": -0.8,
+        "confidence": 0.9162374539428878,
+        "language": "en"
+      },
+      "topics": [
+        "premium",
+        "shuffle",
+        "need"
+      ]
+    },
+    {
+      "id": "2ee0b900-fe58-4ece-bda8-8b0d9357df74",
+      "author": ":3",
+      "date": "2025-02-15T19:11:07.982Z",
+      "rating": 1,
+      "text": "you have to pay for everything, even just choosing what song you want to listen to",
+      "version": "9.0.26.632",
+      "device": "Android Device",
+      "likes": 1,
+      "sentiment": {
+        "score": -4,
+        "comparative": -0.8,
+        "confidence": 0.8406402150263188,
+        "language": "en"
+      },
+      "topics": [
+        "song",
+        "listen",
+        "want",
+        "even",
+        "ever"
+      ]
+    },
+    {
+      "id": "921032cb-a525-430a-adf5-fec9916d4073",
+      "author": "Max Savarese",
+      "date": "2025-02-13T22:56:32.982Z",
+      "rating": 1,
+      "text": "awful even youtube is better",
+      "version": "Unknown",
+      "device": "Android Device",
+      "likes": 8,
+      "sentiment": {
+        "score": -4,
+        "comparative": -0.8,
+        "confidence": 0.8487244331866046,
+        "language": "en"
+      },
+      "topics": [
+        "even"
+      ]
+    },
+    {
+      "id": "d2e7f8c5-8eca-49c4-a7fc-4d66f16b899c",
+      "author": "PEGASUS YT",
+      "date": "2025-01-09T15:45:01.982Z",
+      "rating": 1,
+      "text": "worst app ever giving add after showing 30 minutes of un interrupted listening Use V Music It's Better than this app . third class app I have ever seen.",
+      "version": "9.0.8.127",
+      "device": "Android Device",
+      "likes": 4,
+      "sentiment": {
+        "score": -4,
+        "comparative": -0.8,
+        "confidence": 0.9074413795343176,
+        "language": "en"
+      },
+      "topics": [
+        "music",
+        "listen",
+        "listening",
+        "ever"
+      ]
+    }
+  ]
+}

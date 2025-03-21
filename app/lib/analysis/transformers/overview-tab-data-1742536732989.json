@@ -1,0 +1,108 @@
+{
+  "app": {
+    "name": "Spotify Music",
+    "rating": 3.8,
+    "reviews": 200,
+    "version": "9.0.26.632"
+  },
+  "reviewsStats": {
+    "total": 200,
+    "distribution": [
+      38,
+      16,
+      8,
+      20,
+      118
+    ],
+    "sentiment": {
+      "positive": 67,
+      "negative": 15,
+      "neutral": 18,
+      "averageConfidence": 0.85
+    },
+    "overTime": [
+      {
+        "date": "Oct 2024",
+        "avg": 3.4,
+        "count": 33
+      },
+      {
+        "date": "Nov 2024",
+        "avg": 3.6,
+        "count": 33
+      },
+      {
+        "date": "Dec 2024",
+        "avg": 4.5,
+        "count": 34
+      },
+      {
+        "date": "Jan 2025",
+        "avg": 3.4,
+        "count": 33
+      },
+      {
+        "date": "Feb 2025",
+        "avg": 3.6,
+        "count": 33
+      },
+      {
+        "date": "Mar 2025",
+        "avg": 4.5,
+        "count": 34
+      }
+    ],
+    "commonTopics": [
+      {
+        "name": "music",
+        "count": 50,
+        "sentiment": 0.16666666666666674
+      },
+      {
+        "name": "good",
+        "count": 42,
+        "sentiment": 0.6428571428571428
+      },
+      {
+        "name": "song",
+        "count": 28,
+        "sentiment": -0.05555555555555558
+      },
+      {
+        "name": "songs",
+        "count": 26,
+        "sentiment": 0.19999999999999996
+      },
+      {
+        "name": "great",
+        "count": 24,
+        "sentiment": 1
+      },
+      {
+        "name": "like",
+        "count": 22,
+        "sentiment": 0.22222222222222232
+      },
+      {
+        "name": "premium",
+        "count": 20,
+        "sentiment": 0.0625
+      },
+      {
+        "name": "love",
+        "count": 18,
+        "sentiment": 1
+      },
+      {
+        "name": "play",
+        "count": 16,
+        "sentiment": -0.25
+      },
+      {
+        "name": "nice",
+        "count": 16,
+        "sentiment": 0.75
+      }
+    ]
+  }
+}

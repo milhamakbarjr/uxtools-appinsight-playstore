@@ -1,0 +1,212 @@
+{
+  "count": 200,
+  "sample": [
+    {
+      "id": "4ad8102d-300b-4a44-9efc-047cc459e106",
+      "author": "Mharjo Montealegre",
+      "date": "2025-03-07T18:05:31.981Z",
+      "rating": 5,
+      "text": "wow",
+      "version": "Unknown",
+      "device": "Android Device",
+      "likes": 4,
+      "sentiment": {
+        "score": 4,
+        "comparative": 0.8,
+        "confidence": 0.8442273591228188,
+        "language": "en"
+      },
+      "topics": []
+    },
+    {
+      "id": "08dbfcaa-3c99-46d0-ac47-1914aed9ac3f",
+      "author": "Everest Kilimanjaro",
+      "date": "2025-03-01T19:24:44.981Z",
+      "rating": 5,
+      "text": "Awesome And Excellent Music 👏",
+      "version": "9.0.26.632",
+      "device": "Android Device",
+      "likes": 5,
+      "sentiment": {
+        "score": 4,
+        "comparative": 0.8,
+        "confidence": 0.8295960106769447,
+        "language": "en"
+      },
+      "topics": [
+        "music",
+        "awesome"
+      ]
+    },
+    {
+      "id": "94b71d2b-1824-4691-997b-d396420cf4fd",
+      "author": "Sofia Onaga",
+      "date": "2025-03-20T20:14:24.981Z",
+      "rating": 5,
+      "text": "it's great and everyone knows that, but Premium is worth it. these ads make me want to backflip off of my roof",
+      "version": "9.0.26.632",
+      "device": "Android Device",
+      "likes": 5,
+      "sentiment": {
+        "score": 4,
+        "comparative": 0.8,
+        "confidence": 0.8585856814286882,
+        "language": "en"
+      },
+      "topics": [
+        "great",
+        "premium",
+        "want",
+        "ever"
+      ]
+    },
+    {
+      "id": "d89f6a3b-6dc2-4b08-9784-151ac53b6726",
+      "author": "Rahul Sehraya",
+      "date": "2025-03-26T15:33:08.981Z",
+      "rating": 2,
+      "text": "very disruptive and poor user experience for a free user",
+      "version": "9.0.26.632",
+      "device": "Android Device",
+      "likes": 5,
+      "sentiment": {
+        "score": -2,
+        "comparative": -0.4,
+        "confidence": 0.8554120729179473,
+        "language": "en"
+      },
+      "topics": [
+        "experience",
+        "poor",
+        "free"
+      ]
+    },
+    {
+      "id": "959ca206-d512-468c-8b9e-850d84afe090",
+      "author": "Kayla Pienaar",
+      "date": "2025-03-18T02:54:11.981Z",
+      "rating": 5,
+      "text": "the best ever, use it everyday of my life",
+      "version": "9.0.26.632",
+      "device": "Android Device",
+      "likes": 1,
+      "sentiment": {
+        "score": 4,
+        "comparative": 0.8,
+        "confidence": 0.9202561390517927,
+        "language": "en"
+      },
+      "topics": [
+        "best",
+        "ever"
+      ]
+    },
+    {
+      "id": "4e9c4356-f69e-40dc-b9bc-d77e9b69a649",
+      "author": "Eliora Gaju",
+      "date": "2025-03-04T02:19:37.981Z",
+      "rating": 1,
+      "text": "i mean even tho its good the things of \"skipping\"and \"not being able to play the music u want to play AT THE MOMENT\"is js annoying",
+      "version": "Unknown",
+      "device": "Android Device",
+      "likes": 2,
+      "sentiment": {
+        "score": -4,
+        "comparative": -0.8,
+        "confidence": 0.9463727602289173,
+        "language": "en"
+      },
+      "topics": [
+        "music",
+        "good",
+        "play",
+        "want",
+        "even"
+      ]
+    },
+    {
+      "id": "0b8eb507-98de-4111-a234-76283bd9d99a",
+      "author": "Darrescoh254 Fletcher",
+      "date": "2025-03-23T07:22:57.981Z",
+      "rating": 4,
+      "text": "it's so good but I don't like the limit of skips in one hour 🥲",
+      "version": "9.0.26.632",
+      "device": "Android Device",
+      "likes": 2,
+      "sentiment": {
+        "score": 2,
+        "comparative": 0.4,
+        "confidence": 0.9427306457911938,
+        "language": "en"
+      },
+      "topics": [
+        "good",
+        "like"
+      ]
+    },
+    {
+      "id": "342d5d1e-5a51-4ea7-bc89-3185c00deed9",
+      "author": "Pablo Solano, Jr.",
+      "date": "2025-03-15T13:18:02.981Z",
+      "rating": 5,
+      "text": "great playlist recommendations",
+      "version": "9.0.26.632",
+      "device": "Android Device",
+      "likes": 8,
+      "sentiment": {
+        "score": 4,
+        "comparative": 0.8,
+        "confidence": 0.86946015395666,
+        "language": "en"
+      },
+      "topics": [
+        "great",
+        "play",
+        "playlist"
+      ]
+    },
+    {
+      "id": "d8433e53-c83a-487b-b8c8-84eaea174a36",
+      "author": "Bhavna Singh",
+      "date": "2025-03-23T04:22:08.981Z",
+      "rating": 5,
+      "text": "It is so amazing app. I love this app so much. It has so many songs and they all are awesome 😎",
+      "version": "9.0.26.632",
+      "device": "Android Device",
+      "likes": 5,
+      "sentiment": {
+        "score": 4,
+        "comparative": 0.8,
+        "confidence": 0.891495306888782,
+        "language": "en"
+      },
+      "topics": [
+        "song",
+        "songs",
+        "love",
+        "awesome",
+        "many"
+      ]
+    },
+    {
+      "id": "a3f0410d-e7bf-4ceb-9db0-8ed99a01f5a5",
+      "author": "Pavithran",
+      "date": "2025-03-10T21:57:35.981Z",
+      "rating": 5,
+      "text": "this is a music app like no other!",
+      "version": "9.0.26.632",
+      "device": "Android Device",
+      "likes": 6,
+      "sentiment": {
+        "score": 4,
+        "comparative": 0.8,
+        "confidence": 0.9305913190062188,
+        "language": "en"
+      },
+      "topics": [
+        "music",
+        "like"
+      ]
+    }
+  ]
+}
