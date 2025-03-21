@@ -1,0 +1,970 @@
+{
+  "stats": {
+    "timing": {
+      "total": 22,
+      "averagePerReview": 0.11
+    },
+    "patterns": {
+      "count": 4,
+      "types": [
+        "frequency",
+        "timeBased",
+        "rating",
+        "correlations"
+      ]
+    },
+    "sentiment": {
+      "distribution": {
+        "distribution": {
+          "positive": 67,
+          "negative": 15,
+          "neutral": 18
+        },
+        "averageScore": 0.6304673324978598,
+        "positive": 134,
+        "negative": 30,
+        "neutral": 36
+      },
+      "averageScore": null
+    },
+    "topics": {
+      "count": 3,
+      "topItems": [
+        [
+          "list",
+          [
+            {
+              "topic": "music",
+              "count": 50,
+              "avgRating": 3.3333333333333335,
+              "ratingsCount": 42
+            },
+            {
+              "topic": "good",
+              "count": 42,
+              "avgRating": 4.285714285714286,
+              "ratingsCount": 42
+            },
+            {
+              "topic": "song",
+              "count": 28,
+              "avgRating": 2.888888888888889,
+              "ratingsCount": 36
+            },
+            {
+              "topic": "songs",
+              "count": 26,
+              "avgRating": 3.4,
+              "ratingsCount": 20
+            },
+            {
+              "topic": "great",
+              "count": 24,
+              "avgRating": 5,
+              "ratingsCount": 20
+            },
+            {
+              "topic": "like",
+              "count": 22,
+              "avgRating": 3.4444444444444446,
+              "ratingsCount": 18
+            },
+            {
+              "topic": "premium",
+              "count": 20,
+              "avgRating": 3.125,
+              "ratingsCount": 16
+            },
+            {
+              "topic": "love",
+              "count": 18,
+              "avgRating": 5,
+              "ratingsCount": 16
+            },
+            {
+              "topic": "play",
+              "count": 16,
+              "avgRating": 2.5,
+              "ratingsCount": 24
+            },
+            {
+              "topic": "nice",
+              "count": 16,
+              "avgRating": 4.5,
+              "ratingsCount": 16
+            },
+            {
+              "topic": "listen",
+              "count": 16,
+              "avgRating": 1.9090909090909092,
+              "ratingsCount": 22
+            },
+            {
+              "topic": "spotify",
+              "count": 16,
+              "avgRating": 4,
+              "ratingsCount": 16
+            },
+            {
+              "topic": "want",
+              "count": 14,
+              "avgRating": 2.4285714285714284,
+              "ratingsCount": 14
+            },
+            {
+              "topic": "experience",
+              "count": 14,
+              "avgRating": 4,
+              "ratingsCount": 14
+            },
+            {
+              "topic": "playlist",
+              "count": 14,
+              "avgRating": 2.857142857142857,
+              "ratingsCount": 14
+            },
+            {
+              "topic": "awesome",
+              "count": 12,
+              "avgRating": 5,
+              "ratingsCount": 10
+            },
+            {
+              "topic": "even",
+              "count": 10,
+              "avgRating": 1.8,
+              "ratingsCount": 10
+            },
+            {
+              "topic": "really",
+              "count": 10,
+              "avgRating": 5,
+              "ratingsCount": 8
+            },
+            {
+              "topic": "shuffle",
+              "count": 10,
+              "avgRating": 2.6666666666666665,
+              "ratingsCount": 6
+            },
+            {
+              "topic": "listening",
+              "count": 10,
+              "avgRating": 1.2,
+              "ratingsCount": 10
+            },
+            {
+              "topic": "many",
+              "count": 8,
+              "avgRating": 3.75,
+              "ratingsCount": 8
+            },
+            {
+              "topic": "playing",
+              "count": 8,
+              "avgRating": 2.25,
+              "ratingsCount": 8
+            },
+            {
+              "topic": "pretty",
+              "count": 8,
+              "avgRating": 3.25,
+              "ratingsCount": 8
+            },
+            {
+              "topic": "need",
+              "count": 8,
+              "avgRating": 1,
+              "ratingsCount": 6
+            },
+            {
+              "topic": "poor",
+              "count": 6,
+              "avgRating": 1.5,
+              "ratingsCount": 4
+            },
+            {
+              "topic": "free",
+              "count": 6,
+              "avgRating": 3.3333333333333335,
+              "ratingsCount": 6
+            },
+            {
+              "topic": "best",
+              "count": 6,
+              "avgRating": 4.333333333333333,
+              "ratingsCount": 6
+            },
+            {
+              "topic": "ever",
+              "count": 6,
+              "avgRating": 2.8,
+              "ratingsCount": 20
+            },
+            {
+              "topic": "amazing",
+              "count": 6,
+              "avgRating": 5,
+              "ratingsCount": 6
+            },
+            {
+              "topic": "doesn",
+              "count": 6,
+              "avgRating": 3.6666666666666665,
+              "ratingsCount": 6
+            }
+          ]
+        ],
+        [
+          "phrases",
+          [
+            {
+              "phrase": "want listen",
+              "count": 8
+            },
+            {
+              "phrase": "good music",
+              "count": 6
+            },
+            {
+              "phrase": "pretty good",
+              "count": 6
+            },
+            {
+              "phrase": "need premium",
+              "count": 6
+            },
+            {
+              "phrase": "listening music",
+              "count": 6
+            },
+            {
+              "phrase": "play music",
+              "count": 4
+            },
+            {
+              "phrase": "music want",
+              "count": 4
+            },
+            {
+              "phrase": "skips hour",
+              "count": 4
+            },
+            {
+              "phrase": "music like",
+              "count": 4
+            },
+            {
+              "phrase": "great music",
+              "count": 4
+            },
+            {
+              "phrase": "apple music",
+              "count": 4
+            },
+            {
+              "phrase": "really know",
+              "count": 4
+            },
+            {
+              "phrase": "song want",
+              "count": 4
+            },
+            {
+              "phrase": "song want listen",
+              "count": 4
+            },
+            {
+              "phrase": "love spotify",
+              "count": 4
+            },
+            {
+              "phrase": "great awesome",
+              "count": 4
+            },
+            {
+              "phrase": "smart shuffle",
+              "count": 4
+            },
+            {
+              "phrase": "after showing",
+              "count": 4
+            },
+            {
+              "phrase": "premium play",
+              "count": 4
+            },
+            {
+              "phrase": "need premium play",
+              "count": 4
+            }
+          ]
+        ],
+        [
+          "frequent",
+          [
+            {
+              "topic": "music",
+              "count": 50,
+              "avgRating": 3.3333333333333335,
+              "ratingsCount": 42
+            },
+            {
+              "topic": "good",
+              "count": 42,
+              "avgRating": 4.285714285714286,
+              "ratingsCount": 42
+            },
+            {
+              "topic": "song",
+              "count": 28,
+              "avgRating": 2.888888888888889,
+              "ratingsCount": 36
+            },
+            {
+              "topic": "songs",
+              "count": 26,
+              "avgRating": 3.4,
+              "ratingsCount": 20
+            },
+            {
+              "topic": "great",
+              "count": 24,
+              "avgRating": 5,
+              "ratingsCount": 20
+            },
+            {
+              "topic": "like",
+              "count": 22,
+              "avgRating": 3.4444444444444446,
+              "ratingsCount": 18
+            },
+            {
+              "topic": "premium",
+              "count": 20,
+              "avgRating": 3.125,
+              "ratingsCount": 16
+            },
+            {
+              "topic": "love",
+              "count": 18,
+              "avgRating": 5,
+              "ratingsCount": 16
+            },
+            {
+              "topic": "play",
+              "count": 16,
+              "avgRating": 2.5,
+              "ratingsCount": 24
+            },
+            {
+              "topic": "nice",
+              "count": 16,
+              "avgRating": 4.5,
+              "ratingsCount": 16
+            }
+          ]
+        ]
+      ]
+    }
+  },
+  "results": {
+    "patterns": {
+      "frequency": [
+        [
+          "awesome",
+          10
+        ],
+        [
+          "excellent",
+          4
+        ],
+        [
+          "music",
+          50
+        ],
+        [
+          "it's",
+          14
+        ],
+        [
+          "great",
+          22
+        ],
+        [
+          "everyone",
+          2
+        ],
+        [
+          "knows",
+          2
+        ],
+        [
+          "that,",
+          4
+        ],
+        [
+          "premium",
+          18
+        ],
+        [
+          "worth",
+          2
+        ],
+        [
+          "these",
+          2
+        ],
+        [
+          "make",
+          2
+        ],
+        [
+          "want",
+          14
+        ],
+        [
+          "backflip",
+          2
+        ],
+        [
+          "roof",
+          2
+        ],
+        [
+          "very",
+          48
+        ],
+        [
+          "disruptive",
+          2
+        ],
+        [
+          "poor",
+          6
+        ],
+        [
+          "user",
+          4
+        ],
+        [
+          "experience",
+          12
+        ]
+      ],
+      "timeBased": [],
+      "rating": [
+        {
+          "stars": 1,
+          "count": 38,
+          "percentage": 19
+        },
+        {
+          "stars": 2,
+          "count": 16,
+          "percentage": 8
+        },
+        {
+          "stars": 3,
+          "count": 8,
+          "percentage": 4
+        },
+        {
+          "stars": 4,
+          "count": 20,
+          "percentage": 10
+        },
+        {
+          "stars": 5,
+          "count": 118,
+          "percentage": 59
+        }
+      ],
+      "correlations": [
+        {
+          "word": "music",
+          "avgRatingWithWord": 3.3333333333333335,
+          "avgRatingWithoutWord": 3.949367088607595,
+          "difference": -0.6160337552742616,
+          "reviewCount": 42
+        },
+        {
+          "word": "very",
+          "avgRatingWithWord": 3.1875,
+          "avgRatingWithoutWord": 3.9404761904761907,
+          "difference": -0.7529761904761907,
+          "reviewCount": 32
+        },
+        {
+          "word": "good",
+          "avgRatingWithWord": 4.285714285714286,
+          "avgRatingWithoutWord": 3.6962025316455698,
+          "difference": 0.5895117540687158,
+          "reviewCount": 42
+        },
+        {
+          "word": "this",
+          "avgRatingWithWord": 2.8181818181818183,
+          "avgRatingWithoutWord": 3.943820224719101,
+          "difference": -1.1256384065372829,
+          "reviewCount": 22
+        },
+        {
+          "word": "don't",
+          "avgRatingWithWord": 3.125,
+          "avgRatingWithoutWord": 3.880434782608696,
+          "difference": -0.7554347826086958,
+          "reviewCount": 16
+        },
+        {
+          "word": "songs",
+          "avgRatingWithWord": 3.4,
+          "avgRatingWithoutWord": 3.8666666666666667,
+          "difference": -0.4666666666666668,
+          "reviewCount": 20
+        },
+        {
+          "word": "song",
+          "avgRatingWithWord": 2.888888888888889,
+          "avgRatingWithoutWord": 4.024390243902439,
+          "difference": -1.1355013550135502,
+          "reviewCount": 36
+        },
+        {
+          "word": "great",
+          "avgRatingWithWord": 5,
+          "avgRatingWithoutWord": 3.688888888888889,
+          "difference": 1.311111111111111,
+          "reviewCount": 20
+        },
+        {
+          "word": "when",
+          "avgRatingWithWord": 2.9,
+          "avgRatingWithoutWord": 3.922222222222222,
+          "difference": -1.0222222222222221,
+          "reviewCount": 20
+        },
+        {
+          "word": "like",
+          "avgRatingWithWord": 3.4444444444444446,
+          "avgRatingWithoutWord": 3.857142857142857,
+          "difference": -0.41269841269841256,
+          "reviewCount": 18
+        },
+        {
+          "word": "that",
+          "avgRatingWithWord": 3.090909090909091,
+          "avgRatingWithoutWord": 3.9101123595505616,
+          "difference": -0.8192032686414707,
+          "reviewCount": 22
+        },
+        {
+          "word": "premium",
+          "avgRatingWithWord": 3.125,
+          "avgRatingWithoutWord": 3.880434782608696,
+          "difference": -0.7554347826086958,
+          "reviewCount": 16
+        },
+        {
+          "word": "love",
+          "avgRatingWithWord": 5,
+          "avgRatingWithoutWord": 3.717391304347826,
+          "difference": 1.2826086956521738,
+          "reviewCount": 16
+        },
+        {
+          "word": "play",
+          "avgRatingWithWord": 2.5,
+          "avgRatingWithoutWord": 4,
+          "difference": -1.5,
+          "reviewCount": 24
+        },
+        {
+          "word": "nice",
+          "avgRatingWithWord": 4.5,
+          "avgRatingWithoutWord": 3.760869565217391,
+          "difference": 0.7391304347826089,
+          "reviewCount": 16
+        },
+        {
+          "word": "listen",
+          "avgRatingWithWord": 1.9090909090909092,
+          "avgRatingWithoutWord": 4.056179775280899,
+          "difference": -2.14708886618999,
+          "reviewCount": 22
+        },
+        {
+          "word": "have",
+          "avgRatingWithWord": 3,
+          "avgRatingWithoutWord": 3.901098901098901,
+          "difference": -0.901098901098901,
+          "reviewCount": 18
+        },
+        {
+          "word": "just",
+          "avgRatingWithWord": 3.1666666666666665,
+          "avgRatingWithoutWord": 3.8617021276595747,
+          "difference": -0.6950354609929081,
+          "reviewCount": 12
+        },
+        {
+          "word": "it's",
+          "avgRatingWithWord": 3.2857142857142856,
+          "avgRatingWithoutWord": 3.860215053763441,
+          "difference": -0.5745007680491554,
+          "reviewCount": 14
+        },
+        {
+          "word": "want",
+          "avgRatingWithWord": 2.4285714285714284,
+          "avgRatingWithoutWord": 3.924731182795699,
+          "difference": -1.4961597542242706,
+          "reviewCount": 14
+        }
+      ]
+    },
+    "sentiment": {
+      "distribution": {
+        "positive": 67,
+        "negative": 15,
+        "neutral": 18
+      },
+      "averageScore": 0.6304673324978598,
+      "positive": 134,
+      "negative": 30,
+      "neutral": 36
+    },
+    "topics": {
+      "list": [
+        {
+          "topic": "music",
+          "count": 50,
+          "avgRating": 3.3333333333333335,
+          "ratingsCount": 42
+        },
+        {
+          "topic": "good",
+          "count": 42,
+          "avgRating": 4.285714285714286,
+          "ratingsCount": 42
+        },
+        {
+          "topic": "song",
+          "count": 28,
+          "avgRating": 2.888888888888889,
+          "ratingsCount": 36
+        },
+        {
+          "topic": "songs",
+          "count": 26,
+          "avgRating": 3.4,
+          "ratingsCount": 20
+        },
+        {
+          "topic": "great",
+          "count": 24,
+          "avgRating": 5,
+          "ratingsCount": 20
+        },
+        {
+          "topic": "like",
+          "count": 22,
+          "avgRating": 3.4444444444444446,
+          "ratingsCount": 18
+        },
+        {
+          "topic": "premium",
+          "count": 20,
+          "avgRating": 3.125,
+          "ratingsCount": 16
+        },
+        {
+          "topic": "love",
+          "count": 18,
+          "avgRating": 5,
+          "ratingsCount": 16
+        },
+        {
+          "topic": "play",
+          "count": 16,
+          "avgRating": 2.5,
+          "ratingsCount": 24
+        },
+        {
+          "topic": "nice",
+          "count": 16,
+          "avgRating": 4.5,
+          "ratingsCount": 16
+        },
+        {
+          "topic": "listen",
+          "count": 16,
+          "avgRating": 1.9090909090909092,
+          "ratingsCount": 22
+        },
+        {
+          "topic": "spotify",
+          "count": 16,
+          "avgRating": 4,
+          "ratingsCount": 16
+        },
+        {
+          "topic": "want",
+          "count": 14,
+          "avgRating": 2.4285714285714284,
+          "ratingsCount": 14
+        },
+        {
+          "topic": "experience",
+          "count": 14,
+          "avgRating": 4,
+          "ratingsCount": 14
+        },
+        {
+          "topic": "playlist",
+          "count": 14,
+          "avgRating": 2.857142857142857,
+          "ratingsCount": 14
+        },
+        {
+          "topic": "awesome",
+          "count": 12,
+          "avgRating": 5,
+          "ratingsCount": 10
+        },
+        {
+          "topic": "even",
+          "count": 10,
+          "avgRating": 1.8,
+          "ratingsCount": 10
+        },
+        {
+          "topic": "really",
+          "count": 10,
+          "avgRating": 5,
+          "ratingsCount": 8
+        },
+        {
+          "topic": "shuffle",
+          "count": 10,
+          "avgRating": 2.6666666666666665,
+          "ratingsCount": 6
+        },
+        {
+          "topic": "listening",
+          "count": 10,
+          "avgRating": 1.2,
+          "ratingsCount": 10
+        },
+        {
+          "topic": "many",
+          "count": 8,
+          "avgRating": 3.75,
+          "ratingsCount": 8
+        },
+        {
+          "topic": "playing",
+          "count": 8,
+          "avgRating": 2.25,
+          "ratingsCount": 8
+        },
+        {
+          "topic": "pretty",
+          "count": 8,
+          "avgRating": 3.25,
+          "ratingsCount": 8
+        },
+        {
+          "topic": "need",
+          "count": 8,
+          "avgRating": 1,
+          "ratingsCount": 6
+        },
+        {
+          "topic": "poor",
+          "count": 6,
+          "avgRating": 1.5,
+          "ratingsCount": 4
+        },
+        {
+          "topic": "free",
+          "count": 6,
+          "avgRating": 3.3333333333333335,
+          "ratingsCount": 6
+        },
+        {
+          "topic": "best",
+          "count": 6,
+          "avgRating": 4.333333333333333,
+          "ratingsCount": 6
+        },
+        {
+          "topic": "ever",
+          "count": 6,
+          "avgRating": 2.8,
+          "ratingsCount": 20
+        },
+        {
+          "topic": "amazing",
+          "count": 6,
+          "avgRating": 5,
+          "ratingsCount": 6
+        },
+        {
+          "topic": "doesn",
+          "count": 6,
+          "avgRating": 3.6666666666666665,
+          "ratingsCount": 6
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "want listen",
+          "count": 8
+        },
+        {
+          "phrase": "good music",
+          "count": 6
+        },
+        {
+          "phrase": "pretty good",
+          "count": 6
+        },
+        {
+          "phrase": "need premium",
+          "count": 6
+        },
+        {
+          "phrase": "listening music",
+          "count": 6
+        },
+        {
+          "phrase": "play music",
+          "count": 4
+        },
+        {
+          "phrase": "music want",
+          "count": 4
+        },
+        {
+          "phrase": "skips hour",
+          "count": 4
+        },
+        {
+          "phrase": "music like",
+          "count": 4
+        },
+        {
+          "phrase": "great music",
+          "count": 4
+        },
+        {
+          "phrase": "apple music",
+          "count": 4
+        },
+        {
+          "phrase": "really know",
+          "count": 4
+        },
+        {
+          "phrase": "song want",
+          "count": 4
+        },
+        {
+          "phrase": "song want listen",
+          "count": 4
+        },
+        {
+          "phrase": "love spotify",
+          "count": 4
+        },
+        {
+          "phrase": "great awesome",
+          "count": 4
+        },
+        {
+          "phrase": "smart shuffle",
+          "count": 4
+        },
+        {
+          "phrase": "after showing",
+          "count": 4
+        },
+        {
+          "phrase": "premium play",
+          "count": 4
+        },
+        {
+          "phrase": "need premium play",
+          "count": 4
+        }
+      ],
+      "frequent": [
+        {
+          "topic": "music",
+          "count": 50,
+          "avgRating": 3.3333333333333335,
+          "ratingsCount": 42
+        },
+        {
+          "topic": "good",
+          "count": 42,
+          "avgRating": 4.285714285714286,
+          "ratingsCount": 42
+        },
+        {
+          "topic": "song",
+          "count": 28,
+          "avgRating": 2.888888888888889,
+          "ratingsCount": 36
+        },
+        {
+          "topic": "songs",
+          "count": 26,
+          "avgRating": 3.4,
+          "ratingsCount": 20
+        },
+        {
+          "topic": "great",
+          "count": 24,
+          "avgRating": 5,
+          "ratingsCount": 20
+        },
+        {
+          "topic": "like",
+          "count": 22,
+          "avgRating": 3.4444444444444446,
+          "ratingsCount": 18
+        },
+        {
+          "topic": "premium",
+          "count": 20,
+          "avgRating": 3.125,
+          "ratingsCount": 16
+        },
+        {
+          "topic": "love",
+          "count": 18,
+          "avgRating": 5,
+          "ratingsCount": 16
+        },
+        {
+          "topic": "play",
+          "count": 16,
+          "avgRating": 2.5,
+          "ratingsCount": 24
+        },
+        {
+          "topic": "nice",
+          "count": 16,
+          "avgRating": 4.5,
+          "ratingsCount": 16
+        }
+      ]
+    },
+    "stats": {
+      "totalReviews": 200,
+      "processingTimeMs": 20
+    }
+  }
+}

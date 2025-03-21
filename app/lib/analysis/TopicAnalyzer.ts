@@ -1,5 +1,5 @@
+import { AnalysisProgress } from './types';
 import natural from 'natural';
-import { franc } from 'franc';
 
 export interface TopicResult {
   topics: Map<string, number>;
@@ -18,141 +18,150 @@ export interface BatchProgress {
 }
 
 export class TopicAnalyzer {
-  private tokenizer: natural.WordTokenizer;
-  private tfidf: natural.TfIdf;
-  private progress: BatchProgress;
   private batchSize: number;
+  private progress: AnalysisProgress;
+  private tokenizer: any;
   private stopwords: Set<string>;
-
-  constructor(batchSize = 100) {
-    this.tokenizer = new natural.WordTokenizer();
-    this.tfidf = new natural.TfIdf();
+  
+  constructor(batchSize: number = 50) {
     this.batchSize = batchSize;
-    this.progress = {
-      processedReviews: 0,
-      totalReviews: 0,
-      currentBatch: 0,
-      status: 'idle'
-    };
-    
-    // Initialize stopwords
+    this.tokenizer = new natural.WordTokenizer();
     this.stopwords = new Set([
-      'the', 'is', 'at', 'which', 'on', 'app', 'apps', 'good',
-      'bad', 'very', 'too', 'and', 'or', 'but', 'for', 'with',
-      'this', 'that', 'its', "it's", 'was', 'were', 'be', 'been'
+      'the', 'and', 'to', 'of', 'a', 'in', 'is', 'that', 'it', 'for', 
+      'with', 'as', 'was', 'on', 'are', 'at', 'be', 'this', 'have', 'from',
+      'or', 'had', 'by', 'but', 'not', 'what', 'all', 'were', 'when', 'we',
+      'there', 'been', 'you', 'would', 'your', 'they', 'their', 'has', 'can',
+      'an', 'said', 'which', 'its', 'some', 'if', 'who', 'will', 'more',
+      'about', 'very', 'much', 'only', 'how', 'them', 'than', 'just'
     ]);
-  }
-
-  private processText(text: string): string[] {
-    const tokens = this.tokenizer.tokenize(text.toLowerCase()) || [];
-    return tokens.filter(token => 
-      token.length > 2 && // Ignore short tokens
-      !this.stopwords.has(token) && // Remove stopwords
-      /^[a-z]+$/i.test(token) // Only keep alphabetic tokens
-    );
-  }
-
-  private extractNGrams(tokens: string[], n: number): string[] {
-    const ngrams: string[] = [];
-    for (let i = 0; i <= tokens.length - n; i++) {
-      ngrams.push(tokens.slice(i, i + n).join(' '));
-    }
-    return ngrams;
-  }
-
-  private async analyzeBatch(reviews: { text: string; score: number }[]): Promise<TopicResult> {
-    const topics = new Map<string, number>();
-    const ngrams = new Map<string, number>();
-    
-    // Process each review in the batch
-    reviews.forEach(review => {
-      const tokens = this.processText(review.text);
-      
-      // Add to TF-IDF
-      this.tfidf.addDocument(tokens);
-      
-      // Process unigrams (single words)
-      tokens.forEach(token => {
-        topics.set(token, (topics.get(token) || 0) + 1);
-      });
-      
-      // Process bigrams
-      this.extractNGrams(tokens, 2).forEach(bigram => {
-        ngrams.set(bigram, (ngrams.get(bigram) || 0) + 1);
-      });
-    });
-
-    // Extract key phrases using TF-IDF scores
-    const keyPhrases = this.extractKeyPhrases(topics);
-    
-    // Calculate TF-IDF scores for all terms
-    const tfidf = this.calculateTfidfScores();
-
-    return {
-      topics,
-      ngrams,
-      keyPhrases,
-      tfidf,
-      confidence: this.calculateConfidence(topics, ngrams)
-    };
-  }
-
-  private extractKeyPhrases(topics: Map<string, number>): string[] {
-    return Array.from(topics.entries())
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 10)
-      .map(([phrase]) => phrase);
-  }
-
-  private calculateTfidfScores(): Map<string, number> {
-    const scores = new Map<string, number>();
-    this.tfidf.listTerms(0).forEach(item => {
-      scores.set(item.term, item.tfidf);
-    });
-    return scores;
-  }
-
-  private calculateConfidence(topics: Map<string, number>, ngrams: Map<string, number>): number {
-    const topicCount = topics.size;
-    const ngramCount = ngrams.size;
-    
-    // Basic confidence calculation based on topic diversity
-    const diversity = (topicCount + ngramCount) / (this.batchSize * 2);
-    return Math.min(diversity, 1);
-  }
-
-  async analyze(reviews: { text: string; score: number }[]): Promise<Map<number, TopicResult>> {
-    const results = new Map<number, TopicResult>();
     this.progress = {
-      processedReviews: 0,
-      totalReviews: reviews.length,
-      currentBatch: 0,
-      status: 'processing'
+      stage: 'idle',
+      progress: 0
     };
+  }
 
+  async analyze(reviews: any[]) {
+    this.progress = { 
+      stage: 'running', 
+      progress: 0,
+      details: 'Extracting topics from reviews...'
+    };
+    
     try {
-      for (let i = 0; i < reviews.length; i += this.batchSize) {
-        this.progress.currentBatch = Math.floor(i / this.batchSize) + 1;
-        const batch = reviews.slice(i, i + this.batchSize);
+      // Storage for analysis
+      const topicFrequency = new Map<string, number>();
+      const phraseFrequency = new Map<string, number>();
+      const tfidf = new natural.TfIdf();
+      
+      // Step 1: Process each review and extract tokens
+      reviews.forEach((review, i) => {
+        const tokens = this.tokenizer.tokenize(review.text.toLowerCase())
+          .filter(token => token.length > 3 && !this.stopwords.has(token));
         
-        const result = await this.analyzeBatch(batch);
-        results.set(i, result);
+        // Add to TF-IDF
+        tfidf.addDocument(tokens);
         
-        this.progress.processedReviews += batch.length;
-        await new Promise(resolve => setTimeout(resolve, 0));
+        // Count token frequencies
+        tokens.forEach(token => {
+          topicFrequency.set(token, (topicFrequency.get(token) || 0) + 1);
+        });
+        
+        // Extract n-grams (phrases)
+        for (let n = 2; n <= 4; n++) {
+          if (tokens.length >= n) {
+            for (let j = 0; j <= tokens.length - n; j++) {
+              const phrase = tokens.slice(j, j + n).join(' ');
+              if (phrase.length >= 8) { // Minimum length for a meaningful phrase
+                phraseFrequency.set(phrase, (phraseFrequency.get(phrase) || 0) + 1);
+              }
+            }
+          }
+        }
+        
+        this.progress.progress = Math.round((i + 1) / reviews.length * 70);
+      });
+      
+      // Step 2: Find key terms using TF-IDF
+      const keyTerms = [];
+      const documentsCount = tfidf.documents.length;
+      
+      for (let i = 0; i < documentsCount; i++) {
+        const items = tfidf.listTerms(i).slice(0, 5);
+        items.forEach(item => {
+          keyTerms.push({
+            term: item.term,
+            tfidf: item.tfidf,
+            documentIndex: i
+          });
+        });
+        
+        if (i % 10 === 0) {
+          this.progress.progress = 70 + Math.round((i / documentsCount) * 20);
+        }
       }
-
-      this.progress.status = 'completed';
+      
+      // Step 3: Sort and prepare results
+      const sortedTopics = Array.from(topicFrequency.entries())
+        .filter(([topic, count]) => count > 1) // Must appear more than once
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 30);
+      
+      const sortedPhrases = Array.from(phraseFrequency.entries())
+        .filter(([phrase, count]) => count > 1) // Must appear more than once
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 20)
+        .map(([phrase, count]) => ({ phrase, count }));
+      
+      // Group topics by rating
+      const topicsByRating = new Map<string, number[]>();
+      sortedTopics.forEach(([topic]) => {
+        topicsByRating.set(topic, []);
+      });
+      
+      reviews.forEach(review => {
+        const text = review.text.toLowerCase();
+        sortedTopics.forEach(([topic]) => {
+          if (text.includes(topic)) {
+            topicsByRating.get(topic)?.push(review.score);
+          }
+        });
+      });
+      
+      // Calculate average rating for each topic
+      const topicsWithRating = sortedTopics.map(([topic, count]) => {
+        const ratings = topicsByRating.get(topic) || [];
+        const avgRating = ratings.length > 0 
+          ? ratings.reduce((sum, score) => sum + score, 0) / ratings.length
+          : 0;
+        
+        return {
+          topic,
+          count,
+          avgRating,
+          ratingsCount: ratings.length
+        };
+      });
+      
+      this.progress.progress = 100;
+      
+      return {
+        topics: topicsWithRating,
+        phrases: sortedPhrases,
+        keyTerms: keyTerms.slice(0, 20),
+        topFrequent: topicsWithRating.slice(0, 10)
+      };
     } catch (error) {
-      this.progress.status = 'error';
-      this.progress.error = error.message;
+      this.progress = { 
+        stage: 'error', 
+        progress: 0, 
+        error: error.message,
+        details: `Topic analysis failed: ${error.message}`
+      };
       throw error;
     }
-
-    return results;
   }
 
-  getProgress(): BatchProgress {
+  getProgress(): AnalysisProgress {
     return { ...this.progress };
   }
 }

@@ -1,4 +1,5 @@
 import natural from 'natural';
+import { AnalysisProgress } from './types';
 
 export interface PatternResult {
   frequencyPatterns: Map<string, number>;
@@ -36,192 +37,140 @@ export interface BatchProgress {
 }
 
 export class PatternAnalyzer {
-  private tokenizer: natural.WordTokenizer;
-  private progress: BatchProgress;
   private batchSize: number;
+  private progress: AnalysisProgress;
 
-  constructor(batchSize = 100) {
-    this.tokenizer = new natural.WordTokenizer();
+  constructor(batchSize: number = 50) {
     this.batchSize = batchSize;
     this.progress = {
-      processedReviews: 0,
-      totalReviews: 0,
-      currentBatch: 0,
-      status: 'idle'
+      stage: 'idle',
+      progress: 0
     };
   }
 
-  private findFrequencyPatterns(reviews: any[]): Map<string, number> {
-    const patterns = new Map<string, number>();
-    const tokenFreq = new Map<string, number>();
-
-    reviews.forEach(review => {
-      const tokens = this.tokenizer.tokenize(review.text?.toLowerCase() || '');
-      if (tokens) {
-        tokens.forEach(token => {
-          tokenFreq.set(token, (tokenFreq.get(token) || 0) + 1);
-        });
-      }
-    });
-
-    // Filter significant patterns
-    tokenFreq.forEach((freq, token) => {
-      if (freq > reviews.length * 0.1) { // 10% threshold
-        patterns.set(token, freq);
-      }
-    });
-
-    return patterns;
-  }
-
-  private analyzeTimePatterns(reviews: any[]): TimePattern[] {
-    const patterns: TimePattern[] = [];
-    const timeGroups = new Map<string, any[]>();
-
-    // Group reviews by month
-    reviews.forEach(review => {
-      const date = new Date(review.date);
-      const period = `${date.getFullYear()}-${date.getMonth() + 1}`;
-      if (!timeGroups.has(period)) {
-        timeGroups.set(period, []);
-      }
-      timeGroups.get(period)?.push(review);
-    });
-
-    timeGroups.forEach((groupReviews, period) => {
-      const avgRating = groupReviews.reduce((sum, r) => sum + r.score, 0) / groupReviews.length;
-      const keywords = this.extractCommonKeywords(groupReviews);
-
-      patterns.push({
-        period,
-        frequency: groupReviews.length,
-        avgRating,
-        keywords
-      });
-    });
-
-    return patterns.sort((a, b) => b.frequency - a.frequency);
-  }
-
-  private analyzeRatingPatterns(reviews: any[]): RatingPattern[] {
-    const patterns: RatingPattern[] = [];
-    const ratingGroups = new Map<number, any[]>();
-
-    reviews.forEach(review => {
-      if (!ratingGroups.has(review.score)) {
-        ratingGroups.set(review.score, []);
-      }
-      ratingGroups.get(review.score)?.push(review);
-    });
-
-    ratingGroups.forEach((groupReviews, rating) => {
-      patterns.push({
-        rating,
-        frequency: groupReviews.length,
-        commonPhrases: this.extractCommonKeywords(groupReviews)
-      });
-    });
-
-    return patterns;
-  }
-
-  private findCorrelations(reviews: any[]): CorrelationPattern[] {
-    const correlations: CorrelationPattern[] = [];
-    
-    // Analyze length vs rating correlation
-    const lengthVsRating = this.calculateCorrelation(
-      reviews.map(r => r.text?.length || 0),
-      reviews.map(r => r.score)
-    );
-
-    correlations.push({
-      factor: 'review_length',
-      correlation: lengthVsRating,
-      significance: Math.abs(lengthVsRating)
-    });
-
-    return correlations;
-  }
-
-  private calculateCorrelation(x: number[], y: number[]): number {
-    const n = x.length;
-    const sum_x = x.reduce((a, b) => a + b, 0);
-    const sum_y = y.reduce((a, b) => a + b, 0);
-    const sum_xy = x.reduce((a, b, i) => a + b * y[i], 0);
-    const sum_x2 = x.reduce((a, b) => a + b * b, 0);
-    const sum_y2 = y.reduce((a, b) => a + b * b, 0);
-
-    const correlation = (n * sum_xy - sum_x * sum_y) /
-      Math.sqrt((n * sum_x2 - sum_x * sum_x) * (n * sum_y2 - sum_y * sum_y));
-
-    return isNaN(correlation) ? 0 : correlation;
-  }
-
-  private extractCommonKeywords(reviews: any[]): string[] {
-    const wordFreq = new Map<string, number>();
-    
-    reviews.forEach(review => {
-      const tokens = this.tokenizer.tokenize(review.text?.toLowerCase() || '');
-      if (tokens) {
-        new Set(tokens).forEach(token => {
-          wordFreq.set(token, (wordFreq.get(token) || 0) + 1);
-        });
-      }
-    });
-
-    return Array.from(wordFreq.entries())
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 5)
-      .map(([word]) => word);
-  }
-
-  private calculateConfidence(reviews: any[]): number {
-    const sampleSize = reviews.length;
-    const textQuality = reviews.filter(r => r.text?.length > 10).length / sampleSize;
-    const ratingDistribution = new Set(reviews.map(r => r.score)).size / 5;
-    
-    return (textQuality * 0.6 + ratingDistribution * 0.4);
-  }
-
-  async analyze(reviews: any[]): Promise<Map<number, PatternResult>> {
-    const results = new Map<number, PatternResult>();
-    this.progress = {
-      processedReviews: 0,
-      totalReviews: reviews.length,
-      currentBatch: 0,
-      status: 'processing'
+  async analyze(reviews: any[]) {
+    this.progress = { 
+      stage: 'running', 
+      progress: 0,
+      details: 'Starting pattern analysis...'
     };
 
     try {
-      for (let i = 0; i < reviews.length; i += this.batchSize) {
-        this.progress.currentBatch = Math.floor(i / this.batchSize) + 1;
-        const batch = reviews.slice(i, i + this.batchSize);
-
-        const result: PatternResult = {
-          frequencyPatterns: this.findFrequencyPatterns(batch),
-          timeBasedPatterns: this.analyzeTimePatterns(batch),
-          ratingPatterns: this.analyzeRatingPatterns(batch),
-          correlations: this.findCorrelations(batch),
-          confidence: this.calculateConfidence(batch)
-        };
-
-        results.set(i, result);
-        this.progress.processedReviews += batch.length;
+      // Extract frequencies of words and phrases
+      const frequencyPatterns = new Map<string, number>();
+      const timeBasedPatterns = [];
+      const ratingPatterns = [];
+      const correlations = [];
+      
+      // 1. Process word frequencies
+      for (let i = 0; i < reviews.length; i++) {
+        const review = reviews[i];
+        const text = review.text.toLowerCase();
         
-        await new Promise(resolve => setTimeout(resolve, 0));
+        // Extract common phrases (n-grams)
+        const words = text.split(/\s+/).filter(word => word.length > 3);
+        
+        // Count word frequencies
+        words.forEach(word => {
+          frequencyPatterns.set(word, (frequencyPatterns.get(word) || 0) + 1);
+        });
+        
+        this.progress.progress = Math.round((i / reviews.length) * 33);
       }
-
-      this.progress.status = 'completed';
+      
+      // 2. Find time-based patterns
+      const dateGroups = new Map();
+      reviews.forEach(review => {
+        const date = new Date(review.date).toISOString().split('T')[0];
+        if (!dateGroups.has(date)) {
+          dateGroups.set(date, []);
+        }
+        dateGroups.get(date).push(review);
+      });
+      
+      // Find dates with unusually high review counts
+      const avgReviewsPerDay = reviews.length / dateGroups.size;
+      dateGroups.forEach((dateReviews, date) => {
+        if (dateReviews.length > avgReviewsPerDay * 1.5) {
+          timeBasedPatterns.push({
+            date,
+            count: dateReviews.length,
+            anomaly: 'high volume'
+          });
+        }
+      });
+      
+      this.progress.progress = 66;
+      
+      // 3. Find rating patterns
+      const ratingGroups = [0, 0, 0, 0, 0]; // 1-5 stars
+      reviews.forEach(review => {
+        if (review.score >= 1 && review.score <= 5) {
+          ratingGroups[Math.floor(review.score) - 1]++;
+        }
+      });
+      
+      // Calculate rating distribution
+      for (let i = 0; i < 5; i++) {
+        ratingPatterns.push({
+          stars: i + 1,
+          count: ratingGroups[i],
+          percentage: (ratingGroups[i] / reviews.length) * 100
+        });
+      }
+      
+      // 4. Find correlations between ratings and common words
+      const topWords = Array.from(frequencyPatterns.entries())
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 20)
+        .map(entry => entry[0]);
+      
+      topWords.forEach(word => {
+        const withWord = [];
+        const withoutWord = [];
+        
+        reviews.forEach(review => {
+          if (review.text.toLowerCase().includes(word)) {
+            withWord.push(review.score);
+          } else {
+            withoutWord.push(review.score);
+          }
+        });
+        
+        const avgWithWord = withWord.length > 0 ? 
+          withWord.reduce((sum, score) => sum + score, 0) / withWord.length : 0;
+        const avgWithoutWord = withoutWord.length > 0 ? 
+          withoutWord.reduce((sum, score) => sum + score, 0) / withoutWord.length : 0;
+        
+        correlations.push({
+          word,
+          avgRatingWithWord: avgWithWord,
+          avgRatingWithoutWord: avgWithoutWord,
+          difference: avgWithWord - avgWithoutWord,
+          reviewCount: withWord.length
+        });
+      });
+      
+      this.progress.progress = 100;
+      
+      // Return structured patterns
+      return {
+        frequencyPatterns,
+        timeBasedPatterns,
+        ratingPatterns,
+        correlations
+      };
     } catch (error) {
-      this.progress.status = 'error';
-      this.progress.error = error.message;
+      this.progress = { 
+        stage: 'error', 
+        progress: 0, 
+        error: error.message 
+      };
       throw error;
     }
-
-    return results;
   }
 
-  getProgress(): BatchProgress {
+  getProgress(): AnalysisProgress {
     return { ...this.progress };
   }
 }
