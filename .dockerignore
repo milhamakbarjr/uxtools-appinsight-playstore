@@ -1,0 +1,71 @@
+# Version control files
+.git
+.gitignore
+.svn
+.hg
+
+# Development and environment files
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.DS_Store
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Editor directories and files
+.idea
+.vscode
+*.swp
+*.swo
+*~
+.vs
+
+# Docker related
+docker-compose*.yml
+Dockerfile*
+.dockerignore
+
+# Testing
+coverage
+.nyc_output
+.coverage
+.tox
+htmlcov/
+.pytest_cache/
+
+# Documentation
+docs
+*.md
+README*
+LICENSE*
+CHANGELOG*
+
+# Log files
+logs
+*.log
