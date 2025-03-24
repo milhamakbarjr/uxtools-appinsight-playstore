@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import type { MetaFunction, LoaderFunction } from "@remix-run/node";
 import { Search, Package, Loader2, X } from "lucide-react";
 import { useNavigate, useSearchParams, useLoaderData } from "@remix-run/react";
+import { Analytics } from "@vercel/analytics/remix";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
@@ -386,6 +387,7 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-950 flex flex-col items-center justify-center p-4 sm:p-6 relative">
+      <Analytics />
       <div className="w-full max-w-2xl mx-auto">
         {/* Logo Header */}
         <div className="flex items-center justify-center mb-8">
