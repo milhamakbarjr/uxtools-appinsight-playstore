@@ -279,15 +279,15 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
             config={{
               positive: {
                 label: "Positive",
-                color: "hsl(var(--success))",
+                color: "rgb(24, 164, 75)", // green-700 color
               },
               negative: {
                 label: "Negative",
-                color: "hsl(var(--destructive))",
+                color: "hsl(0, 84%, 60%)", // More vibrant red
               },
               neutral: {
                 label: "Neutral",
-                color: "hsl(var(--muted-foreground) / 0.5)",
+                color: "hsl(220, 14%, 65%)", // Softer blue-gray
               },
             }}
           >
@@ -312,7 +312,7 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
                 fill="var(--color-positive)" 
                 stroke="var(--color-positive)" 
                 stackId="1" 
-                fillOpacity={0.6}
+                fillOpacity={0.7}
               />
               <Area 
                 type="monotone" 
@@ -320,7 +320,7 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
                 fill="var(--color-neutral)" 
                 stroke="var(--color-neutral)" 
                 stackId="1" 
-                fillOpacity={0.6}
+                fillOpacity={0.7}
               />
               <Area 
                 type="monotone" 
@@ -328,7 +328,7 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
                 fill="var(--color-negative)" 
                 stroke="var(--color-negative)" 
                 stackId="1" 
-                fillOpacity={0.6}
+                fillOpacity={0.7}
               />
             </ComposedChart>
           </ChartContainer>
@@ -366,7 +366,7 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
               <span>Avg. Rating</span>
             </div>
             <div className="flex items-center gap-1">
-              <div className="w-3 h-3 bg-slate-300 dark:bg-slate-700 rounded"></div>
+              <div className="w-3 h-3 bg-sky-400 rounded"></div>
               <span>Review Count</span>
             </div>
           </div>
@@ -383,7 +383,7 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
                   },
                   reviewCount: {
                     label: "Review Count",
-                    color: "hsl(var(--muted-foreground) / 0.2)",
+                    color: "hsl(198, 83%, 60%)", // Sky blue color
                   },
                 }}
               >
