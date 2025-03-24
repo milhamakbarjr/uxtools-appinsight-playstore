@@ -1,11 +1,19 @@
 import { useState, useEffect } from "react";
-import type { MetaFunction } from "@remix-run/node";
-import { Input } from "~/components/ui/input";
+import type { MetaFunction, LoaderFunction } from "@remix-run/node";
+import { Search, Package, Loader2 } from "lucide-react";
+import { useNavigate, useSearchParams, useLoaderData } from "@remix-run/react";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
-import { Search, Package, Smartphone, BarChart2, Loader2, AlertCircle, ChevronDown, Copy, Check } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import { useNavigate } from "@remix-run/react";
+import { Input } from "~/components/ui/input";
+
+interface Suggestion {
+  appId: string;
+  developer: string;
+  icon: string;
+  summary: string;
+  title: string;
+  url: string;
+}
 
 export const meta: MetaFunction = () => {
   return [
@@ -13,36 +21,68 @@ export const meta: MetaFunction = () => {
     { name: "description", content: "Extract and analyze Google Play Store reviews" },
   ];
 };
+// Add a server-side loader function
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const term = url.searchParams.get("term");
+
+  if (term) {
+    // Only import and use gplay on the server
+    const module = await import("google-play-scraper");
+    // @ts-ignore
+    const gplay = module.default;
+    try {
+      const suggestions = await gplay.search({
+        term,
+        num: 5
+      });
+      return ({ suggestions });
+    } catch (error) {
+      console.error("Error fetching suggestions:", error);
+      return ({ suggestions: [], error: "Failed to fetch suggestions" });
+    }
+  }
+
+  return ({ suggestions: [] });
+};
 
 export default function Index() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
-  const [error, setError] = useState(false);
-  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
-  const [copiedExample, setCopiedExample] = useState<string | null>(null);
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
+  const [_, setSearchParams] = useSearchParams();
+  const data = useLoaderData<{ suggestions: Array<Suggestion> }>();
+
+  // Add useEffect for debouncing search input
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 300); // 300ms delay
+
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  // Update the search params when debounced search changes
+  useEffect(() => {
+    if (debouncedSearch.length > 2) {
+      setSearchParams({ term: debouncedSearch });
+    }
+  }, [debouncedSearch, setSearchParams]);
 
   const handleSearch = () => {
-    if (!search.trim()) {
-      setError(true);
-      return;
-    }
-    
-    setError(false);
     setIsSearching(true);
-    
-    // Add a small delay to ensure the loading state is visible
     setTimeout(() => {
-      navigate(`/analysis/${search}`);
-    }, 300);
+      navigate(`/analysis/${debouncedSearch}`);
+    }, 1000); // Simulate a search delay
   };
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopiedExample(text);
-      setSearch(text);
-      setTimeout(() => setCopiedExample(null), 2000);
-    });
+  const handleSuggestionClick = (appId: string) => {
+    setSearch(appId);
+    setDebouncedSearch(appId);
+    setShowSuggestions(false);
+    navigate(`/analysis/${appId}`);
   };
 
   return (
@@ -69,35 +109,30 @@ export default function Index() {
           </CardHeader>
           <CardContent>
             <div className="flex flex-col gap-4">
-              <div className="flex gap-2">
-                <div className="flex-1">
-                  <Input
-                    placeholder="Enter package ID (e.g., com.spotify.music)"
-                    className={`h-12 bg-white dark:bg-slate-950 ${error ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
-                    onChange={(e) => {
-                      setSearch(e.target.value);
-                      if (error) setError(false);
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && !isSearching) {
-                        handleSearch();
-                      }
-                    }}
-                    disabled={isSearching}
-                    value={search}
-                  />
-                  {error && (
-                    <div className="flex items-center gap-1 mt-1 text-red-500 text-xs">
-                      <AlertCircle className="h-3 w-3" />
-                      <span>Please enter a package ID</span>
-                    </div>
-                  )}
-                </div>
+              <div className="flex gap-2 relative">
+                <Input
+                  placeholder="Enter app package ID (e.g., com.spotify.music)"
+                  className="h-12 bg-white dark:bg-slate-950"
+                  value={search}
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                    setShowSuggestions(true);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleSearch();
+                      setShowSuggestions(false);
+                    }
+                  }}
+                  onFocus={() => setShowSuggestions(true)}
+                />
                 <Button
                   size="lg"
                   className="gap-2 min-w-32 h-12"
-                  onClick={() => handleSearch()}
-                  disabled={isSearching}
+                  onClick={() => {
+                    handleSearch();
+                    setShowSuggestions(false);
+                  }}
                 >
                   {isSearching ? (
                     <>
@@ -111,86 +146,54 @@ export default function Index() {
                     </>
                   )}
                 </Button>
-              </div>
-              
-              <div className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
-                <div className="flex flex-wrap items-center gap-2 text-sm">
-                  <span className="font-medium">Examples:</span>
-                  <div className="flex flex-wrap gap-2">
-                    {["com.spotify.music", "com.netflix.mediaclient"].map((example) => (
-                      <button
-                        key={example}
-                        onClick={() => copyToClipboard(example)}
-                        className="px-2 py-1 rounded bg-white dark:bg-slate-800 text-xs border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer flex items-center gap-1 group"
-                      >
-                        <code>{example}</code>
-                        <span className="text-slate-400 group-hover:text-slate-500 dark:group-hover:text-slate-300">
-                          {copiedExample === example ? (
-                            <Check className="h-3 w-3 text-green-500" />
-                          ) : (
-                            <Copy className="h-3 w-3" />
-                          )}
-                        </span>
-                      </button>
-                    ))}
+
+                {/* Suggestions Dropdown */}
+                {showSuggestions && data.suggestions && data.suggestions.length > 0 && (
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-slate-900 shadow-lg rounded-md z-10 border border-slate-200 dark:border-slate-700 max-h-80 overflow-y-auto">
+                    <ul className="py-1">
+                      {data.suggestions.map((app) => (
+                        <li
+                          key={app.appId}
+                          className="px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer flex items-center gap-3"
+                          onClick={() => handleSuggestionClick(app.appId)}
+                        >
+                          <div className="w-10 h-10 flex-shrink-0">
+                            <img
+                              src={app.icon}
+                              alt={`${app.title} icon`}
+                              className="w-full h-full object-contain rounded"
+                            />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-medium text-sm truncate">{app.title}</p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400 truncate">{app.developer}</p>
+                          </div>
+                          <Package className="h-4 w-4 text-slate-400" />
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </div>
-                
-                <div className="mt-3 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden bg-white dark:bg-slate-900">
-                  <button 
-                    onClick={() => setIsAccordionOpen(!isAccordionOpen)}
-                    className="w-full px-3 py-2 text-xs flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
-                  >
-                    <div className="font-medium flex items-center gap-1.5 text-muted-foreground">
-                      <Package className="h-3.5 w-3.5" />
-                      How to find a package ID?
-                    </div>
-                    <ChevronDown className={`h-3.5 w-3.5 text-muted-foreground transition-transform duration-200 ${isAccordionOpen ? 'rotate-180' : ''}`} />
-                  </button>
-                  
-                  {isAccordionOpen && (
-                    <div className="px-3 py-2 border-t border-slate-200 dark:border-slate-700 text-xs">
-                      <ol className="list-decimal pl-5 space-y-1 text-muted-foreground">
-                        <li>Go to the app's Google Play Store page</li>
-                        <li>Look at the URL in your browser address bar</li>
-                        <li>Find the <code className="px-1 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs">id=</code> parameter in the URL</li>
-                      </ol>
-                      <div className="mt-2 bg-slate-50 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 p-2 overflow-hidden">
-                        <p className="text-muted-foreground mb-1">Example URL:</p>
-                        <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap pb-1">
-                          <span className="text-slate-500">https://play.google.com/store/apps/details?</span>
-                          <button 
-                            onClick={() => copyToClipboard("com.spotify.music")}
-                            className="font-semibold bg-yellow-100 dark:bg-yellow-900/30 px-1 rounded hover:bg-yellow-200 dark:hover:bg-yellow-900/50 transition-colors inline-flex items-center gap-1"
-                          >
-                            id=com.spotify.music
-                            <span className="text-slate-500">
-                              {copiedExample === "com.spotify.music" ? (
-                                <Check className="h-3 w-3 text-green-500" />
-                              ) : (
-                                <Copy className="h-3 w-3" />
-                              )}
-                            </span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                )}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                <span>Examples:</span>
+                <code className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-xs">com.spotify.music</code>
+                <code className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-xs">com.netflix.mediaclient</code>
               </div>
             </div>
           </CardContent>
         </Card>
 
       </div>
-      
+
       {/* Sticky Disclaimer */}
       <div className="fixed bottom-0 left-0 right-0 bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm border-t border-slate-200 dark:border-slate-800 py-2 z-10">
         <div className="container mx-auto max-w-4xl px-4">
           <p className="text-[0.65rem] text-slate-500 dark:text-slate-400 text-center">
-            <strong>Disclaimer:</strong> AppInsight is designed for educational and research purposes only. 
-            No data is stored on our servers—all processing happens in your browser session. 
-            Users are responsible for ensuring compliance with Google Play Store's Terms of Service. 
+            <strong>Disclaimer:</strong> AppInsight is designed for educational and research purposes only.
+            No data is stored on our servers—all processing happens in your browser session.
+            Users are responsible for ensuring compliance with Google Play Store's Terms of Service.
             This tool should not be used for commercial scraping operations.
           </p>
         </div>
