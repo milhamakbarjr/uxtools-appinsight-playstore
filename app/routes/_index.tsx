@@ -45,6 +45,175 @@ export const loader: LoaderFunction = async ({ request }) => {
   return ({ suggestions: [] });
 };
 
+// Add Terminal component
+const Terminal = ({ messages, complete, onClose }: { messages: string[], complete: boolean, onClose: () => void }) => {
+  const [input, setInput] = useState("");
+  const [history, setHistory] = useState<string[]>([]);
+  const [selectedLink, setSelectedLink] = useState(-1);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const terminalRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, history]);
+
+  const links = [
+    { command: 'profile', url: 'https://www.milhamakbarjr.com/', label: 'Access Jedi Holocron (Personal Archives)' },
+    { command: 'code', url: 'https://github.com/milhamakbarjr/uxtools-appinsights-playstore', label: 'Access Source Code Archives' },
+    { command: 'exit', url: '', label: 'Close Secure Connection' }
+  ];
+
+  const handleCommand = (cmd: string) => {
+    const command = cmd.toLowerCase().trim();
+    let response = "";
+
+    switch (command) {
+      case "profile":
+        response = "> ACCESSING JEDI HOLOCRON DATABASE...";
+        setHistory(prev => [...prev, `$ ${cmd}`, response]);
+        setTimeout(() => {
+          setHistory(prev => [...prev, "> MAY THE FORCE BE WITH YOU"]);
+          setTimeout(() => window.open("https://www.milhamakbarjr.com/", "_blank"), 1000);
+        }, 1500);
+        break;
+      case "code":
+        response = "> ACCESSING JEDI ARCHIVES...";
+        setHistory(prev => [...prev, `$ ${cmd}`, response]);
+        setTimeout(() => {
+          setHistory(prev => [...prev, "> MAY THE FORCE BE WITH YOU"]);
+          setTimeout(() => window.open("https://github.com/milhamakbarjr/uxtools-appinsights-playstore", "_blank"), 1000);
+        }, 1500);
+        break;
+      case "exit":
+        response = "> CLOSING SECURE CONNECTION...";
+        setHistory(prev => [...prev, `$ ${cmd}`, response]);
+        setTimeout(() => {
+          setHistory(prev => [...prev, "> MAY THE FORCE BE WITH YOU"]);
+          setTimeout(() => onClose(), 1000);
+        }, 1500);
+        break;
+      default:
+        response = `> COMMAND NOT RECOGNIZED. THIS IS NOT THE COMMAND YOU'RE LOOKING FOR.`;
+        setHistory(prev => [...prev, `$ ${cmd}`, response]);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      if (input.trim()) {
+        handleCommand(input);
+        setInput("");
+      } else if (selectedLink !== -1) {
+        const command = links[selectedLink].command;
+        handleCommand(command);
+      }
+    } else if (e.key === "Tab" || e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      if (e.key === "ArrowUp") {
+        setSelectedLink(prev => (prev <= 0 ? links.length - 1 : prev - 1));
+      } else {
+        setSelectedLink(prev => (prev >= links.length - 1 ? 0 : prev + 1));
+      }
+      setInput("");
+    } else if (e.key === "Escape") {
+      setSelectedLink(-1);
+    }
+  };
+
+  useEffect(() => {
+    inputRef.current?.focus();
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (terminalRef.current && !terminalRef.current.contains(e.target as Node)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const renderMessage = (message: string, index: number) => {
+    if (message.startsWith("    ")) {
+      return <p key={index} className="ascii-art">{message}</p>;
+    }
+
+    if (message.includes('terminal-command')) {
+      return (
+        <p key={index} className="text-green-400 whitespace-pre">
+          {message.split('<span').map((part, i) => {
+            if (!part.includes('terminal-command')) return part;
+            const commandMatch = part.match(/>(.*?)<\/span>/);
+            const command = commandMatch ? commandMatch[1] : '';
+            const linkIndex = links.findIndex(l => l.command === command);
+            if (linkIndex === -1) return part;
+            return (
+              <span key={i}>
+                <span 
+                  className={`terminal-command ${selectedLink === linkIndex ? 'bg-green-500 text-black' : ''}`}
+                  onClick={() => command === 'exit' ? onClose() : window.open(links[linkIndex].url, '_blank')}
+                >
+                  {command}
+                </span>
+                {` - ${links[linkIndex].label}`}
+              </span>
+            );
+          })}
+        </p>
+      );
+    }
+
+    return (
+      <p key={index} className={`text-green-400 whitespace-pre ${
+        index === messages.length - 1 ? 'animate-typing' : ''
+      }`}>
+        {message}
+      </p>
+    );
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 backdrop-blur-sm" onClick={() => inputRef.current?.focus()}>
+      <div ref={terminalRef} className="terminal-container bg-black/95 p-6 rounded-lg border border-green-500 w-[800px] max-w-[95vw]">
+        <div className="flex items-center gap-2 mb-4">
+          <button 
+            onClick={onClose}
+            className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors"
+          />
+          <div className="w-3 h-3 rounded-full bg-yellow-500" />
+          <div className="w-3 h-3 rounded-full bg-green-500" />
+        </div>
+        <div className="space-y-2 overflow-y-auto max-h-[70vh]">
+          <div className="font-mono">
+            {messages.map((message, i) => renderMessage(message, i))}
+            {history.map((line, i) => (
+              <p key={`history-${i}`} className="text-green-400 whitespace-pre">{line}</p>
+            ))}
+            <div className="flex items-center text-green-400">
+              <span>$&nbsp;</span>
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className="flex-1 bg-transparent border-none outline-none text-green-400 font-mono"
+                autoFocus
+              />
+            </div>
+          </div>
+          <div ref={messagesEndRef} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function Index() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
@@ -54,6 +223,67 @@ export default function Index() {
   const [_, setSearchParams] = useSearchParams();
   const data = useLoaderData<{ suggestions: Array<Suggestion> }>();
   const suggestionsRef = useRef<HTMLDivElement>(null);
+  const [konamiIndex, setKonamiIndex] = useState(0);
+  const [showParty, setShowParty] = useState(false);
+  const [showClue, setShowClue] = useState(false);
+  const [showTerminal, setShowTerminal] = useState(false);
+  const [terminalMessages, setTerminalMessages] = useState<string[]>([]);
+  const [terminalComplete, setTerminalComplete] = useState(false);
+  const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // Up Up Down Down Left Right Left Right B A
+
+  const TERMINAL_SEQUENCE = [
+    { text: "> ESTABLISHING SECURE CONNECTION TO JEDI NETWORK...", delay: 800 },
+    { text: "> AUTHENTICATING CREDENTIALS...", delay: 600 },
+    { text: "> DECRYPTING HOLOCRON ACCESS CODES...", delay: 700 },
+    { text: "> ACCESS GRANTED TO JEDI ARCHIVES", delay: 800 },
+    { text: `> HELLO THERE!
+
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⠫⡁⢀⣀⣠⣒⣬⠿⡳⠛⠏⣿⢿⣛⢷⣄⡀⠀⠀⢀⡽⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣻⣽⣿⣾⡿⣽⣾⣿⣽⣿⠟⣥⢞⡩⣴⡿⢗⣫⣭⣴⣷⣿⣶⣿⣿⣿⣿⣿⣏⠼⢆⣀⢦⣝⡿⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⡿⣷⣿⣿⣯⣿⣿⠋⣨⡴⣫⣾⣿⣿⢿⣫⣷⣿⣿⣿⣿⣿⡿⡿⢟⡟⣻⣶⣾⣾⣓⣾⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣻
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⣨⢋⣾⣿⡷⣻⣵⣿⣿⣿⣿⣿⣿⣿⣯⢷⣻⢯⣜⠦⠹⣿⣿⣿⡜⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⢣⣿⡟⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣽⢻⣯⣯⡜⠀⠁⠘⣿⣿⣯⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⣰⡼⢫⣾⣿⡟⣽⣿⣿⣿⣿⣿⣿⣽⣞⣿⣻⣾⣱⢂⠀⠀⠀⢿⣿⣿⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢀⡋⠰⣱⣿⢏⣾⣿⣿⣿⣿⣿⣯⣿⢿⡾⣿⣵⢯⡗⠂⠀⠀⠀⠸⢿⣿⣾⣿⣿⣿⣿⡇⠀⠘⠀⠀⡏⠉⣉⣹⠉⢹⣿⠉⢹⣿⠋⢩⠉⢻⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢠⠇⡱⣿⠏⣾⡿⢻⣿⣿⣿⣿⣿⣾⢫⢝⡺⡝⣺⢼⣷⣶⠞⣆⠠⣛⣿⣿⣿⣿⣿⣿⣇⣀⣰⣀⣠⣇⣀⣒⣿⣀⣈⣹⣀⣈⣹⣀⡸⣀⣼⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣈⣷⡠⢹⣶⠓⢀⣼⣻⣿⣾⣿⣯⣟⣯⣶⣷⠈⣴⣯⢿⣶⢧⡄⠀⡛⡟⠁⠈⠐⠉⡙⢯⡟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣭⣷⠀⣌⡟⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠻⣿⣾⠟⠋⠁⠀⠝⡄⠀⠀⠀⡀⣠⠒⠛⠓⢛⠛⠛⡛⠛⡟⠛⣛⣻⠛⢛⠛⣿⠛⢛⣛⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡎⣞⣧⠨⠀⠀⢙⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿⡇⡀⠈⣯⢣⡰⠀⠀⢸⣿⣿⣿⣿⣷⣿⣿⠀⢸⣿⠀⠠⡄⠀⡇⠀⠭⣿⠀⢨⠀⣻⠀⠨⢽⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣝⣿⣝⠨⠀⠰⣻⣿⣻⣿⢿⣿⣿⣿⣿⡿⠇⠁⢠⡛⠆⠁⠀⠀⢺⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡬⣾⣗⡀⠀⢱⣿⣳⣯⣟⣯⢷⣿⣿⣿⣯⣵⣿⡂⢟⡀⠀⠀⠀⢸⣿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣷⣿⣌⣧⢋⡜⠹⢿⣿⣧⡌⢹⡈⠀⠀⣿⣟⡾⣽⣾⣿⣿⣿⣿⣟⢫⠖⡂⠀⠀⢰⣿⣯⣻⣽⣟⡮⢳⠹⣞⡷⣯⢷⡻⣾⡽⣞⡷⣯⣟⣞⣳⢻⣜⡳⣝⡲⣝⢮⡳⣛`, delay: 1500 },
+    { text: "> JEDI MASTER: MOHAMMAD ILHAM AKBAR JUNIOR", delay: 800 },
+    { text: "> SPECIALIZATION: PRODUCT DESIGN & UX RESEARCH", delay: 600 },
+    { text: "> READY TO ASSIST WITH THE FORCE OF DESIGN", delay: 700 },
+    { text: "> AVAILABLE COMMANDS:", delay: 500 },
+    { text: "> - <span class='terminal-command'>profile</span> - Access Jedi Holocron (Personal Archives)", delay: 300 },
+    { text: "> - <span class='terminal-command'>code</span> - Access Source Code Archives", delay: 300 },
+    { text: "> - <span class='terminal-command'>exit</span> - Close Secure Connection", delay: 300 },
+    { text: "> USE THE FORCE (↑/↓) TO NAVIGATE, ENTER TO EXECUTE", delay: 500 },
+    
+  ];
+
+  // Add terminal sequence handler
+  const startTerminalSequence = () => {
+    let totalDelay = 0;
+    
+    TERMINAL_SEQUENCE.forEach((message, index) => {
+      totalDelay += message.delay;
+      setTimeout(() => {
+        setTerminalMessages(prev => [...prev, message.text]);
+        
+        if (index === TERMINAL_SEQUENCE.length - 1) {
+          setTerminalComplete(true);
+        }
+      }, totalDelay);
+    });
+  };
+
+  const handleCloseTerminal = () => {
+    setShowTerminal(false);
+    setTerminalMessages([]);
+    setTerminalComplete(false);
+  };
 
   // Suggested popular apps for quick access
   const suggestedApps = [
@@ -115,6 +345,27 @@ export default function Index() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  // Add Konami code effect
+  useEffect(() => {
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (e.keyCode === konamiCode[konamiIndex]) {
+        const nextIndex = konamiIndex + 1;
+        setKonamiIndex(nextIndex);
+        
+        if (nextIndex === konamiCode.length) {
+          setKonamiIndex(0);
+          setShowTerminal(true);
+          startTerminalSequence();
+        }
+      } else {
+        setKonamiIndex(0);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeydown);
+    return () => window.removeEventListener('keydown', handleKeydown);
+  }, [konamiIndex]);
 
   const handleSearch = () => {
     setIsSearching(true);
@@ -258,6 +509,51 @@ export default function Index() {
           </CardContent>
         </Card>
 
+      </div>
+
+      {showTerminal && (
+        <Terminal 
+          messages={terminalMessages} 
+          complete={terminalComplete}
+          onClose={handleCloseTerminal}
+        />
+      )}
+
+      {/* GitHub Link */}
+      <div className="fixed bottom-12 right-4 group">
+        <div className="absolute bottom-full right-0 mb-4 w-56 p-3 bg-slate-800/95 text-sm text-slate-300 rounded-lg opacity-0 
+                      group-hover:opacity-100 transition-opacity duration-300 pointer-events-none backdrop-blur-sm border border-slate-700/50">
+          <p className="font-medium mb-1">Shhh! Try this:</p>
+          <p className="font-mono text-green-400">↑↑↓↓←→←→BA</p>
+        </div>
+        <a
+          href="https://github.com/milhamakbarjr/uxtools-appinsights-playstore"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+        >
+          {showParty && (
+            <div className="absolute -top-4 -left-4 -right-4 -bottom-4 flex items-center justify-center">
+              <span className="animate-bounce mx-0.5">🎉</span>
+              <span className="animate-bounce mx-0.5 delay-75">✨</span>
+              <span className="animate-bounce mx-0.5 delay-150">🎮</span>
+            </div>
+          )}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={`transform transition-all duration-300 ${showParty ? 'animate-spin' : ''}`}
+          >
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+          </svg>
+        </a>
       </div>
 
       {/* Sticky Disclaimer */}
