@@ -13,6 +13,7 @@ export interface ScrapingProgress {
   retryCount: number;
   status: 'idle' | 'running' | 'completed' | 'error';
   error?: string;
+  nextPaginationToken?: string | null;
 }
 
 export interface ScrapingResult {

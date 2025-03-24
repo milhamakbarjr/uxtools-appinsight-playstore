@@ -35,7 +35,8 @@ export class PlayStoreScraper {
       fetchedReviews: 0,
       currentBatch: 0,
       retryCount: 0,
-      status: 'idle'
+      status: 'idle',
+      nextPaginationToken: null,
     };
   }
 
@@ -48,6 +49,8 @@ export class PlayStoreScraper {
           appId,
           sort: gplay.sort.NEWEST,
           num: this.config.batchSize,
+          paginate: true,
+          nextPaginationToken: this.progress.nextPaginationToken,
         }),
         new Promise((_, reject) => 
           setTimeout(() => reject(new Error('Timeout')), this.config.timeoutMs)
@@ -59,6 +62,7 @@ export class PlayStoreScraper {
       }
 
       this.progress.fetchedReviews += result.data.length;
+      this.progress.nextPaginationToken = result.nextPaginationToken;
       return result.data;
     } catch (error) {
       if (this.progress.retryCount < this.config.maxRetries) {
