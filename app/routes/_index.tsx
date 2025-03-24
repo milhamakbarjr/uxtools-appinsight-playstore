@@ -220,6 +220,7 @@ export default function Index() {
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
+  const [searchError, setSearchError] = useState("");
   const [_, setSearchParams] = useSearchParams();
   const data = useLoaderData<{ suggestions: Array<Suggestion> }>();
   const suggestionsRef = useRef<HTMLDivElement>(null);
@@ -316,19 +317,36 @@ export default function Index() {
     },
   ];
 
-  // Add useEffect for debouncing search input
+  // Add function to check if search is valid
+  const isSearchValid = () => {
+    // Valid if it's a correct package ID format
+    if (isValidPackageId(search)) return true;
+    
+    // Valid if there are suggestions and one was selected (debouncedSearch will match a suggestion's appId)
+    if (data.suggestions && data.suggestions.length > 0) {
+      return data.suggestions.some(suggestion => suggestion.appId === debouncedSearch);
+    }
+    
+    return false;
+  };
+
+  // Update useEffect for debounced search
   useEffect(() => {
     const timer = setTimeout(() => {
-      setDebouncedSearch(search);
-    }, 300); // 300ms delay
+      if (search.length >= 3) {
+        setDebouncedSearch(search);
+      }
+    }, 300);
 
     return () => clearTimeout(timer);
   }, [search]);
 
-  // Update the search params when debounced search changes
+  // Update search params only if valid
   useEffect(() => {
-    if (debouncedSearch.length > 2) {
+    if (debouncedSearch.length >= 3 || isValidPackageId(debouncedSearch)) {
       setSearchParams({ term: debouncedSearch });
+    } else {
+      setSearchParams({});
     }
   }, [debouncedSearch, setSearchParams]);
 
@@ -367,11 +385,31 @@ export default function Index() {
     return () => window.removeEventListener('keydown', handleKeydown);
   }, [konamiIndex]);
 
+  const isValidPackageId = (id: string) => {
+    // Package ID must contain at least one dot and only letters, numbers, and dots
+    const packagePattern = /^[a-zA-Z][a-zA-Z0-9_]*(\.[a-zA-Z][a-zA-Z0-9_]*)+$/;
+    return packagePattern.test(id);
+  };
+
   const handleSearch = () => {
+    if (!debouncedSearch) {
+      setSearchError("Please enter an app name or package ID");
+      setIsSearching(false);
+      return false;
+    }
+
+    if (!isSearchValid()) {
+      setSearchError("Please enter a valid package ID (e.g., com.company.app) or select from suggestions");
+      setIsSearching(false);
+      return false;
+    }
+
+    setSearchError("");
     setIsSearching(true);
     setTimeout(() => {
       navigate(`/analysis/${debouncedSearch}`);
-    }, 1000); // Simulate a search delay
+    }, 1000);
+    return true;
   };
 
   const handleSuggestionClick = (appId: string) => {
@@ -381,7 +419,7 @@ export default function Index() {
     setIsSearching(true);
     setTimeout(() => {
       navigate(`/analysis/${appId}`);
-    }, 1000); // Simulate a search delay
+    }, 1000);
   };
 
   return (
@@ -409,38 +447,48 @@ export default function Index() {
           <CardContent>
             <div className="flex flex-col gap-4">
               <div className="flex gap-2 relative">
-                <Input
-                  placeholder="Enter app name or ID"
-                  className="h-12 bg-white dark:bg-slate-950"
-                  value={search}
-                  onChange={(e) => {
-                    setSearch(e.target.value);
-                    setShowSuggestions(true);
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      handleSearch();
-                      setShowSuggestions(false);
-                    } else if (e.key === "Escape") {
-                      setShowSuggestions(false);
-                    }
-                  }}
-                  onFocus={() => setShowSuggestions(true)}
-                  onBlur={(e) => {
-                    // Don't hide if clicking on the suggestions
-                    if (!suggestionsRef.current?.contains(e.relatedTarget as Node)) {
-                      // Add a small delay to allow for click events on suggestions
-                      setTimeout(() => setShowSuggestions(false), 150);
-                    }
-                  }}
-                />
+                <div className="flex-1">
+                  <Input
+                    placeholder="Enter app name or ID"
+                    className={`h-12 bg-white dark:bg-slate-950 ${searchError ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+                    value={search}
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                      setSearchError("");
+                      setIsSearching(false);
+                      setShowSuggestions(true);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        const isValid = handleSearch();
+                        if (isValid) {
+                          setShowSuggestions(false);
+                        }
+                      } else if (e.key === "Escape") {
+                        setShowSuggestions(false);
+                      }
+                    }}
+                    onFocus={() => setShowSuggestions(true)}
+                    onBlur={(e) => {
+                      if (!suggestionsRef.current?.contains(e.relatedTarget as Node)) {
+                        setTimeout(() => setShowSuggestions(false), 150);
+                      }
+                    }}
+                  />
+                  {searchError && (
+                    <p className="text-sm text-red-500 mt-1">{searchError}</p>
+                  )}
+                </div>
                 <Button
                   size="lg"
                   className="gap-2 min-w-32 h-12"
                   onClick={() => {
-                    handleSearch();
-                    setShowSuggestions(false);
+                    const isValid = handleSearch();
+                    if (isValid) {
+                      setShowSuggestions(false);
+                    }
                   }}
+                  disabled={isSearching || !isSearchValid()}
                 >
                   {isSearching ? (
                     <>
