@@ -19,6 +19,35 @@ import { PlayStoreScraper } from '~/lib/scraper/PlayStoreScraper'
 import { AnalysisService } from '~/lib/analysis/AnalysisService'
 import { AnalysisTransformer } from '~/lib/analysis/transformers/AnalysisTransformer'
 
+interface AppDetails {
+  title: string;
+  icon: string;
+  developer: string;
+  score: number;
+  scoreText: string;
+  ratings: number;
+  version: string;
+  installs: string;
+  updated: number;
+  description: string;
+  categories: Array<{name: string; id: string | null}>;
+}
+
+interface AppData {
+  id: string;
+  icon: string;
+  developer: string;
+  name: string;
+  rating: number;
+  ratings: number;
+  reviews: number;
+  version: string;
+  installs: string;
+  lastUpdated: string;
+  description: string;
+  category: string;
+}
+
 export async function loader({ params }: LoaderFunctionArgs) {
 
   const scraper = new PlayStoreScraper({
@@ -26,12 +55,14 @@ export async function loader({ params }: LoaderFunctionArgs) {
     batchSize: 100
   })
   const fetchedReviews = await scraper.scrape(params.appId || 'unknown');
-  const appDetails = await scraper.getDetails(params.appId || 'unknown');
+  const appDetails = await scraper.getDetails(params.appId || 'unknown') as unknown as AppDetails;
   const analysisService = new AnalysisService();
   const analysisResult = await analysisService.analyzeReviews(fetchedReviews.reviews);
   const transformedData = new AnalysisTransformer(analysisResult, fetchedReviews.reviews, {
     name: appDetails.title,
-    version: appDetails.version
+    version: appDetails.version,
+    rating: appDetails.scoreText,
+    reviews: appDetails.ratings
   });
   const overviewTabData = transformedData.getOverviewTabData();
   const reviewsTabData = transformedData.getReviewsTabData();
@@ -41,10 +72,11 @@ export async function loader({ params }: LoaderFunctionArgs) {
     id: params.appId || "unknown",
     icon: appDetails.icon,
     developer: appDetails.developer,
-    name: overviewTabData.app.name,
-    rating: overviewTabData.app.rating,
-    reviews: overviewTabData.app.reviews,
-    version: overviewTabData.app.version,
+    name: appDetails.title,
+    rating: appDetails.scoreText,
+    ratings: appDetails.ratings,
+    reviews: appDetails.ratings,
+    version: appDetails.version,
     installs: appDetails.installs,
     lastUpdated: new Date(appDetails.updated).toLocaleString('en-US', {
       year: 'numeric',
@@ -222,7 +254,7 @@ export default function AppAnalysis() {
                 <span>•</span>
                 <div className="flex items-center">
                   <Star className="h-4 w-4 fill-amber-400 text-amber-400 mr-1" />
-                  <span>{app.rating} ({(app.reviews / 1000000).toFixed(1)}M reviews)</span>
+                  <span>{app.rating} ({app.ratings ? (app.ratings >= 1000000 ? `${(app.ratings / 1000000).toFixed(1)}M` : `${(app.ratings / 1000).toFixed(1)}K`) : '0'} ratings)</span>
                 </div>
               </div>
               <div className="flex flex-wrap gap-2 mt-2">

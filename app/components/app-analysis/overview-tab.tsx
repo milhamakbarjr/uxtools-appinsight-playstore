@@ -146,21 +146,21 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card className="border-0 shadow-sm bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
           <CardHeader className="pb-2">
-            <CardTitle className="text-lg">Overall Rating</CardTitle>
+            <CardTitle className="text-lg">Latest Rating</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
-              <div className="text-4xl font-bold">{app.rating}</div>
+              <div className="text-4xl font-bold">{reviewsStats.overTime[reviewsStats.overTime.length - 1]?.avg.toFixed(1) || app.rating}</div>
               <div className="flex items-center">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <Star 
                     key={star}
-                    className={`h-5 w-5 ${star <= Math.round(app.rating) ? "fill-amber-400 text-amber-400" : "text-amber-400 fill-none"}`} 
+                    className={`h-5 w-5 ${star <= Math.round(reviewsStats.overTime[reviewsStats.overTime.length - 1]?.avg || app.rating) ? "fill-amber-400 text-amber-400" : "text-amber-400 fill-none"}`} 
                   />
                 ))}
               </div>
             </div>
-            <div className="text-sm text-muted-foreground mt-1">Based on {app.reviews.toLocaleString()} reviews</div>
+            <div className="text-sm text-muted-foreground mt-1">Based on latest {reviewsStats.total.toLocaleString()} reviews</div>
           </CardContent>
         </Card>
         
