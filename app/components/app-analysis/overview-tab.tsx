@@ -320,7 +320,14 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
               <RechartsTooltip
                 content={
                   <ChartTooltipContent
-                    formatter={(value) => [`${value}%`]}
+                    formatter={(value, name) => {
+                      const labels = {
+                        positive: "Positive",
+                        neutral: "Neutral",
+                        negative: "Negative"
+                      };
+                      return [`${value}% `,labels[name as keyof typeof labels]];
+                    }}
                   />
                 }
               />
