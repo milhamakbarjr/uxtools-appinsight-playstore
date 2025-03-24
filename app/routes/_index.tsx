@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { MetaFunction } from "@remix-run/node";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
@@ -5,7 +6,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/com
 import { Search, Package, Smartphone, BarChart2, Loader2 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { useNavigate } from "@remix-run/react";
-import { useState } from "react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -16,15 +16,10 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   const navigate = useNavigate();
+  const [search, setSearch] = useState("");
 
-  const handleSearch = async (type: string) => {
-
-    try {
-      const mockAppId = type === "name" ? "com.spotify.music" : "com.netflix.mediaclient";
-      navigate(`/analysis/${mockAppId}`);
-    } catch (error) {
-      // Handle error
-    }
+  const handleSearch = () => {
+    navigate(`/analysis/${search}`);
   };
 
   return (
@@ -69,11 +64,17 @@ export default function Index() {
                       <Input
                         placeholder="Enter app name (e.g., Spotify, Netflix)"
                         className="h-12 bg-white dark:bg-slate-950"
+                        onChange={(e) => setSearch(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            handleSearch();
+                          }
+                        }}
                       />
                       <Button
                         size="lg"
                         className="gap-2 min-w-32 h-12"
-                        onClick={() => handleSearch("name")}
+                        onClick={() => handleSearch()}
                       >
                         Search
                       </Button>
@@ -97,11 +98,17 @@ export default function Index() {
                       <Input
                         placeholder="Enter package ID (e.g., com.spotify.music)"
                         className="h-12 bg-white dark:bg-slate-950"
+                        onChange={(e) => setSearch(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            handleSearch();
+                          }
+                        }}
                       />
                       <Button
                         size="lg"
                         className="gap-2 min-w-32 h-12"
-                        onClick={() => handleSearch("package")}
+                        onClick={() => handleSearch()}
                       >
                         Search
                       </Button>
