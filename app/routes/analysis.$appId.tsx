@@ -1,14 +1,19 @@
 import { useLoaderData, json, Link } from "@remix-run/react";
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import { ArrowLeft, Star, BarChart2, Download, MessageSquare, PieChart } from "lucide-react";
+import { ArrowLeft, Star, BarChart2, Download, MessageSquare, PieChart, FileJson, FileSpreadsheet, FileCode, Loader2 } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
 import OverviewTab from "~/components/app-analysis/overview-tab";
 import ReviewsTab from "~/components/app-analysis/reviews-tab";
 import TopicsTab from "~/components/app-analysis/topics-tab";
-
-// Import all the JSON data files
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger 
+} from "~/components/ui/dropdown-menu";
+import { useState } from "react";
 
 import { PlayStoreScraper } from '~/lib/scraper/PlayStoreScraper'
 import { AnalysisService } from '~/lib/analysis/AnalysisService'
@@ -60,6 +65,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 export default function AppAnalysis() {
   const { app, reviewsStats, reviews: rawReviews, topicsData } = useLoaderData<typeof loader>();
+  const [isExporting, setIsExporting] = useState<string | null>(null);
 
   // Transform the reviews to match the Review type
   const reviews = rawReviews.map(review => ({
@@ -74,6 +80,125 @@ export default function AppAnalysis() {
     sentiment: review.sentiment,
     topics: review.topics
   }));
+
+  // Export Handlers
+  const handleExportJSON = async () => {
+    try {
+      setIsExporting('json');
+      const jsonData = JSON.stringify(rawReviews, null, 2);
+      const blob = new Blob([jsonData], { type: 'application/json' });
+      
+      // Create a download link and trigger it
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${app.name}-reviews.json`;
+      document.body.appendChild(a);
+      a.click();
+      
+      // Clean up
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error exporting JSON:', error);
+    } finally {
+      setIsExporting(null);
+    }
+  };
+
+  const handleExportXML = async () => {
+    try {
+      setIsExporting('xml');
+      
+      // Convert reviews to XML format
+      let xmlData = '<?xml version="1.0" encoding="UTF-8" ?>\n<reviews>\n';
+      
+      rawReviews.forEach(review => {
+        xmlData += '  <review>\n';
+        xmlData += `    <id>${review.id}</id>\n`;
+        xmlData += `    <author>${review.author}</author>\n`;
+        xmlData += `    <rating>${review.rating}</rating>\n`;
+        xmlData += `    <text>${review.text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</text>\n`;
+        xmlData += `    <date>${review.date}</date>\n`;
+        xmlData += `    <device>${review.device || "Unknown"}</device>\n`;
+        xmlData += `    <likes>${review.likes}</likes>\n`;
+        xmlData += `    <version>${review.version}</version>\n`;
+        xmlData += `    <sentiment>${review.sentiment}</sentiment>\n`;
+        xmlData += '    <topics>\n';
+        review.topics.forEach(topic => {
+          xmlData += `      <topic>${topic}</topic>\n`;
+        });
+        xmlData += '    </topics>\n';
+        xmlData += '  </review>\n';
+      });
+      
+      xmlData += '</reviews>';
+      
+      const blob = new Blob([xmlData], { type: 'application/xml' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${app.name}-reviews.xml`;
+      document.body.appendChild(a);
+      a.click();
+      
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error exporting XML:', error);
+    } finally {
+      setIsExporting(null);
+    }
+  };
+
+  const handleExportExcel = async () => {
+    try {
+      setIsExporting('excel');
+      
+      // Dynamically import xlsx library
+      const XLSX = await import('xlsx');
+      
+      // Prepare data for Excel
+      const excelData = rawReviews.map(review => ({
+        ID: review.id,
+        Author: review.author,
+        Rating: review.rating,
+        Review: review.text,
+        Date: review.date,
+        Device: review.device || "Unknown",
+        Likes: review.likes,
+        Version: review.version,
+        Sentiment: review.sentiment,
+        Topics: review.topics.join(', ')
+      }));
+      
+      // Create worksheet
+      const worksheet = XLSX.utils.json_to_sheet(excelData);
+      
+      // Create workbook
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Reviews');
+      
+      // Generate Excel file
+      const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+      const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      
+      // Create download link
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${app.name}-reviews.xlsx`;
+      document.body.appendChild(a);
+      a.click();
+      
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error exporting Excel:', error);
+    } finally {
+      setIsExporting(null);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-950 p-4 sm:p-6">
@@ -107,10 +232,37 @@ export default function AppAnalysis() {
               </div>
             </div>
             <div>
-              <Button variant="outline" size="sm" className="gap-2">
-                <Download className="h-4 w-4" />
-                Export
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="gap-2" disabled={!!isExporting}>
+                    {isExporting ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                        Exporting...
+                      </>
+                    ) : (
+                      <>
+                        <Download className="h-4 w-4" />
+                        Export
+                      </>
+                    )}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={handleExportJSON} disabled={!!isExporting}>
+                    <FileJson className="h-4 w-4 mr-2" />
+                    Export as JSON
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={handleExportXML} disabled={!!isExporting}>
+                    <FileCode className="h-4 w-4 mr-2" />
+                    Export as XML
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={handleExportExcel} disabled={!!isExporting}>
+                    <FileSpreadsheet className="h-4 w-4 mr-2" />
+                    Export as Excel
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
         </div>
