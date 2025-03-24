@@ -1,6 +1,21 @@
 import gplay from 'google-play-scraper';
 import { ScraperConfig, ScrapingProgress, ScrapingResult } from './types';
 
+interface category {
+  id: string;
+  name: string;
+}
+interface appDetails {
+  categories: Array<category>;
+  description: string;
+  developer: string;
+  icon: string;
+  installs: string;
+  title: string;
+  updated: Date;
+  version: string;
+}
+
 export class PlayStoreScraper {
   private config: ScraperConfig;
   private progress: ScrapingProgress;
@@ -33,7 +48,6 @@ export class PlayStoreScraper {
           appId,
           sort: gplay.sort.NEWEST,
           num: this.config.batchSize,
-          offset
         }),
         new Promise((_, reject) => 
           setTimeout(() => reject(new Error('Timeout')), this.config.timeoutMs)
@@ -119,6 +133,13 @@ export class PlayStoreScraper {
     }
 
     return { appId, reviews, stats };
+  }
+
+  
+
+  async getDetails(appId: string): Promise<appDetails> {
+    const appDetails = await gplay.app({ appId });
+    return appDetails as appDetails;
   }
 
   getProgress(): ScrapingProgress {

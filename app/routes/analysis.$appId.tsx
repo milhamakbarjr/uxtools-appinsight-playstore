@@ -9,37 +9,58 @@ import ReviewsTab from "~/components/app-analysis/reviews-tab";
 import TopicsTab from "~/components/app-analysis/topics-tab";
 
 // Import all the JSON data files
-import overviewTabData from "~/lib/analysis/transformers/overview-tab-data-1742536732989.json";
-import reviewsTabData from "~/lib/analysis/transformers/reviews-tab-data-1742536732991.json";
-import topicsTabData from "~/lib/analysis/transformers/topics-tab-data-1742536732992.json";
 
-export function loader({ params }: LoaderFunctionArgs) {
-  // Sample app data
+import { PlayStoreScraper } from '~/lib/scraper/PlayStoreScraper'
+import { AnalysisService } from '~/lib/analysis/AnalysisService'
+import { AnalysisTransformer } from '~/lib/analysis/transformers/AnalysisTransformer'
+
+export async function loader({ params }: LoaderFunctionArgs) {
+
+  const scraper = new PlayStoreScraper({
+    maxReviews: 1000,
+    batchSize: 100
+  })
+  const fetchedReviews = await scraper.scrape(params.appId || 'unknown');
+  const appDetails = await scraper.getDetails(params.appId || 'unknown');
+  const analysisService = new AnalysisService();
+  const analysisResult = await analysisService.analyzeReviews(fetchedReviews.reviews);
+  const transformedData = new AnalysisTransformer(analysisResult, fetchedReviews.reviews, {
+    name: appDetails.title,
+    version: appDetails.version
+  });
+  const overviewTabData = transformedData.getOverviewTabData();
+  const reviewsTabData = transformedData.getReviewsTabData();
+  const topicsTabData = transformedData.getTopicsTabData();
+
   const appData = {
     id: params.appId || "unknown",
+    icon: appDetails.icon,
+    developer: appDetails.developer,
     name: overviewTabData.app.name,
-    icon: "https://play-lh.googleusercontent.com/7ynvVIRdhJNAngCg_GI7i8TtH8BqkJYmffeUHsG-mJOdzt1XLvGmbsKuc5Q1SInBjDKN=w480-h960-rw",
-    developer: "Spotify AB",
     rating: overviewTabData.app.rating,
     reviews: overviewTabData.app.reviews,
-    installs: "1B+",
-    lastUpdated: "Sep 25, 2023",
     version: overviewTabData.app.version,
-    description: "With Spotify, you can listen to music and play millions of songs and podcasts for free.",
-    category: "Music & Audio",
+    installs: appDetails.installs,
+    lastUpdated: new Date(appDetails.updated).toLocaleString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    }),
+    description: appDetails.description,
+    category: appDetails.categories[0].name,
   };
 
-  return json({
+  return ({
     app: appData,
     reviewsStats: overviewTabData.reviewsStats,
-    reviews: reviewsTabData.sample,
-    topicsData: topicsTabData
+    reviews: reviewsTabData.reviews,
+    topicsData: topicsTabData,
   });
 }
 
 export default function AppAnalysis() {
   const { app, reviewsStats, reviews: rawReviews, topicsData } = useLoaderData<typeof loader>();
-  
+
   // Transform the reviews to match the Review type
   const reviews = rawReviews.map(review => ({
     id: review.id,
@@ -47,10 +68,8 @@ export default function AppAnalysis() {
     rating: review.rating,
     text: review.text,
     date: review.date,
-    device: review.device || "Unknown", 
+    device: review.device || "Unknown",
     likes: review.likes,
-    replyDate: review.replyDate,
-    replyText: review.replyText,
     version: review.version,
     sentiment: review.sentiment,
     topics: review.topics
@@ -64,10 +83,10 @@ export default function AppAnalysis() {
           <Link to="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-4">
             <ArrowLeft className="h-4 w-4 mr-1" /> Back to search
           </Link>
-          
+
           <div className="flex items-start gap-4">
-            <img 
-              src={app.icon} 
+            <img
+              src={app.icon}
               alt={app.name}
               className="w-16 h-16 rounded-xl object-cover"
             />
@@ -84,7 +103,7 @@ export default function AppAnalysis() {
               <div className="flex flex-wrap gap-2 mt-2">
                 <Badge variant="secondary">{app.category}</Badge>
                 <Badge variant="outline">{app.installs} installs</Badge>
-                <Badge variant="outline">v{app.version}</Badge>
+                <Badge variant="outline">{app.version}</Badge>
               </div>
             </div>
             <div>
@@ -95,7 +114,7 @@ export default function AppAnalysis() {
             </div>
           </div>
         </div>
-        
+
         {/* Tabs Navigation */}
         <Tabs defaultValue="overview" className="w-full">
           <div className="flex justify-between items-center mb-4">
@@ -114,16 +133,16 @@ export default function AppAnalysis() {
               </TabsTrigger>
             </TabsList>
           </div>
-          
+
           {/* Tab Contents using the extracted components */}
           <TabsContent value="overview">
             <OverviewTab app={app} reviewsStats={reviewsStats} />
           </TabsContent>
-          
+
           <TabsContent value="reviews">
             <ReviewsTab reviews={reviews} />
           </TabsContent>
-          
+
           <TabsContent value="topics">
             <TopicsTab reviewsData={topicsData} />
           </TabsContent>
