@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import type { MetaFunction, LoaderFunction } from "@remix-run/node";
-import { Search, Package, Loader2, X } from "lucide-react";
+import { Search, Package, Loader2, X, ChevronDown, Copy, Check } from "lucide-react";
 import { useNavigate, useSearchParams, useLoaderData } from "@remix-run/react";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
@@ -221,6 +221,8 @@ export default function Index() {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [searchError, setSearchError] = useState("");
+  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+  const [copiedExample, setCopiedExample] = useState("");
   const [_, setSearchParams] = useSearchParams();
   const data = useLoaderData<{ suggestions: Array<Suggestion> }>();
   const suggestionsRef = useRef<HTMLDivElement>(null);
@@ -284,6 +286,12 @@ export default function Index() {
     setShowTerminal(false);
     setTerminalMessages([]);
     setTerminalComplete(false);
+  };
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedExample(text);
+    setTimeout(() => setCopiedExample(""), 2000);
   };
 
   // Suggested popular apps for quick access
@@ -386,9 +394,29 @@ export default function Index() {
   }, [konamiIndex]);
 
   const isValidPackageId = (id: string) => {
-    // Package ID must contain at least one dot and only letters, numbers, and dots
-    const packagePattern = /^[a-zA-Z][a-zA-Z0-9_]*(\.[a-zA-Z][a-zA-Z0-9_]*)+$/;
-    return packagePattern.test(id);
+    // Package ID must:
+    // 1. Start with a letter
+    // 2. Have at least 2 segments (e.g., com.example)
+    // 3. Each segment must start with a letter
+    // 4. Each segment can only contain letters, numbers, and underscores
+    // 5. Must have at least 3 segments for proper reverse domain notation (e.g., com.company.app)
+    const packagePattern = /^[a-zA-Z][a-zA-Z0-9_]*(\.[a-zA-Z][a-zA-Z0-9_]*){2,}$/;
+    
+    if (!packagePattern.test(id)) return false;
+    
+    // Additional validation for common TLD-like segments
+    const segments = id.split('.');
+    const firstSegment = segments[0].toLowerCase();
+    
+    // If first segment looks like a TLD (com, org, etc), ensure proper reverse domain format
+    const commonTLDs = ['com', 'org', 'net', 'edu', 'gov', 'mil', 'io', 'co', 'id', 'uk', 'ru', 'de', 'jp', 'cn', 'br', 'in'];
+    if (commonTLDs.includes(firstSegment)) {
+      // Must have at least one more segment after the TLD and company name
+      // e.g., com.company.app
+      return segments.length >= 3;
+    }
+    
+    return true;
   };
 
   const handleSearch = () => {
@@ -449,7 +477,7 @@ export default function Index() {
               <div className="flex gap-2 relative">
                 <div className="flex-1">
                   <Input
-                    placeholder="Enter app name or ID"
+                    placeholder="Enter app name or package ID"
                     className={`h-12 bg-white dark:bg-slate-950 ${searchError ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
                     value={search}
                     onChange={(e) => {
@@ -551,6 +579,49 @@ export default function Index() {
                     </button>
                   ))}
                 </div>
+              </div>
+
+              {/* How to find package ID */}
+              <div className="mt-3 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden bg-white dark:bg-slate-900">
+                <button 
+                  onClick={() => setIsAccordionOpen(!isAccordionOpen)}
+                  className="w-full px-3 py-2 text-xs flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                >
+                  <div className="font-medium flex items-center gap-1.5 text-muted-foreground">
+                    <Package className="h-3.5 w-3.5" />
+                    How to find a package ID?
+                  </div>
+                  <ChevronDown className={`h-3.5 w-3.5 text-muted-foreground transition-transform duration-200 ${isAccordionOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {isAccordionOpen && (
+                  <div className="px-3 py-2 border-t border-slate-200 dark:border-slate-700 text-xs">
+                    <ol className="list-decimal pl-5 space-y-1 text-muted-foreground">
+                      <li>Go to the app's Google Play Store page</li>
+                      <li>Look at the URL in your browser address bar</li>
+                      <li>Find the <code className="px-1 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs">id=</code> parameter in the URL</li>
+                    </ol>
+                    <div className="mt-2 bg-slate-50 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 p-2 overflow-hidden">
+                      <p className="text-muted-foreground mb-1">Example URL:</p>
+                      <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap pb-1">
+                        <span className="text-slate-500">https://play.google.com/store/apps/details?id=</span>
+                        <button 
+                          onClick={() => copyToClipboard("com.spotify.music")}
+                          className="font-semibold bg-yellow-100 dark:bg-yellow-900/30 px-1 rounded hover:bg-yellow-200 dark:hover:bg-yellow-900/50 transition-colors inline-flex items-center gap-1"
+                        >
+                          com.spotify.music
+                          <span className="text-slate-500">
+                            {copiedExample === "com.spotify.music" ? (
+                              <Check className="h-3 w-3 text-green-500" />
+                            ) : (
+                              <Copy className="h-3 w-3" />
+                            )}
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
               
             </div>
