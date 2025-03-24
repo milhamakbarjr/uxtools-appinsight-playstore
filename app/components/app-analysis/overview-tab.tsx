@@ -25,6 +25,7 @@ import {
   ChartTooltip, 
   ChartTooltipContent 
 } from "~/components/ui/chart";
+import { useState } from "react";
 
 type OverviewTabProps = {
   app: {
@@ -81,6 +82,8 @@ type OverviewTabProps = {
 };
 
 export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
+  const [timeRange, setTimeRange] = useState<'all' | '6m' | '3m'>('all');
+
   // Helper function to determine confidence badge color
   const getConfidenceBadge = (confidence: number) => {
     if (confidence >= 0.7) return "success";
@@ -120,6 +123,22 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
       neutral: neutral
     };
   });
+
+  // Helper function to filter data based on time range
+  const getFilteredData = () => {
+    if (timeRange === 'all') return reviewsStats.overTime;
+    
+    const months = timeRange === '6m' ? 6 : 3;
+    const cutoffDate = new Date();
+    cutoffDate.setMonth(cutoffDate.getMonth() - months);
+    
+    return reviewsStats.overTime.filter(item => {
+      const itemDate = new Date(item.date);
+      return itemDate >= cutoffDate;
+    });
+  };
+
+  const filteredData = getFilteredData();
 
   return (
     <div className="space-y-6">
@@ -349,15 +368,34 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
         
         <div className="px-6 pb-4 flex flex-wrap gap-2 justify-between items-center">
           <div className="flex gap-2">
-            <Button variant="outline" size="sm" className="bg-primary/10">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className={timeRange === 'all' ? "bg-primary/10" : ""} 
+              onClick={() => setTimeRange('all')}
+            >
               All time
             </Button>
-            <Button variant="outline" size="sm">
-              Last 6 months
-            </Button>
-            <Button variant="outline" size="sm">
-              Last 3 months
-            </Button>
+            {reviewsStats.overTime.length > 6 && (
+              <Button 
+                variant="outline" 
+                size="sm"
+                className={timeRange === '6m' ? "bg-primary/10" : ""} 
+                onClick={() => setTimeRange('6m')}
+              >
+                Last 6 months
+              </Button>
+            )}
+            {reviewsStats.overTime.length > 3 && (
+              <Button 
+                variant="outline" 
+                size="sm"
+                className={timeRange === '3m' ? "bg-primary/10" : ""} 
+                onClick={() => setTimeRange('3m')}
+              >
+                Last 3 months
+              </Button>
+            )}
           </div>
           
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -373,7 +411,7 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
         </div>
         
         <CardContent className="pb-8">
-          {reviewsStats.overTime.length > 0 ? (
+          {filteredData.length > 0 ? (
             <div className="w-full" style={{ height: "592px" }}>
               <ChartContainer
                 config={{
@@ -388,7 +426,7 @@ export default function OverviewTab({ app, reviewsStats }: OverviewTabProps) {
                 }}
               >
                 <ComposedChart
-                  data={reviewsStats.overTime}
+                  data={filteredData}
                   margin={{ top: 30, right: 40, bottom: 40, left: 40 }} 
                 >
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
