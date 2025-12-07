@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import type { MetaFunction, LoaderFunction } from "@remix-run/node";
+import type { MetaFunction, LoaderFunction } from "react-router";
 import { Search, Package, Loader2, X, ChevronDown, Copy, Check } from "lucide-react";
-import { useNavigate, useSearchParams, useLoaderData } from "@remix-run/react";
+import { useNavigate, useSearchParams, useLoaderData } from "react-router";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";

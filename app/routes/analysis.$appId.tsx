@@ -1,5 +1,5 @@
-import { useLoaderData, json, Link } from "@remix-run/react";
-import { LoaderFunctionArgs } from "@remix-run/node";
+import { useLoaderData, Link } from "react-router";
+import type { LoaderFunctionArgs } from "react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { ArrowLeft, Star, BarChart2, Download, MessageSquare, PieChart, FileJson, FileSpreadsheet, FileCode, Loader2 } from "lucide-react";
 import { Button } from "~/components/ui/button";
